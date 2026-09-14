@@ -5,9 +5,11 @@ import pytest
 from pls_regration.config import load_dataset_contracts
 
 
-def test_empty_foundation_contract_is_loadable() -> None:
+def test_frozen_gold_contract_is_loadable() -> None:
     contracts = load_dataset_contracts("config/datasets.json")
-    assert contracts == ()
+    assert len(contracts) == 1
+    assert contracts[0].identifier == "gold_daily"
+    assert {item.availability for item in contracts[0].external_variables} == {"lag_only"}
 
 
 def test_dataset_requires_two_external_variables(tmp_path) -> None:

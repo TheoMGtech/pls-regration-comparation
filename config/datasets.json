@@ -1,3 +1,23 @@
 {
-  "datasets": []
+  "datasets": [
+    {
+      "id": "gold_daily",
+      "source": "bases/raw/gold_daily_prices.csv",
+      "target": {"column": "GOLD_PRICE", "unit": "US dollars per troy ounce"},
+      "frequency": "Daily on the original gold observation calendar",
+      "forecast_horizon": 1,
+      "external_variables": [
+        {
+          "name": "TREASURY_10Y",
+          "availability": "lag_only",
+          "evidence": "FRED DGS10 is a dated observed series without intraday availability metadata; the preparation script forward-fills calendar gaps and then lags it by one gold observation."
+        },
+        {
+          "name": "FED_FUNDS_RATE",
+          "availability": "lag_only",
+          "evidence": "FRED DFF is a dated observed series without intraday availability metadata; the preparation script forward-fills calendar gaps and then lags it by one gold observation."
+        }
+      ]
+    }
+  ]
 }
