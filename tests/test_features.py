@@ -23,4 +23,3 @@ def test_rejects_future_observed_information() -> None:
     )
     with pytest.raises(ValueError, match="future information"):
         assert_features_available_at_origin(frame)
-

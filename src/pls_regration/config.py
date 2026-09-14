@@ -64,4 +64,3 @@ def load_dataset_contracts(path: str | Path) -> tuple[DatasetContract, ...]:
             )
         )
     return tuple(contracts)
-

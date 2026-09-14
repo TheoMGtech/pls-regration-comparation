@@ -4,4 +4,3 @@
 2. Implementar contratos de configuração e guarda temporal genérica.
 3. Cobrir os contratos com testes unitários.
 4. Quando as cinco bases forem congeladas, preencher a configuração, revisar esta spec e criar a próxima feature para preparação e walk-forward.
-

@@ -54,4 +54,3 @@ if __name__ == "__main__":
         print(f"DOCX validation failed: {error}", file=sys.stderr)
         raise SystemExit(1)
     print("DOCX validation passed")
-

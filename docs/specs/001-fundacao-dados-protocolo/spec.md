@@ -12,4 +12,3 @@ O protocolo final deverá aplicar as mesmas origens e horizonte aos quatro model
 2. Toda externa usa uma das classificações de disponibilidade definidas e contém evidência textual.
 3. Uma feature cuja disponibilidade é posterior à origem da previsão é rejeitada.
 4. Nenhum modelo é implementado nesta feature.
-

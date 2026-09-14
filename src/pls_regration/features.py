@@ -23,4 +23,3 @@ def assert_features_available_at_origin(
             "future information detected in feature frame at rows: "
             + ", ".join(map(str, leaked_rows.tolist()))
         )
-

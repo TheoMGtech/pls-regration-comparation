@@ -17,4 +17,3 @@ O CI usará Python 3.11 e instalará exatamente as dependências fixadas. Dados 
 ## Consequências
 
 A reprodução começa com ambiente limpo e `pip install -r requirements.txt`. As versões deverão ser atualizadas deliberadamente em PR própria. Não serão adicionados modelos, tuning ou notebooks de resultado antes da aprovação da spec do protocolo experimental.
-

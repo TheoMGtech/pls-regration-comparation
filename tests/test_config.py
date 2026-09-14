@@ -33,4 +33,3 @@ def test_dataset_requires_two_external_variables(tmp_path) -> None:
     )
     with pytest.raises(ValueError, match="at least two"):
         load_dataset_contracts(path)
-

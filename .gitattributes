@@ -2,4 +2,3 @@
 *.docx binary
 *.pdf binary
 *.ipynb text eol=lf
-
