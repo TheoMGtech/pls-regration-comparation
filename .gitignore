@@ -1,0 +1,40 @@
+# Python and local environments
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+
+# Jupyter and operating-system noise
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
+~$*.docx
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+config/datasets.local.json
+
+# Generated analysis artifacts
+data/raw/
+data/processed/
+results/
+reports/output/
+reports/figures/
+tmp/
+*.log
+
+# Local AI / vibecoding context - never version these files
+AGENTS.md
+RESTRICTIONS.md
+.vibe/
+.cursor/
+CLAUDE.md
+CODEX.md
+docs/HANDOFF.md
+docs/SESSION_LOG.md
