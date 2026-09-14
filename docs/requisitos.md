@@ -31,4 +31,3 @@ Os resíduos fora da amostra terão série temporal, ACF, Ljung-Box e interpreta
 O relatório HTML paginado e seu PDF terão o mesmo conteúdo: resumo, participantes, bases, preparo, STL, walk-forward, modelos/tuning, MAE, resíduos, importância, explicação didática do PLS, conclusões, referências e apêndices. A apresentação oral navegará pelo HTML; não exige slides separados. A entrega final incluirá PDF, HTML autocontido, fonte do relatório, códigos, bases/fontes, consolidação de MAE e registro diário de demandas.
 
 Cada linha do registro de demandas representa uma atividade executada em um dia, com evidência, carga, complexidade e status. Carga mede esforço operacional; complexidade mede análise, novidade ou decisão técnica. O registro apoia a avaliação individual e não aceita descrições genéricas.
-

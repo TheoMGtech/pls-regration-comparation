@@ -5,4 +5,3 @@
 - [x] Adicionar testes dos contratos e da guarda.
 - [ ] Registrar as cinco bases congeladas após decisão do grupo.
 - [ ] Especificar limpeza, feature engineering e walk-forward por base.
-
