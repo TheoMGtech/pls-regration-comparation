@@ -4,7 +4,7 @@ Fundação reproduzível para a comparação de SARIMAX, Holt-Winters, Random Fo
 
 ## Estado atual
 
-Esta entrega estabelece documentação, contratos, testes, CI e gestão de demandas. Nenhum modelo foi treinado nesta fase. As séries já versionadas são `bases/gold_daily_prices.csv` e `bases/gold_daily_prices_targets.csv`; as demais só serão incluídas após congelamento e documentação pelo grupo. O enunciado de referência está em `n2_series_temporais.pdf`.
+Esta entrega estabelece documentação, contratos, testes, CI e gestão de demandas. Nenhum modelo foi treinado nesta fase. As bases agora reunidas em `bases/` devem ser documentadas e congeladas pelo grupo antes da modelagem; a série inicialmente associada ao Grupo 5 está em `bases/grupo5/gold_daily_prices_targets.csv`. O enunciado de referência está em `n2_series_temporais.pdf`.
 
 ## Ambiente local
 
