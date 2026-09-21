@@ -3,7 +3,10 @@
     {
       "id": "gold_daily",
       "source": "bases/raw/gold_daily_prices.csv",
-      "target": {"column": "GOLD_PRICE", "unit": "US dollars per troy ounce"},
+      "target": {
+        "column": "GOLD_PRICE",
+        "unit": "US dollars per troy ounce"
+      },
       "frequency": "Daily on the original gold observation calendar",
       "forecast_horizon": 1,
       "external_variables": [
@@ -16,6 +19,70 @@
           "name": "FED_FUNDS_RATE",
           "availability": "lag_only",
           "evidence": "FRED DFF is a dated observed series without intraday availability metadata; the preparation script forward-fills calendar gaps and then lags it by one gold observation."
+        }
+      ]
+    },
+    {
+      "id": "aotizhongxin_hourly",
+      "source": "bases/grupo3/PRSA_Data_Aotizhongxin_20130301-20170228.csv",
+      "processed_source": "bases/processed/aotizhongxin_hourly_modeling.csv",
+      "target": {
+        "column": "PM2.5",
+        "unit": "µg/m³"
+      },
+      "frequency": "Hourly",
+      "coverage": "2013-03-01 00:00 through 2017-02-28 23:00 in source",
+      "forecast_horizon": 1,
+      "external_variables": [
+        {
+          "name": "PM10",
+          "availability": "lag_only",
+          "evidence": "Measured pollutant; only lagged values are used."
+        },
+        {
+          "name": "SO2",
+          "availability": "lag_only",
+          "evidence": "Measured pollutant; only lagged values are used."
+        },
+        {
+          "name": "NO2",
+          "availability": "lag_only",
+          "evidence": "Measured pollutant; only lagged values are used."
+        },
+        {
+          "name": "CO",
+          "availability": "lag_only",
+          "evidence": "Measured pollutant; only lagged values are used."
+        },
+        {
+          "name": "O3",
+          "availability": "lag_only",
+          "evidence": "Measured pollutant; only lagged values are used."
+        },
+        {
+          "name": "TEMP",
+          "availability": "lag_only",
+          "evidence": "Measured weather variable; only lagged values are used."
+        },
+        {
+          "name": "PRES",
+          "availability": "lag_only",
+          "evidence": "Measured weather variable; only lagged values are used."
+        },
+        {
+          "name": "DEWP",
+          "availability": "lag_only",
+          "evidence": "Measured weather variable; only lagged values are used."
+        },
+        {
+          "name": "RAIN",
+          "availability": "lag_only",
+          "evidence": "Measured weather variable; only lagged values are used."
+        },
+        {
+          "name": "WSPM",
+          "availability": "lag_only",
+          "evidence": "Measured wind-speed variable; only lagged values are used."
         }
       ]
     }

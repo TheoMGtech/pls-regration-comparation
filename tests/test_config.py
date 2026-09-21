@@ -7,9 +7,13 @@ from pls_regration.config import load_dataset_contracts
 
 def test_frozen_gold_contract_is_loadable() -> None:
     contracts = load_dataset_contracts("config/datasets.json")
-    assert len(contracts) == 1
-    assert contracts[0].identifier == "gold_daily"
-    assert {item.availability for item in contracts[0].external_variables} == {"lag_only"}
+    assert len(contracts) == 2
+    gold = next(item for item in contracts if item.identifier == "gold_daily")
+    aotizhongxin = next(item for item in contracts if item.identifier == "aotizhongxin_hourly")
+    assert {item.availability for item in gold.external_variables} == {"lag_only"}
+    assert aotizhongxin.target_column == "PM2.5"
+    assert aotizhongxin.forecast_horizon == 1
+    assert len(aotizhongxin.external_variables) >= 2
 
 
 def test_dataset_requires_two_external_variables(tmp_path) -> None:
