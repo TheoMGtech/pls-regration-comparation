@@ -1,6 +1,10 @@
 from pathlib import Path
+import sys
 
 import pandas as pd
+
+TREATMENT_DIR = Path(__file__).resolve().parents[1] / "bases" / "grupo5-tratamento"
+sys.path.insert(0, str(TREATMENT_DIR))
 
 from prepare_gold_dataset import FEATURE_COLUMNS, build_dataset
 

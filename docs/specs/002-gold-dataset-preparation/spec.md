@@ -2,7 +2,7 @@
 
 ## Comportamento esperado
 
-A primeira base congelada deve ser construída de forma reproduzível a partir dos três CSVs em `bases/raw/`. A série do ouro preserva seu próprio calendário; DGS10 e DFF são externas observadas, preenchidas somente por avanço de valor para lacunas de calendário e defasadas uma observação para garantir disponibilidade antes da origem.
+A primeira base congelada deve ser construída de forma reproduzível a partir dos três CSVs e do script em `bases/grupo5-tratamento/`, produzindo `bases/grupo5/gold_daily_modeling.csv`. A série do ouro preserva seu próprio calendário; DGS10 e DFF são externas observadas, preenchidas somente por avanço de valor para lacunas de calendário e defasadas uma observação para garantir disponibilidade antes da origem.
 
 ## Critérios de aceitação
 

@@ -4,7 +4,7 @@ Fundação reproduzível para a comparação de SARIMAX, Holt-Winters, Random Fo
 
 ## Estado atual
 
-Esta entrega estabelece documentação, contratos, testes, CI e gestão de demandas. Nenhum modelo foi treinado nesta fase. A primeira base congelada é a previsão do ouro: os brutos estão em `bases/raw/`, o dataset modelável está em `bases/processed/gold_daily_modeling.csv` e `python src/prepare_gold_dataset.py` o recria. A documentação de dados está em `docs/DATASET_CONFIG.md`. O enunciado de referência está em `n2_series_temporais.pdf`.
+Esta fundação organiza cinco pipelines independentes para SARIMAX, Holt-Winters, Random Forest e PLS Regression. As bases congeladas vivem em `bases/grupo1` a `bases/grupo5`; cada área em `analyses/grupoN/` adapta seu preparo sem alterar as demais. Nenhum resultado analítico é entregue nesta fase. O enunciado de referência está em `n2_series_temporais.pdf`.
 
 ## Ambiente local
 
@@ -20,12 +20,12 @@ pytest
 
 ## Organização
 
-- `bases/`: bases congeladas que podem ser versionadas quando seu tamanho permitir.
+- `bases/`: cinco bases congeladas e verificadas por checksum.
+- `analyses/`: cinco áreas independentes, cada uma com pipeline, notebook e outputs locais.
 - `config/`: contratos de datasets e disponibilidade temporal.
-- `src/`: código reutilizável, sem implementação de modelos nesta fundação.
+- `src/`: código reutilizável para contratos, proteção temporal e resultados.
 - `tests/`: testes dos contratos e das proteções contra vazamento.
-- `docs/`: requisitos, ADRs, specs SDD e gestão versionada do grupo.
-- `notebooks/`: exploração local; checkpoints são ignorados.
-- `data/` e `results/`: dados e artefatos gerados locais, ignorados por padrão.
+- `docs/`: requisitos, ADRs, specs e documentação da entrega.
+- `reports/`: template e instruções do relatório HTML/PDF consolidado.
 
-Antes de mudar comportamento ou protocolo, atualize a spec correspondente; depois derive plano, tarefas, testes e código.
+Valide uma área com `python analyses/grupoN/pipeline.py`; valide a integração com `python scripts/validate_project.py` e `python -m pytest`. Antes de mudar comportamento ou protocolo, atualize a spec ativa.
