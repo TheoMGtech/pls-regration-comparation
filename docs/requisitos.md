@@ -2,11 +2,11 @@
 
 ## Objetivo e escopo
 
-O Grupo 5 comparará quatro modelos em cada uma de cinco bases temporais congeladas: SARIMAX, Holt-Winters, Random Forest e PLS Regression. São vinte combinações principais. Esta fundação não ajusta modelos, não escolhe fontes ausentes e não altera horizonte ou protocolo sem aprovação prévia.
+O Grupo 5 comparará quatro modelos em cada uma de cinco bases temporais congeladas: SARIMAX, Holt-Winters, Random Forest e PLS Regression. São vinte combinações principais. Cada integrante é responsável pela pipeline completa de uma base, mas a comparação final reúne as cinco áreas. Esta fundação não ajusta modelos nem escolhe fontes ausentes.
 
 ## Bases e disponibilidade temporal
 
-Cada base deve declarar fonte, cobertura, frequência, unidade da variável-alvo, horizonte e pelo menos duas variáveis externas. Antes da modelagem, o grupo congelará os arquivos ou registrará fontes imutáveis, verificará lacunas, duplicidades, periodicidade, valores atípicos e decisões de limpeza.
+Cada base deve declarar fonte, cobertura, frequência, unidade da variável-alvo, horizonte e pelo menos duas variáveis externas. Antes da modelagem, o grupo congelará os arquivos, registrará checksum SHA-256 e documentará a fonte original, verificará lacunas, duplicidades, periodicidade, valores atípicos e decisões de limpeza.
 
 Para cada variável externa, o dicionário precisa provar a disponibilidade no momento da origem da previsão. Calendário, feriados e promoções planejadas podem ser conhecidos antecipadamente; previsão publicada na origem pode ser usada e identificada como previsão; observações futuras, como temperatura realizada ou vendas futuras, são proibidas. Variáveis indisponíveis devem usar defasagem, previsão disponível ou ser excluídas.
 
@@ -28,6 +28,8 @@ Os resíduos fora da amostra terão série temporal, ACF, Ljung-Box e interpreta
 
 ## Entregáveis e gestão
 
-O relatório HTML paginado e seu PDF terão o mesmo conteúdo: resumo, participantes, bases, preparo, STL, walk-forward, modelos/tuning, MAE, resíduos, importância, explicação didática do PLS, conclusões, referências e apêndices. A apresentação oral navegará pelo HTML; não exige slides separados. A entrega final incluirá PDF, HTML autocontido, fonte do relatório, códigos, bases/fontes, consolidação de MAE e registro diário de demandas.
+O relatório HTML paginado e seu PDF terão o mesmo conteúdo: resumo, participantes, bases, preparo, STL, walk-forward, modelos/tuning, MAE, resíduos, importância, explicação didática do PLS, conclusões, referências e apêndices. A apresentação oral navegará pelo HTML; não exige slides separados. A entrega final incluirá PDF, HTML autocontido, fonte do relatório, códigos, bases/fontes e consolidação de MAE.
 
-Cada linha do registro de demandas representa uma atividade executada em um dia, com evidência, carga, complexidade e status. Carga mede esforço operacional; complexidade mede análise, novidade ou decisão técnica. O registro apoia a avaliação individual e não aceita descrições genéricas.
+## Desvio assumido da atividade
+
+Por decisão explícita do grupo, este repositório não manterá o registro diário de demandas solicitado no enunciado. Isso remove o DOCX e seus checks, mas pode deixar a entrega incompleta e afetar a avaliação individual. A decisão não deve ser interpretada como dispensa concedida pelo professor.
