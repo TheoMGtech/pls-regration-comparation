@@ -11,6 +11,8 @@ import pandas as pd
 
 INVALID_VALUES = [".", "", " ", "NA", "N/A", "null", "None"]
 EXTERNAL_COLUMNS = ["TREASURY_10Y", "FED_FUNDS_RATE"]
+TREATMENT_DIR = Path(__file__).resolve().parent
+PROJECT_ROOT = TREATMENT_DIR.parents[1]
 FEATURE_COLUMNS = [
     "DATE", "GOLD_PRICE", "TREASURY_10Y", "FED_FUNDS_RATE", "DAY_OF_WEEK", "MONTH",
     "DOW_SIN", "DOW_COS", "MONTH_SIN", "MONTH_COS", "GOLD_LAG_1", "GOLD_LAG_5",
@@ -108,8 +110,10 @@ def build_dataset(raw_dir: Path) -> tuple[pd.DataFrame, dict[str, object]]:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--raw-dir", type=Path, default=Path("bases/raw"))
-    parser.add_argument("--output", type=Path, default=Path("bases/processed/gold_daily_modeling.csv"))
+    parser.add_argument("--raw-dir", type=Path, default=TREATMENT_DIR)
+    parser.add_argument(
+        "--output", type=Path, default=PROJECT_ROOT / "bases/grupo5/gold_daily_modeling.csv"
+    )
     args = parser.parse_args()
     dataset, report = build_dataset(args.raw_dir)
     args.output.parent.mkdir(parents=True, exist_ok=True)
