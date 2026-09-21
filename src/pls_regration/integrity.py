@@ -25,7 +25,12 @@ def _read_time_column(contract: DatasetContract, root: Path) -> pd.Series:
 
 def assert_frozen_source_integrity(contract: DatasetContract, root: Path) -> None:
     path = root / contract.source
-    digest = hashlib.sha256(path.read_bytes()).hexdigest()
+    payload = path.read_bytes()
+    # Git may normalize CSV line endings between Windows and Linux runners.
+    # The frozen digest therefore uses LF for text inputs and raw bytes for XLSX.
+    if path.suffix.lower() == ".csv":
+        payload = payload.replace(b"\r\n", b"\n")
+    digest = hashlib.sha256(payload).hexdigest()
     if digest != contract.checksum_sha256:
         raise ValueError(f"{contract.identifier}: checksum differs from frozen contract")
     timestamps = _read_time_column(contract, root)
