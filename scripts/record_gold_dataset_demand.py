@@ -14,7 +14,7 @@ def main() -> None:
         "14/09/2026",
         "Grupo 5",
         "Preparação reproduzível da primeira base de previsão do ouro",
-        "bases/raw; src/prepare_gold_dataset.py; pytest (5 passed)",
+        "bases/grupo5-tratamento; bases/grupo5/gold_daily_modeling.csv; pytest (5 passed)",
         "Média",
         "Alta",
         "Concluída",

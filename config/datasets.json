@@ -2,7 +2,7 @@
   "datasets": [
     {
       "id": "gold_daily",
-      "source": "bases/raw/gold_daily_prices.csv",
+      "source": "bases/grupo5-tratamento/gold_daily_prices.csv",
       "target": {"column": "GOLD_PRICE", "unit": "US dollars per troy ounce"},
       "frequency": "Daily on the original gold observation calendar",
       "forecast_horizon": 1,

@@ -2,13 +2,13 @@
 
 ## Objetivo e granularidade
 
-A base oficial é `bases/processed/gold_daily_modeling.csv`. Ela prevê o preço do ouro uma observação à frente: `TARGET = GOLD_PRICE.shift(-1)`. A granularidade é diária, respeitando exclusivamente as datas existentes na série original do ouro; finais de semana e datas inexistentes não são criados.
+A base oficial é `bases/grupo5/gold_daily_modeling.csv`. Ela prevê o preço do ouro uma observação à frente: `TARGET = GOLD_PRICE.shift(-1)`. A granularidade é diária, respeitando exclusivamente as datas existentes na série original do ouro; finais de semana e datas inexistentes não são criados.
 
 `GOLD_PRICE` é a variável observada no instante `t`; `TARGET` é somente a variável resposta em `t+1`. O horizonte oficial é uma observação à frente.
 
 ## Fontes brutas e rastreabilidade
 
-Os arquivos em `bases/raw/` são cópias versionadas e imutáveis para a execução desta etapa:
+Os arquivos em `bases/grupo5-tratamento/` são cópias versionadas e imutáveis para a execução desta etapa, juntamente com o script reprodutível:
 
 | Arquivo | Conteúdo | Fonte e identificador |
 | --- | --- | --- |
@@ -16,7 +16,7 @@ Os arquivos em `bases/raw/` são cópias versionadas e imutáveis para a execuç
 | `dgs10.csv` | Treasury americano de 10 anos | FRED, série [DGS10](https://fred.stlouisfed.org/series/DGS10) |
 | `dff.csv` | Federal Funds Effective Rate | FRED, série [DFF](https://fred.stlouisfed.org/series/DFF) |
 
-Os arquivos FRED foram baixados pelo grupo em 2026-09-14 e então copiados sem transformação para `bases/raw/`. O script não baixa, altera ou substitui arquivos brutos.
+Os arquivos FRED foram baixados pelo grupo em 2026-09-14 e então copiados sem transformação para `bases/grupo5-tratamento/`. O script não baixa, altera ou substitui arquivos brutos.
 
 ## Integração temporal e disponibilidade
 
@@ -42,6 +42,6 @@ As janelas móveis usam `GOLD_PRICE.shift(1).rolling(5)`: nunca incorporam o val
 
 ## Reprodução e verificações
 
-Execute `python src/prepare_gold_dataset.py`. O comando recria o CSV processado e imprime períodos, registros, ausências antes e depois do tratamento, linhas removidas, colunas e as cinco primeiras e últimas linhas.
+Execute `python bases/grupo5-tratamento/prepare_gold_dataset.py`. O comando recria o CSV consolidado em `bases/grupo5/` e imprime períodos, registros, ausências antes e depois do tratamento, linhas removidas, colunas e as cinco primeiras e últimas linhas.
 
 O pipeline falha se datas estiverem duplicadas, se o calendário do ouro não for preservado, se a saída tiver `NaN` inesperado ou se lags, janelas e target não respeitarem seus deslocamentos. Não há data leakage conhecido: toda feature autoregressiva usa `t` ou antes, as janelas acabam em `t-1` e as externas são observações defasadas.
