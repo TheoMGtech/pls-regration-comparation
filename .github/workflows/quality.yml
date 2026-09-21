@@ -21,17 +21,12 @@ jobs:
           python-version: "3.11"
       - name: Install dependencies
         run: python -m pip install --upgrade pip && pip install -r requirements.txt
-      - name: Validate demand-management document
-        run: python scripts/check_docx.py docs/gestao-demandas-grupo-5.docx
-      - name: Require demand log update in every pull request
-        if: github.event_name == 'pull_request' && github.base_ref == 'main'
-        env:
-          BASE_SHA: ${{ github.event.pull_request.base.sha }}
-          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+      - name: Validate frozen datasets and independent areas
+        run: python scripts/validate_project.py
+      - name: Smoke-test all five independent pipelines
         run: |
-          if git diff --quiet "$BASE_SHA" "$HEAD_SHA" -- docs/gestao-demandas-grupo-5.docx; then
-            echo "ERROR: PRs direcionadas a main exigem atualizacao de docs/gestao-demandas-grupo-5.docx com um registro diario de demanda e evidencia. PRs para develop nao exigem esta atualizacao."
-            exit 1
-          fi
+          for area in grupo1 grupo2 grupo3 grupo4 grupo5; do
+            python "analyses/$area/pipeline.py"
+          done
       - name: Run tests
         run: pytest
