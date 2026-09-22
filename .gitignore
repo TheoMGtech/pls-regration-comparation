@@ -28,13 +28,3 @@ reports/output/
 reports/figures/
 tmp/
 *.log
-
-# Local AI / vibecoding context - never version these files
-AGENTS.md
-RESTRICTIONS.md
-.vibe/
-.cursor/
-CLAUDE.md
-CODEX.md
-docs/HANDOFF.md
-docs/SESSION_LOG.md
