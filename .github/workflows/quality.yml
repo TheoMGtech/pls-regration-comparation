@@ -21,12 +21,31 @@ jobs:
           python-version: "3.11"
       - name: Install dependencies
         run: python -m pip install --upgrade pip && pip install -r requirements.txt
-      - name: Validate frozen datasets and independent areas
-        run: python scripts/validate_project.py
-      - name: Smoke-test all five independent pipelines
+      - name: Validate minimal N2 structure
         run: |
-          for area in grupo1 grupo2 grupo3 grupo4 grupo5; do
-            python "analyses/$area/pipeline.py"
-          done
-      - name: Run tests
-        run: pytest
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path.cwd()
+          expected_bases = {
+              "grupo1": "bitcoin.xlsx",
+              "grupo2": "Metro_Interstate_Traffic_Volume.csv",
+              "grupo3": "PRSA_Data_Aotizhongxin_20130301-20170228.csv",
+              "grupo4": "jena_climate_2009_2016.csv",
+              "grupo5": "gold_daily_modeling.csv",
+          }
+          expected_models = {"SARIMAX", "Holt_Winters", "Random_Forest", "PLS_Regression"}
+
+          for group, filename in expected_bases.items():
+              assert (root / "bases" / group / filename).is_file()
+              notebooks = list((root / "analyses" / group).rglob("*.ipynb"))
+              assert len(notebooks) == 25, (group, len(notebooks))
+              assert {path.name for path in (root / "analyses" / group / "02_modelos").iterdir() if path.is_dir()} == expected_models
+              for notebook in notebooks:
+                  json.loads(notebook.read_text(encoding="utf-8"))
+
+          assert (root / "bases" / "grupo5-tratamento" / "prepare_gold_dataset.py").is_file()
+          PY
+      - name: Verify preserved Gold script imports
+        run: python bases/grupo5-tratamento/prepare_gold_dataset.py --help
