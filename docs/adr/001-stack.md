@@ -10,9 +10,9 @@ O Grupo 5 precisa comparar modelos temporais com variáveis externas de forma re
 
 ## Decisão
 
-Usar Python 3.11 com ambiente virtual local e versões fixadas em `requirements.txt`. O código reutilizável ficará em `src/pls_regration`; notebooks serão destinados à exploração e deverão delegar regras reutilizáveis para `src/`. Pandas/Numpy tratarão dados, statsmodels suportará STL, SARIMAX e Holt-Winters, scikit-learn suportará Random Forest, PLS Regression, pré-processamento e métricas, e pytest executará a validação automatizada.
+Usar Python 3.11 com ambiente virtual local e versões fixadas em `requirements.txt`. O código reutilizável ficará em `src/pls_regration`; cada integrante trabalhará isoladamente em `analyses/grupoN/`, e notebooks delegarão regras reutilizáveis para `src/`. Pandas/Numpy tratarão dados, statsmodels suportará STL, SARIMAX e Holt-Winters, scikit-learn suportará Random Forest, PLS Regression, pré-processamento e métricas, e pytest executará a validação automatizada.
 
-O CI usará Python 3.11 e instalará exatamente as dependências fixadas. Dados gerados, ambientes, segredos e contexto local de IA não serão versionados. Documentação, contratos, testes e o Word de demandas serão versionados.
+O CI usará Python 3.11 e instalará exatamente as dependências fixadas. Dados gerados, ambientes, segredos e contexto local de IA não serão versionados. Bases congeladas, documentação, contratos e testes serão versionados.
 
 ## Consequências
 
