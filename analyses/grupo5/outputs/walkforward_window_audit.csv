@@ -1,0 +1,4 @@
+origin_index,date_origin,target_date,ml_train_start_index,ml_train_end_index,ml_train_rows,ml_last_target_date,ts_history_start_index,ts_history_end_index,ts_history_rows,last_price_date_available,target_excluded_from_training
+8384,2007-06-06,2007-06-07,0,8383,8384,2007-06-06,0,8384,8385,2007-06-06,True
+9124,2010-11-02,2010-11-03,0,9123,9124,2010-11-02,0,9124,9125,2010-11-02,True
+9859,2014-04-03,2014-04-04,0,9858,9859,2014-04-03,0,9859,9860,2014-04-03,True

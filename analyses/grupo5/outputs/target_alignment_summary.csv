@@ -1,0 +1,2 @@
+total_raw_rows,raw_rows_with_gold_price,raw_rows_without_gold_price,total_modelable_rows,rows_with_next_modelable,target_matches_raw_next,target_differs_raw_next,target_matches_next_modelable,target_differs_next_modelable,rows_without_next_modelable
+12009,11641,368,9864,9863,9864,0,9435,428,1

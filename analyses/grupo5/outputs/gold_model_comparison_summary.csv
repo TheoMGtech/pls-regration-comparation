@@ -1,0 +1,6 @@
+dataset,model,split,n_forecasts,mae,official_rank,reference_type,mae_minus_baseline,absolute_difference_vs_baseline,improvement_pct_vs_baseline,mae_minus_best_model,interpretation
+gold,Holt_Winters,test_final,296,11.533090239584595,1.0,modelo oficial,-0.10457867933432397,0.10457867933432397,0.8986222246305217,0.0,menor MAE; ganho pequeno sobre a persistência
+gold,SARIMAX,test_final,296,11.598841071663152,2.0,modelo oficial,-0.03882784725576727,0.03882784725576727,0.33363938711683316,0.0657508320785567,praticamente empatado com PLS e próximo da persistência
+gold,PLS_Regression,test_final,296,11.600211690058332,3.0,modelo oficial,-0.03745722886058722,0.03745722886058722,0.3218619563896892,0.06712145047373674,praticamente empatado com SARIMAX e próximo da persistência
+gold,Random_Forest,test_final,296,14.282617565086287,4.0,modelo oficial,2.644948646167368,2.644948646167368,-22.72747802498123,2.749527325501692,pior que a persistência; limitação de extrapolação ajuda a explicar o resultado
+gold,Baseline_Persistencia,test_final,296,11.63766891891892,,referência diagnóstica; fora do ranking oficial,0.0,0.0,0.0,0.10457867933432397,referência diagnóstica comparável nas mesmas 296 origens

@@ -1,0 +1,13 @@
+nome,tipo,calculo,informacao_usada,risco_leakage,conhecida_na_origem,decisao_final,correlacao_com_target_treino,nulos_no_treino
+GOLD_PRICE,preço observado na origem,valor de GOLD_PRICE na DATE_ORIGIN,preço do ouro disponível na origem,baixo; exige manter a linha como origem e TARGET na observação seguinte,sim,incluída em RF e PLS,0.999447108380916,0
+TREASURY_10Y,variável externa defasada,"left merge no calendário do ouro, forward fill e shift(1)",último DGS10 disponível antes da origem,baixo; não usar valor contemporâneo ainda não publicado nem backfill,sim,incluída em RF e PLS,0.4740593983127232,0
+FED_FUNDS_RATE,variável externa defasada,"left merge no calendário do ouro, forward fill e shift(1)",último DFF disponível antes da origem,baixo; não usar valor contemporâneo ainda não publicado nem backfill,sim,incluída em RF e PLS,0.30648378353007133,0
+DOW_SIN,calendário cíclico,sin(2*pi*dia_da_semana/7),dia da semana da origem,nenhum; calendário é conhecido antecipadamente,sim,incluída em RF e PLS,0.0010711596309761892,0
+DOW_COS,calendário cíclico,cos(2*pi*dia_da_semana/7),dia da semana da origem,nenhum; calendário é conhecido antecipadamente,sim,incluída em RF e PLS,-0.0015013396478458097,0
+MONTH_SIN,calendário cíclico,sin(2*pi*mês/12),mês da origem,nenhum; calendário é conhecido antecipadamente,sim,incluída em RF e PLS,-0.005072701810183089,0
+MONTH_COS,calendário cíclico,cos(2*pi*mês/12),mês da origem,nenhum; calendário é conhecido antecipadamente,sim,incluída em RF e PLS,0.0415969166350484,0
+GOLD_LAG_1,lag de preço,GOLD_PRICE.shift(1) no calendário bruto do ouro,preço de uma observação bruta anterior,baixo; shift positivo impede uso do futuro,sim,incluída em RF e PLS,0.9990032496912947,0
+GOLD_LAG_5,lag de preço,GOLD_PRICE.shift(5) no calendário bruto do ouro,preço de cinco observações brutas anteriores,baixo; shift positivo impede uso do futuro,sim,incluída em RF e PLS,0.9967596021531513,0
+GOLD_LAG_20,lag de preço,GOLD_PRICE.shift(20) no calendário bruto do ouro,preço de vinte observações brutas anteriores,baixo; shift positivo impede uso do futuro,sim,incluída em RF e PLS,0.9889405256264354,0
+GOLD_ROLLING_MEAN_5,janela móvel de preço,GOLD_PRICE.shift(1).rolling(5).mean(),média dos cinco preços anteriores à origem,baixo; janela começa após shift(1),sim,incluída em RF e PLS,0.9983089873994183,0
+GOLD_ROLLING_STD_5,janela móvel de volatilidade,GOLD_PRICE.shift(1).rolling(5).std(),desvio padrão dos cinco preços anteriores à origem,baixo; janela começa após shift(1),sim,incluída em RF e PLS,0.4849884014878152,0
