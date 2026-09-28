@@ -1,0 +1,68 @@
+{
+  "target": {
+    "total_raw_rows": 12009,
+    "raw_rows_with_gold_price": 11641,
+    "raw_rows_without_gold_price": 368,
+    "total_modelable_rows": 9864,
+    "rows_with_next_modelable": 9863,
+    "target_matches_raw_next": 9864,
+    "target_differs_raw_next": 0,
+    "target_matches_next_modelable": 9435,
+    "target_differs_next_modelable": 428,
+    "rows_without_next_modelable": 1,
+    "all_targets_match_next_raw_row": true,
+    "mismatch_with_next_modelable_explained_by_filtering": true
+  },
+  "protocol": {
+    "n_rows": 9864,
+    "train_end_exclusive": 6904,
+    "train_last_index": 6903,
+    "validation_end_exclusive": 8384,
+    "validation_origins": 296,
+    "test_origins": 296,
+    "origin_step_validation": [
+      5
+    ],
+    "origin_step_test": [
+      5
+    ],
+    "validation_test_disjoint": true,
+    "validation_before_test": true,
+    "horizon": 1
+  },
+  "baseline": {
+    "sampled_n": 296,
+    "sampled_mae": 11.63766891891892,
+    "consecutive_n": 1480,
+    "consecutive_mae": 11.43793918918919
+  },
+  "predictions": {
+    "same_y_true_all_models": true,
+    "y_true_matches_dataset": true,
+    "all_file_checks_pass": true,
+    "maximum_mae_difference": 3.552713678800501e-15
+  },
+  "leakage": {
+    "all_feature_checks_pass": true,
+    "target_up_absent": true
+  },
+  "walkforward": {
+    "all_windows_exclude_forecast_target": true,
+    "sample_reproduction_max_abs_difference": 2.2737367544323206e-13
+  },
+  "random_forest": {
+    "same_features_as_pls": true,
+    "parameters": {
+      "max_depth": 20,
+      "max_features": 1.0,
+      "min_samples_leaf": 5,
+      "min_samples_split": 10,
+      "n_estimators": 300
+    },
+    "y_true_above_training_max_count": 18,
+    "y_true_below_training_min_count": 0,
+    "predictions_inside_training_target_range_count": 296
+  },
+  "manual_sample_rows": 10,
+  "material_result_bug_found": false
+}
