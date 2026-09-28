@@ -2,3 +2,11 @@
 *.docx binary
 *.pdf binary
 *.ipynb text eol=lf
+
+# Preserve byte-identical frozen Gold V1 artifacts.
+bases/grupo5/gold_daily_modeling.csv -text
+analyses/grupo5/outputs/predictions.csv -text
+analyses/grupo5/outputs/metrics.csv -text
+analyses/grupo5/outputs/hyperparameters.csv -text
+analyses/grupo5/outputs/protocol.json -text
+analyses/grupo5/05_relatorio/relatorio.ipynb -text
