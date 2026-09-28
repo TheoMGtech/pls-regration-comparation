@@ -1,0 +1,5 @@
+dataset,model,parameters,validation_mae,mean_seconds_per_origin,n_candidates,selection_criterion,human_approved_at
+gold,SARIMAX,"{""order"": [0, 1, 2], ""seasonal_order"": [0, 0, 1, 5]}",2.984382549068736,6.044153604729807,5,"menor MAE walk-forward; empate em 3 casas pela simplicidade; depois menor tempo",2026-09-26T23:43:21-03:00
+gold,Holt_Winters,"{""damped_trend"": false, ""seasonal"": ""add"", ""seasonal_periods"": 5, ""trend"": ""add""}",2.9760010658000446,1.1254410283784857,15,"menor MAE walk-forward; empate em 3 casas pela simplicidade; depois menor tempo",2026-09-26T23:43:21-03:00
+gold,Random_Forest,"{""max_depth"": 20, ""max_features"": 1.0, ""min_samples_leaf"": 5, ""min_samples_split"": 10, ""n_estimators"": 300}",3.3262732218437367,4.055976823648863,12,"menor MAE walk-forward; empate em 3 casas pela simplicidade; depois menor tempo",2026-09-26T23:43:21-03:00
+gold,PLS_Regression,"{""n_components"": 11}",2.9701247444296315,0.025383210135140184,12,"menor MAE walk-forward; empate em 3 casas pela simplicidade; depois menor tempo",2026-09-26T23:43:21-03:00

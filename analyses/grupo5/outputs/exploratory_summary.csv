@@ -1,0 +1,16 @@
+item,valor,detalhe
+periodo_serie_bruta,1968-04-01 a 2014-04-10,"período do arquivo de referência, incluindo datas com preço ausente"
+registros_brutos,12009,todas as linhas do arquivo de ouro
+registros_com_preco_valido,11641,linhas com GOLD_PRICE numérico
+registros_modelaveis,9864,"linhas após exigir alvo, lags, janelas e externas causais disponíveis"
+frequencia_observada,"dias de mercado, calendário irregular",mediana do intervalo entre preços válidos = 1 dia(s)
+unidade,USD por onça fina de ouro,unidade oficial documentada para a série
+fonte,CSV de referência gold.daily.prices.csv,fixing da tarde em Londres; código BBEX3.D.XAU.USD.EA.AC.C05
+significado,preço diário do ouro no fixing da tarde em Londres,"série de preço, não retorno"
+duplicidades_data_bruta,0,datas repetidas no arquivo bruto
+duplicidades_data_modelavel,0,datas repetidas na base usada pelos modelos
+precos_ausentes,368,não imputados; linhas excluídas da base modelável
+maior_intervalo_modelavel_dias,20,irregularidade de calendário observada após a filtragem causal
+intervalos_modelaveis_maiores_que_3_dias,401,"feriados, fins de semana prolongados e lacunas da série"
+extremos_nivel_preco_iqr,1416,sinaliza regimes de nível; não implica erro de dado
+retornos_extremos_mad,480,movimentos incomuns preservados por não haver evidência de erro

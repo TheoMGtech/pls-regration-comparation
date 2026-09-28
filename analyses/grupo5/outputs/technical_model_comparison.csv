@@ -1,0 +1,5 @@
+dataset,model,split,n_forecasts,mae,rank_gold,baseline_persistence_mae,mae_difference_vs_persistence,improvement_pct_vs_persistence,result_interpretation
+gold,Holt_Winters,test_final,296,11.533090239584595,1,11.63766891891892,-0.1045786793343239,0.8986222246305215,superou a persistência no teste
+gold,SARIMAX,test_final,296,11.598841071663152,2,11.63766891891892,-0.0388278472557672,0.3336393871168331,superou a persistência no teste
+gold,PLS_Regression,test_final,296,11.600211690058332,3,11.63766891891892,-0.0374572288605872,0.3218619563896892,superou a persistência no teste
+gold,Random_Forest,test_final,296,14.282617565086287,4,11.63766891891892,2.644948646167368,-22.727478024981227,não superou a persistência no teste
