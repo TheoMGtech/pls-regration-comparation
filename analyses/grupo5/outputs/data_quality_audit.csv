@@ -1,0 +1,10 @@
+verificação,valor
+linhas no arquivo bruto,12009
+preços ausentes no arquivo bruto,368
+linhas na base modelada,9864
+nulos na base modelada,0
+datas duplicadas,0
+maior intervalo entre observações (dias),20
+intervalos maiores que 3 dias,401
+extremos pelo IQR no nível do preço,1416
+retornos extremos pelo MAD,480

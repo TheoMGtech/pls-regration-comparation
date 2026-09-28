@@ -1,0 +1,15 @@
+check,passed,detail
+TREASURY_10Y_matches_causal_reconstruction,True,reconstrução usa apenas valores anteriores no calendário bruto
+FED_FUNDS_RATE_matches_causal_reconstruction,True,reconstrução usa apenas valores anteriores no calendário bruto
+GOLD_LAG_1_matches_causal_reconstruction,True,reconstrução usa apenas valores anteriores no calendário bruto
+GOLD_LAG_5_matches_causal_reconstruction,True,reconstrução usa apenas valores anteriores no calendário bruto
+GOLD_LAG_20_matches_causal_reconstruction,True,reconstrução usa apenas valores anteriores no calendário bruto
+GOLD_ROLLING_MEAN_5_matches_causal_reconstruction,True,reconstrução usa apenas valores anteriores no calendário bruto
+GOLD_ROLLING_STD_5_matches_causal_reconstruction,True,reconstrução usa apenas valores anteriores no calendário bruto
+target_not_in_ml_features,True,"[""GOLD_PRICE"", ""TREASURY_10Y"", ""FED_FUNDS_RATE"", ""DOW_SIN"", ""DOW_COS"", ""MONTH_SIN"", ""MONTH_COS"", ""GOLD_LAG_1"", ""GOLD_LAG_5"", ""GOLD_LAG_20"", ""GOLD_ROLLING_MEAN_5"", ""GOLD_ROLLING_STD_5""]"
+target_up_absent,True,TARGET_UP não está na base modelada nem na lista de features
+no_backfill_in_preparation,True,somente ffill seguido de shift(1)
+external_ffill_before_lag,True,ordem confirmada no script de preparação
+pls_scaler_fit_each_training_window,True,scaler ajustado em X_train dentro de ml_predict
+rf_random_state_42,True,SEED=42 e random_state=SEED
+sarimax_future_external_is_origin_value,True,externas econômicas da origem; apenas calendário é atualizado para a data-alvo

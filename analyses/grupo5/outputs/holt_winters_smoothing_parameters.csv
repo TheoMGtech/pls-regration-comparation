@@ -1,0 +1,2 @@
+dataset,model,forecast_origin,smoothing_level,smoothing_trend,smoothing_seasonal,damping_trend,initial_level,initial_trend,use_boxcox,remove_bias
+gold,Holt_Winters,2007-06-06,0.950192151406436,0.0,0.0,,38.86232304076598,0.07522132105533037,False,False

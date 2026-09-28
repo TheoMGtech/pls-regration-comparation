@@ -1,0 +1,5 @@
+model,n_predictions,duplicates,origins_match_manifest,targets_match_manifest,horizon_one,finite,residual_correct
+SARIMAX,296,0,True,True,True,True,True
+Holt_Winters,296,0,True,True,True,True,True
+Random_Forest,296,0,True,True,True,True,True
+PLS_Regression,296,0,True,True,True,True,True
