@@ -1,0 +1,443 @@
+{
+  "status": "passed",
+  "notebooks_validated": 24,
+  "csvs_validated": 86,
+  "images_validated": 37,
+  "markdown_files_validated": 10,
+  "frozen_artifacts_verified": 5,
+  "mae_recalculation_matches": true,
+  "target_up_as_feature": false,
+  "absolute_path_dependencies": false,
+  "report_modified": false,
+  "notebook_checks": [
+    {
+      "notebook": "analyses\\grupo5\\01_dados\\01_documentacao_bases.ipynb",
+      "size_bytes": 21013,
+      "largest_output_bytes": 1710,
+      "code_cells": 2,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses\\grupo5\\01_dados\\02_limpeza_preparacao.ipynb",
+      "size_bytes": 114491,
+      "largest_output_bytes": 94822,
+      "code_cells": 2,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses\\grupo5\\01_dados\\03_feature_engineering.ipynb",
+      "size_bytes": 84812,
+      "largest_output_bytes": 42026,
+      "code_cells": 3,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses\\grupo5\\01_dados\\04_analise_exploratoria.ipynb",
+      "size_bytes": 836429,
+      "largest_output_bytes": 231271,
+      "code_cells": 3,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses\\grupo5\\01_dados\\05_STL_decomposicao.ipynb",
+      "size_bytes": 464344,
+      "largest_output_bytes": 163514,
+      "code_cells": 2,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses\\grupo5\\02_modelos\\Holt_Winters\\01_otimizacao_hiperparametros.ipynb",
+      "size_bytes": 104391,
+      "largest_output_bytes": 11331,
+      "code_cells": 4,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses\\grupo5\\02_modelos\\Holt_Winters\\02_walkforward_validacao.ipynb",
+      "size_bytes": 14347,
+      "largest_output_bytes": 1000,
+      "code_cells": 3,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses\\grupo5\\02_modelos\\Holt_Winters\\03_previsoes_residuos.ipynb",
+      "size_bytes": 269583,
+      "largest_output_bytes": 108954,
+      "code_cells": 2,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses\\grupo5\\02_modelos\\PLS_Regression\\01_otimizacao_hiperparametros.ipynb",
+      "size_bytes": 21440,
+      "largest_output_bytes": 5444,
+      "code_cells": 4,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses\\grupo5\\02_modelos\\PLS_Regression\\02_walkforward_validacao.ipynb",
+      "size_bytes": 14775,
+      "largest_output_bytes": 1008,
+      "code_cells": 3,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses\\grupo5\\02_modelos\\PLS_Regression\\03_previsoes_residuos.ipynb",
+      "size_bytes": 279281,
+      "largest_output_bytes": 109838,
+      "code_cells": 2,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses\\grupo5\\02_modelos\\Random_Forest\\01_otimizacao_hiperparametros.ipynb",
+      "size_bytes": 26987,
+      "largest_output_bytes": 8547,
+      "code_cells": 4,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses\\grupo5\\02_modelos\\Random_Forest\\02_walkforward_validacao.ipynb",
+      "size_bytes": 14204,
+      "largest_output_bytes": 1007,
+      "code_cells": 3,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses\\grupo5\\02_modelos\\Random_Forest\\03_previsoes_residuos.ipynb",
+      "size_bytes": 257539,
+      "largest_output_bytes": 93022,
+      "code_cells": 2,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses\\grupo5\\02_modelos\\SARIMAX\\01_otimizacao_hiperparametros.ipynb",
+      "size_bytes": 28676,
+      "largest_output_bytes": 3261,
+      "code_cells": 4,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses\\grupo5\\02_modelos\\SARIMAX\\02_walkforward_validacao.ipynb",
+      "size_bytes": 13671,
+      "largest_output_bytes": 989,
+      "code_cells": 3,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses\\grupo5\\02_modelos\\SARIMAX\\03_previsoes_residuos.ipynb",
+      "size_bytes": 273293,
+      "largest_output_bytes": 110486,
+      "code_cells": 2,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses\\grupo5\\03_resultados\\01_MAE_consolidado.ipynb",
+      "size_bytes": 53250,
+      "largest_output_bytes": 35866,
+      "code_cells": 2,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses\\grupo5\\03_resultados\\02_analise_residuos_Ljung_Box.ipynb",
+      "size_bytes": 120874,
+      "largest_output_bytes": 98578,
+      "code_cells": 3,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses\\grupo5\\03_resultados\\03_importancia_features.ipynb",
+      "size_bytes": 115457,
+      "largest_output_bytes": 45462,
+      "code_cells": 2,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses\\grupo5\\03_resultados\\04_comparacao_modelos.ipynb",
+      "size_bytes": 139920,
+      "largest_output_bytes": 118386,
+      "code_cells": 3,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses\\grupo5\\04_especialista_PLS\\01_estudo_conceitual_PLS.ipynb",
+      "size_bytes": 8516,
+      "largest_output_bytes": 1379,
+      "code_cells": 2,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses\\grupo5\\04_especialista_PLS\\02_implementacao_PLS.ipynb",
+      "size_bytes": 46102,
+      "largest_output_bytes": 35869,
+      "code_cells": 2,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses\\grupo5\\04_especialista_PLS\\03_interpretacao_resultados.ipynb",
+      "size_bytes": 76482,
+      "largest_output_bytes": 53954,
+      "code_cells": 2,
+      "status": "valid"
+    }
+  ],
+  "image_checks": [
+    {
+      "image": "01_data_quality_outliers.png",
+      "width": 2085,
+      "height": 1181,
+      "size_bytes": 115462,
+      "status": "valid"
+    },
+    {
+      "image": "02_series_treino.png",
+      "width": 2085,
+      "height": 1931,
+      "size_bytes": 289871,
+      "status": "valid"
+    },
+    {
+      "image": "03_distribuicoes_treino.png",
+      "width": 2085,
+      "height": 582,
+      "size_bytes": 39420,
+      "status": "valid"
+    },
+    {
+      "image": "04_correlacoes_treino.png",
+      "width": 1648,
+      "height": 1482,
+      "size_bytes": 97461,
+      "status": "valid"
+    },
+    {
+      "image": "05_acf_pacf_treino.png",
+      "width": 2085,
+      "height": 1182,
+      "size_bytes": 72203,
+      "status": "valid"
+    },
+    {
+      "image": "06_feature_target_correlations.png",
+      "width": 1484,
+      "height": 881,
+      "size_bytes": 52218,
+      "status": "valid"
+    },
+    {
+      "image": "07_stl_strengths.png",
+      "width": 1785,
+      "height": 582,
+      "size_bytes": 20568,
+      "status": "valid"
+    },
+    {
+      "image": "feature_importance_pls_regression.png",
+      "width": 1484,
+      "height": 882,
+      "size_bytes": 55548,
+      "status": "valid"
+    },
+    {
+      "image": "feature_importance_random_forest.png",
+      "width": 1484,
+      "height": 882,
+      "size_bytes": 54253,
+      "status": "valid"
+    },
+    {
+      "image": "graficos\\fed_funds_rate_full.png",
+      "width": 2221,
+      "height": 777,
+      "size_bytes": 95767,
+      "status": "valid"
+    },
+    {
+      "image": "graficos\\gold_price_full.png",
+      "width": 2222,
+      "height": 778,
+      "size_bytes": 88659,
+      "status": "valid"
+    },
+    {
+      "image": "graficos\\series_normalized_comparison.png",
+      "width": 2221,
+      "height": 938,
+      "size_bytes": 219458,
+      "status": "valid"
+    },
+    {
+      "image": "graficos\\treasury_10y_full.png",
+      "width": 2221,
+      "height": 777,
+      "size_bytes": 107739,
+      "status": "valid"
+    },
+    {
+      "image": "ljung_box_comparison.png",
+      "width": 1633,
+      "height": 731,
+      "size_bytes": 120966,
+      "status": "valid"
+    },
+    {
+      "image": "mae_comparison_gold.png",
+      "width": 1484,
+      "height": 733,
+      "size_bytes": 44964,
+      "status": "valid"
+    },
+    {
+      "image": "model_predictions_comparison.png",
+      "width": 2084,
+      "height": 882,
+      "size_bytes": 159138,
+      "status": "valid"
+    },
+    {
+      "image": "pls_feature_interpretation.png",
+      "width": 2534,
+      "height": 882,
+      "size_bytes": 64325,
+      "status": "valid"
+    },
+    {
+      "image": "pls_validation_components.png",
+      "width": 1334,
+      "height": 581,
+      "size_bytes": 44177,
+      "status": "valid"
+    },
+    {
+      "image": "residual_holt_winters_acf.png",
+      "width": 1485,
+      "height": 582,
+      "size_bytes": 28532,
+      "status": "valid"
+    },
+    {
+      "image": "residual_holt_winters_distribuicao.png",
+      "width": 1335,
+      "height": 582,
+      "size_bytes": 26021,
+      "status": "valid"
+    },
+    {
+      "image": "residual_holt_winters_real_vs_previsto.png",
+      "width": 2084,
+      "height": 732,
+      "size_bytes": 118187,
+      "status": "valid"
+    },
+    {
+      "image": "residual_holt_winters_serie.png",
+      "width": 2085,
+      "height": 582,
+      "size_bytes": 130789,
+      "status": "valid"
+    },
+    {
+      "image": "residual_pls_regression_acf.png",
+      "width": 1485,
+      "height": 582,
+      "size_bytes": 29728,
+      "status": "valid"
+    },
+    {
+      "image": "residual_pls_regression_distribuicao.png",
+      "width": 1335,
+      "height": 582,
+      "size_bytes": 26938,
+      "status": "valid"
+    },
+    {
+      "image": "residual_pls_regression_real_vs_previsto.png",
+      "width": 2084,
+      "height": 732,
+      "size_bytes": 118653,
+      "status": "valid"
+    },
+    {
+      "image": "residual_pls_regression_serie.png",
+      "width": 2085,
+      "height": 582,
+      "size_bytes": 131065,
+      "status": "valid"
+    },
+    {
+      "image": "residual_random_forest_acf.png",
+      "width": 1485,
+      "height": 582,
+      "size_bytes": 29717,
+      "status": "valid"
+    },
+    {
+      "image": "residual_random_forest_distribuicao.png",
+      "width": 1335,
+      "height": 582,
+      "size_bytes": 23324,
+      "status": "valid"
+    },
+    {
+      "image": "residual_random_forest_real_vs_previsto.png",
+      "width": 2084,
+      "height": 732,
+      "size_bytes": 119829,
+      "status": "valid"
+    },
+    {
+      "image": "residual_random_forest_serie.png",
+      "width": 2085,
+      "height": 582,
+      "size_bytes": 111295,
+      "status": "valid"
+    },
+    {
+      "image": "residual_sarimax_acf.png",
+      "width": 1485,
+      "height": 582,
+      "size_bytes": 28713,
+      "status": "valid"
+    },
+    {
+      "image": "residual_sarimax_distribuicao.png",
+      "width": 1335,
+      "height": 582,
+      "size_bytes": 25927,
+      "status": "valid"
+    },
+    {
+      "image": "residual_sarimax_real_vs_previsto.png",
+      "width": 2084,
+      "height": 732,
+      "size_bytes": 118627,
+      "status": "valid"
+    },
+    {
+      "image": "residual_sarimax_serie.png",
+      "width": 2085,
+      "height": 582,
+      "size_bytes": 132335,
+      "status": "valid"
+    },
+    {
+      "image": "stl_period_20.png",
+      "width": 2083,
+      "height": 1383,
+      "size_bytes": 176811,
+      "status": "valid"
+    },
+    {
+      "image": "stl_period_252.png",
+      "width": 2084,
+      "height": 1383,
+      "size_bytes": 201492,
+      "status": "valid"
+    },
+    {
+      "image": "stl_period_5.png",
+      "width": 2083,
+      "height": 1383,
+      "size_bytes": 165298,
+      "status": "valid"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+notebook,diagnostico_inicial,ajuste,celulas_antes,celulas_depois,tamanho_antes_bytes,tamanho_depois_bytes,figuras_inline_depois,tabelas_inline_depois,avaliacao_final
+01_dados/01_documentacao_bases.ipynb,OK,nenhum; já atendia ao padrão,12,12,24566,24566,0,2,completo
+01_dados/02_limpeza_preparacao.ipynb,ajuste leve,output de figura vazia removido,10,10,41823,41649,1,2,completo
+01_dados/03_feature_engineering.ipynb,ajuste leve,"amostra visual de lags, janelas e externas",14,16,88477,93214,1,4,completo
+01_dados/04_analise_exploratoria.ipynb,ajuste leve,"quadro de shape, período, nulos, duplicidades e head",15,17,840773,845649,8,7,completo
+01_dados/05_STL_decomposicao.ipynb,ajuste leve,output de figura vazia removido,9,9,468901,468727,4,1,completo
+02_modelos/Holt_Winters/01_otimizacao_hiperparametros.ipynb,ajuste moderado,espaço de busca inline e saída pesada redundante removida,17,19,37491,27907,0,2,completo
+02_modelos/Holt_Winters/02_walkforward_validacao.ipynb,ajuste moderado,"protocolo, timeline e Real x Previsto; saída pesada duplicada removida",15,19,21530,198920,2,3,completo
+02_modelos/Holt_Winters/03_previsoes_residuos.ipynb,ajuste leve,resumo de viés e Ljung-Box; figura vazia removida,10,13,173897,175985,4,4,completo
+02_modelos/PLS_Regression/01_otimizacao_hiperparametros.ipynb,ajuste moderado,espaço de busca inline e saída pesada redundante removida,17,21,27276,81363,1,2,completo
+02_modelos/PLS_Regression/02_walkforward_validacao.ipynb,ajuste moderado,"protocolo, timeline e Real x Previsto; saída pesada duplicada removida",15,19,21974,200334,2,3,completo
+02_modelos/PLS_Regression/03_previsoes_residuos.ipynb,ajuste leve,resumo de viés e Ljung-Box; figura vazia removida,10,13,182745,184841,4,4,completo
+02_modelos/Random_Forest/01_otimizacao_hiperparametros.ipynb,ajuste moderado,espaço de busca inline e saída pesada redundante removida,17,19,33777,27471,0,2,completo
+02_modelos/Random_Forest/02_walkforward_validacao.ipynb,ajuste moderado,"protocolo, timeline e Real x Previsto; saída pesada duplicada removida",15,21,21398,203311,2,4,completo
+02_modelos/Random_Forest/03_previsoes_residuos.ipynb,ajuste leve,resumo de viés e Ljung-Box; figura vazia removida,10,13,179652,181715,4,4,completo
+02_modelos/SARIMAX/01_otimizacao_hiperparametros.ipynb,ajuste moderado,espaço de busca inline e saída pesada redundante removida,17,19,27182,28175,0,3,completo
+02_modelos/SARIMAX/02_walkforward_validacao.ipynb,ajuste moderado,"protocolo, timeline e Real x Previsto; saída pesada duplicada removida",15,19,20823,199229,2,3,completo
+02_modelos/SARIMAX/03_previsoes_residuos.ipynb,ajuste leve,resumo de viés e Ljung-Box; figura vazia removida,10,13,176078,178120,4,4,completo
+03_resultados/01_MAE_consolidado.ipynb,OK,nenhum; já atendia ao padrão,9,9,55734,55734,1,3,completo
+03_resultados/02_analise_residuos_Ljung_Box.ipynb,OK,nenhum; já atendia ao padrão,11,11,123525,123525,1,2,completo
+03_resultados/03_importancia_features.ipynb,OK,nenhum; já atendia ao padrão,8,8,117449,117449,2,1,completo
+03_resultados/04_comparacao_modelos.ipynb,ajuste leve,output de figura vazia removido,12,12,109109,108935,1,2,completo
+04_especialista_PLS/01_estudo_conceitual_PLS.ipynb,OK,nenhum; já atendia ao padrão,8,8,10437,10437,0,0,completo
+04_especialista_PLS/02_implementacao_PLS.ipynb,OK,nenhum; já atendia ao padrão,9,9,48578,48578,1,1,completo
+04_especialista_PLS/03_interpretacao_resultados.ipynb,ajuste leve,seção explícita Validação x Teste,9,11,78906,81786,1,3,completo

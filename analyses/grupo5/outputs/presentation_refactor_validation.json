@@ -1,0 +1,256 @@
+{
+  "status": "passed",
+  "scope": "presentation_only",
+  "technical_notebooks": 24,
+  "heavy_cells_tagged_and_not_executed": 8,
+  "frozen_display_cells": 8,
+  "csvs_validated": 86,
+  "images_validated": 37,
+  "frozen_checksums_preserved": true,
+  "report_untouched": true,
+  "maes_reproduced": true,
+  "absolute_path_dependencies": false,
+  "saved_errors": 0,
+  "notebooks": [
+    {
+      "notebook": "analyses/grupo5/01_dados/01_documentacao_bases.ipynb",
+      "cells": 12,
+      "markdown_cells": 5,
+      "code_cells": 7,
+      "max_code_lines": 41,
+      "max_output_chars": 1710,
+      "size_bytes": 24566,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses/grupo5/01_dados/02_limpeza_preparacao.ipynb",
+      "cells": 10,
+      "markdown_cells": 5,
+      "code_cells": 5,
+      "max_code_lines": 42,
+      "max_output_chars": 19526,
+      "size_bytes": 41823,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses/grupo5/01_dados/03_feature_engineering.ipynb",
+      "cells": 14,
+      "markdown_cells": 6,
+      "code_cells": 8,
+      "max_code_lines": 78,
+      "max_output_chars": 42026,
+      "size_bytes": 88477,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses/grupo5/01_dados/04_analise_exploratoria.ipynb",
+      "cells": 15,
+      "markdown_cells": 6,
+      "code_cells": 9,
+      "max_code_lines": 78,
+      "max_output_chars": 231271,
+      "size_bytes": 840773,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses/grupo5/01_dados/05_STL_decomposicao.ipynb",
+      "cells": 9,
+      "markdown_cells": 5,
+      "code_cells": 4,
+      "max_code_lines": 42,
+      "max_output_chars": 163514,
+      "size_bytes": 468901,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses/grupo5/02_modelos/Holt_Winters/01_otimizacao_hiperparametros.ipynb",
+      "cells": 17,
+      "markdown_cells": 10,
+      "code_cells": 7,
+      "max_code_lines": 42,
+      "max_output_chars": 11331,
+      "size_bytes": 37491,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses/grupo5/02_modelos/Holt_Winters/02_walkforward_validacao.ipynb",
+      "cells": 15,
+      "markdown_cells": 9,
+      "code_cells": 6,
+      "max_code_lines": 42,
+      "max_output_chars": 1454,
+      "size_bytes": 21530,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses/grupo5/02_modelos/Holt_Winters/03_previsoes_residuos.ipynb",
+      "cells": 10,
+      "markdown_cells": 5,
+      "code_cells": 5,
+      "max_code_lines": 42,
+      "max_output_chars": 92410,
+      "size_bytes": 173897,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses/grupo5/02_modelos/PLS_Regression/01_otimizacao_hiperparametros.ipynb",
+      "cells": 17,
+      "markdown_cells": 10,
+      "code_cells": 7,
+      "max_code_lines": 39,
+      "max_output_chars": 5444,
+      "size_bytes": 27276,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses/grupo5/02_modelos/PLS_Regression/02_walkforward_validacao.ipynb",
+      "cells": 15,
+      "markdown_cells": 9,
+      "code_cells": 6,
+      "max_code_lines": 39,
+      "max_output_chars": 1454,
+      "size_bytes": 21974,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses/grupo5/02_modelos/PLS_Regression/03_previsoes_residuos.ipynb",
+      "cells": 10,
+      "markdown_cells": 5,
+      "code_cells": 5,
+      "max_code_lines": 42,
+      "max_output_chars": 92462,
+      "size_bytes": 182745,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses/grupo5/02_modelos/Random_Forest/01_otimizacao_hiperparametros.ipynb",
+      "cells": 17,
+      "markdown_cells": 10,
+      "code_cells": 7,
+      "max_code_lines": 39,
+      "max_output_chars": 8547,
+      "size_bytes": 33777,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses/grupo5/02_modelos/Random_Forest/02_walkforward_validacao.ipynb",
+      "cells": 15,
+      "markdown_cells": 9,
+      "code_cells": 6,
+      "max_code_lines": 39,
+      "max_output_chars": 1454,
+      "size_bytes": 21398,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses/grupo5/02_modelos/Random_Forest/03_previsoes_residuos.ipynb",
+      "cells": 10,
+      "markdown_cells": 5,
+      "code_cells": 5,
+      "max_code_lines": 42,
+      "max_output_chars": 93022,
+      "size_bytes": 179652,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses/grupo5/02_modelos/SARIMAX/01_otimizacao_hiperparametros.ipynb",
+      "cells": 17,
+      "markdown_cells": 10,
+      "code_cells": 7,
+      "max_code_lines": 59,
+      "max_output_chars": 3261,
+      "size_bytes": 27182,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses/grupo5/02_modelos/SARIMAX/02_walkforward_validacao.ipynb",
+      "cells": 15,
+      "markdown_cells": 9,
+      "code_cells": 6,
+      "max_code_lines": 39,
+      "max_output_chars": 1454,
+      "size_bytes": 20823,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses/grupo5/02_modelos/SARIMAX/03_previsoes_residuos.ipynb",
+      "cells": 10,
+      "markdown_cells": 5,
+      "code_cells": 5,
+      "max_code_lines": 42,
+      "max_output_chars": 92554,
+      "size_bytes": 176078,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses/grupo5/03_resultados/01_MAE_consolidado.ipynb",
+      "cells": 9,
+      "markdown_cells": 5,
+      "code_cells": 4,
+      "max_code_lines": 41,
+      "max_output_chars": 35866,
+      "size_bytes": 55734,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses/grupo5/03_resultados/02_analise_residuos_Ljung_Box.ipynb",
+      "cells": 11,
+      "markdown_cells": 6,
+      "code_cells": 5,
+      "max_code_lines": 42,
+      "max_output_chars": 98578,
+      "size_bytes": 123525,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses/grupo5/03_resultados/03_importancia_features.ipynb",
+      "cells": 8,
+      "markdown_cells": 5,
+      "code_cells": 3,
+      "max_code_lines": 40,
+      "max_output_chars": 45462,
+      "size_bytes": 117449,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses/grupo5/03_resultados/04_comparacao_modelos.ipynb",
+      "cells": 12,
+      "markdown_cells": 6,
+      "code_cells": 6,
+      "max_code_lines": 42,
+      "max_output_chars": 84286,
+      "size_bytes": 109109,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses/grupo5/04_especialista_PLS/01_estudo_conceitual_PLS.ipynb",
+      "cells": 8,
+      "markdown_cells": 5,
+      "code_cells": 3,
+      "max_code_lines": 33,
+      "max_output_chars": 1379,
+      "size_bytes": 10437,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses/grupo5/04_especialista_PLS/02_implementacao_PLS.ipynb",
+      "cells": 9,
+      "markdown_cells": 5,
+      "code_cells": 4,
+      "max_code_lines": 42,
+      "max_output_chars": 35869,
+      "size_bytes": 48578,
+      "status": "valid"
+    },
+    {
+      "notebook": "analyses/grupo5/04_especialista_PLS/03_interpretacao_resultados.ipynb",
+      "cells": 9,
+      "markdown_cells": 5,
+      "code_cells": 4,
+      "max_code_lines": 40,
+      "max_output_chars": 53954,
+      "size_bytes": 78906,
+      "status": "valid"
+    }
+  ]
+}
