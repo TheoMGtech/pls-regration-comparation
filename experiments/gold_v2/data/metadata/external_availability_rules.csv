@@ -1,0 +1,7 @@
+series_id,event_date,available_date_rule,merge,same_day_allowed
+DTWEXB,,event_date + 1 calendar day,merge_asof(direction=backward),False
+VIXCLS,,event_date + 1 calendar day,merge_asof(direction=backward),False
+NASDAQCOM,,event_date + 1 calendar day,merge_asof(direction=backward),False
+DGS2,,event_date + 1 calendar day,merge_asof(direction=backward),False
+DCOILWTICO,,event_date + 1 calendar day,merge_asof(direction=backward),False
+DFII10,,event_date + 1 calendar day,merge_asof(direction=backward),False

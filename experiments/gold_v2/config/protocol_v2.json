@@ -1,0 +1,29 @@
+{
+  "version": "v2-stage-a",
+  "status": "stage_a_complete_pending_human_approval",
+  "heavy_stage_authorized": false,
+  "base_reference": "bases/grupo5/gold_daily_modeling.csv",
+  "base_reference_sha256": "38622fe40a18c3e94b89971488468f762353ed4234234e054f0439918cb5d1ac",
+  "tracks": {
+    "A": "1995-2014 core, subject to observed external coverage",
+    "B": "DFII10 rich real yield, separate 2003-2014 comparable subset",
+    "C": "EPU/GPR exploratory retrospective; not downloaded in Stage A"
+  },
+  "forecast_origin_rule": "external values use available_date=event_date+1 calendar day and merge_asof backward; no forward/backfill or nearest merge",
+  "targets": {
+    "LEVEL": "TARGET",
+    "DELTA": "TARGET-GOLD_PRICE",
+    "LOG_RETURN": "log(TARGET/GOLD_PRICE)"
+  },
+  "stage_a_models": "persistence plus fixed two-component PLS on validation origins only; no tuning, no test evaluation",
+  "source_status": {
+    "V1_GOLD_PRICE": "referenced_not_copied",
+    "DTWEXB": "downloaded",
+    "VIXCLS": "downloaded",
+    "NASDAQCOM": "downloaded",
+    "DGS2": "downloaded",
+    "DCOILWTICO": "downloaded",
+    "DFII10": "downloaded"
+  },
+  "feature_rows": 9864
+}

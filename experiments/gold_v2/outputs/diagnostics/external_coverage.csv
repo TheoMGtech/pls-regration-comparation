@@ -1,0 +1,7 @@
+series_id,non_null_rows_after_availability_lag,first_available_for_origin,last_available_for_origin
+DTWEXB,4126,1995-01-10,2014-04-09
+VIXCLS,5197,1990-01-09,2014-04-09
+NASDAQCOM,9253,1971-02-08,2014-04-09
+DGS2,8094,1976-06-08,2014-04-09
+DCOILWTICO,6050,1986-01-09,2014-04-09
+DFII10,2414,2003-01-09,2014-04-09

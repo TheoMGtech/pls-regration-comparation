@@ -1,0 +1,4 @@
+# Reproducible downloads and wide derived table; regenerate with run_stage_a.py.
+data/raw/
+data/processed/
+outputs/diagnostics/target_series.csv
