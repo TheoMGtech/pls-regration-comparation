@@ -2,3 +2,4 @@
 data/raw/
 data/processed/
 outputs/diagnostics/target_series.csv
+outputs/models/
