@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<title>Base 2 — Tráfego Interestadual | Bruna Carvalho Cardoso</title>
+<style>
+body { font-family: Georgia, serif; margin: 2rem auto; max-width: 920px; line-height: 1.5; color: #1a1a1a; }
+h1,h2 { font-family: "Helvetica Neue", Arial, sans-serif; }
+table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+th, td { border: 1px solid #ccc; padding: .45rem .6rem; text-align: left; }
+th { background: #f3f4f6; }
+img { max-width: 100%; height: auto; margin: .5rem 0 1.2rem; border: 1px solid #e5e7eb; }
+code { background: #f3f4f6; padding: .1rem .3rem; }
+.note { background: #fff7ed; border-left: 4px solid #c45c26; padding: .8rem 1rem; }
+</style>
+</head>
+<body>
+<h1>Base 2 — Metro Interstate Traffic Volume</h1>
+<p><strong>Responsável:</strong> Bruna Carvalho Cardoso · Grupo 5 (PLS Regression)</p>
+
+<div class="note">
+Parâmetros fixos: granularidade horária · random_state=67 ·
+treino/teste 80/19 ·
+horizonte 1h · walk-forward com refit a cada 336h.
+</div>
+
+<h2>1. Base e preparação</h2>
+<ul>
+<li>Registros brutos: 48204 (7629 duplicatas de timestamp)</li>
+<li>Série regular: 52551 horas (2012-10-02 09:00:00 → 2018-09-30 23:00:00)</li>
+<li>Alvo: <code>traffic_volume</code> (média 2906.2, máx 7280)</li>
+<li>Clima usado com <strong>lag 1h</strong> para evitar vazamento; feriados/calendário conhecidos antecipadamente.</li>
+</ul>
+
+<h2>2. STL</h2>
+<p>Força da sazonalidade (m=24): <strong>0.805</strong>.</p>
+<img src="figures/04_stl.png" alt="STL"/>
+
+<h2>3. Modelos e hiperparâmetros</h2>
+<pre>{'Random_Forest': {'n_estimators': 200, 'max_depth': 24, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_features': 'sqrt', 'validation_mae': 173.32698510588895}, 'PLS_Regression': {'n_components': 4, 'scale': True, 'validation_mae': 333.00944529949487}, 'Holt_Winters': {'trend': None, 'seasonal': 'add', 'damped_trend': False, 'seasonal_periods': 24, 'validation_mae': 620.1476121678443}, 'SARIMAX': {'order': (2, 0, 1), 'seasonal_order': (0, 1, 1, 24), 'aic': 8307.591588468, 'bic': 8350.906606966937, 'validation_mae': 552.7197868529541}}</pre>
+
+<h2>4. MAE walk-forward</h2>
+<table>
+<thead><tr><th>Modelo</th><th>MAE</th><th>Ljung-Box p (lag 24)</th><th>Tempo</th><th>Rank</th></tr></thead>
+<tbody><tr><td>Random_Forest</td><td>198.957</td><td>0</td><td>147.4s</td><td>1</td></tr><tr><td>PLS_Regression</td><td>349.588</td><td>0</td><td>8.2s</td><td>2</td></tr><tr><td>SARIMAX</td><td>577.873</td><td>0</td><td>149.9s</td><td>3</td></tr><tr><td>Holt_Winters</td><td>718.850</td><td>0</td><td>0.5s</td><td>4</td></tr></tbody>
+</table>
+<p>Melhor modelo nesta base: <strong>Random_Forest</strong> (MAE=198.957).</p>
+
+<h2>5. Previsões (amostra 14 dias)</h2>
+<h3>Random_Forest</h3><img src="figures/previsao_Random_Forest.png" alt="Random_Forest"/><img src="figures/residuos_Random_Forest.png" alt="resíduos Random_Forest"/><h3>PLS_Regression</h3><img src="figures/previsao_PLS_Regression.png" alt="PLS_Regression"/><img src="figures/residuos_PLS_Regression.png" alt="resíduos PLS_Regression"/><h3>SARIMAX</h3><img src="figures/previsao_SARIMAX.png" alt="SARIMAX"/><img src="figures/residuos_SARIMAX.png" alt="resíduos SARIMAX"/><h3>Holt_Winters</h3><img src="figures/previsao_Holt_Winters.png" alt="Holt_Winters"/><img src="figures/residuos_Holt_Winters.png" alt="resíduos Holt_Winters"/>
+<h2>6. Observações</h2>
+<ul>
+<li>Holt-Winters é univariado (referência).</li>
+<li>SARIMAX, RF e PLS usam externas temporalmente válidas.</li>
+<li>RF/PLS compartilham o mesmo conjunto de features.</li>
+</ul>
+</body></html>

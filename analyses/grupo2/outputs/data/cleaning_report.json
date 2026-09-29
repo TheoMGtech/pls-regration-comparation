@@ -1,0 +1,24 @@
+{
+  "n_raw": 48204,
+  "n_unique_timestamps": 40575,
+  "n_duplicate_timestamps": 7629,
+  "nulls_raw": {
+    "holiday": 48143,
+    "temp": 0,
+    "rain_1h": 0,
+    "snow_1h": 0,
+    "clouds_all": 0,
+    "weather_main": 0,
+    "weather_description": 0,
+    "date_time": 0,
+    "traffic_volume": 0
+  },
+  "n_after_dedup": 40575,
+  "n_regular_hours": 52551,
+  "missing_hours_before_fill": 11976,
+  "start": "2012-10-02 09:00:00",
+  "end": "2018-09-30 23:00:00",
+  "target_min": 0.0,
+  "target_max": 7280.0,
+  "target_mean": 2906.180452723721
+}
