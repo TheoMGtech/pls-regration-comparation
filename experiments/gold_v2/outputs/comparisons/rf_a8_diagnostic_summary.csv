@@ -1,0 +1,2 @@
+rf_a8_train_y_min,rf_a8_train_y_max,rf_a8_test_y_min,rf_a8_test_y_max,test_y_above_train_max_count,test_y_above_train_max_fraction,diagnostic_status,interpretation
+252.9,725.75,647.75,1877.75,281,0.9493243243243243,diagnostic_only_not_used_for_selection,RF cannot extrapolate beyond observed target values; this is diagnostic-only and was not used for tuning.

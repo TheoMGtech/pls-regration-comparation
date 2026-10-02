@@ -1,0 +1,21 @@
+{
+  "status": "diagnostic_only_not_used_for_selection",
+  "train_y_range": [
+    252.9,
+    725.75
+  ],
+  "test_y_range": [
+    647.75,
+    1877.75
+  ],
+  "n_train": 2645,
+  "n_test": 296,
+  "fixed_rf_configuration": {
+    "n_estimators": 300,
+    "max_depth": 20,
+    "min_samples_split": 10,
+    "min_samples_leaf": 5,
+    "max_features": 1.0,
+    "random_state": 42
+  }
+}

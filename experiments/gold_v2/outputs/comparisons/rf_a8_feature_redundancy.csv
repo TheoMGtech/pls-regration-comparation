@@ -1,0 +1,7 @@
+feature_left,feature_right,correlation
+DGS2,dgs2_lag1,0.9996515280728268
+VIXCLS,vix_lag1,0.9818181313323465
+distance_ma20,gold_momentum_10,0.9288512870926755
+distance_ma20,gold_momentum_20,0.865178899451723
+gold_rv_20,gold_rv_60,0.8327665843479383
+distance_ma5,gold_momentum_5,0.8166616138323146

@@ -1,0 +1,6 @@
+model,v1_mae_usd,v2_mae_usd,absolute_difference_v2_minus_v1,percent_difference_v2_vs_v1,same_origins,same_horizon,same_period,same_metric,comparison_status,reason
+Holt_Winters,11.5330902396,12.071041347632383,0.5379511080323827,4.664414279750233,True,True,True,True,NOT_DIRECTLY_COMPARABLE,raw target-date metadata required reconciliation
+PLS,11.6002116901,11.600211690058291,-4.170885858911788e-11,-3.595525642408197e-10,True,True,True,True,DIRECT_COMPARISON,frozen V1 forecast series reproduced after manifest date reconciliation
+Persistence,11.6376689189,11.63766891891892,1.8919976696452068e-11,1.6257531322037642e-10,True,True,True,True,DIRECT_COMPARISON,frozen V1 forecast series reproduced after manifest date reconciliation
+RF,14.2826175651,14.282617565086332,-1.3669065879184927e-11,-9.570420699764232e-11,True,True,True,True,DIRECT_COMPARISON,frozen V1 forecast series reproduced after manifest date reconciliation
+SARIMAX,11.5988410717,12.094899256863325,0.49605818516332434,4.276790949172121,True,True,True,True,NOT_DIRECTLY_COMPARABLE,raw target-date metadata required reconciliation
