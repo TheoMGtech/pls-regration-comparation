@@ -1,0 +1,16 @@
+{
+  "source_commit": "d6f67bd789ce780af2e5472f6b1fc47015e89f27",
+  "stage_b_status": "completed",
+  "validation_status": "PASS_WITH_METADATA_RECONCILIATION_REQUIRED",
+  "scope": "read-only audit of completed Stage B outputs; no models were rerun",
+  "v1_byte_identical": true,
+  "v1_mismatch_paths": [],
+  "canonical_experiments": 99,
+  "expected_origins_per_experiment": 296,
+  "raw_target_date_metadata_issue": {
+    "detected": true,
+    "detail": "Canonical raw prediction files label forecast-origin dates as target_date. Consolidated tables use the frozen V1 manifest target_date and preserve raw predictions and metrics unchanged."
+  },
+  "future_feature_check": "PASS_BY_EXISTING_AVAILABILITY_CONTRACT",
+  "test_selection_check": "PASS: fixed configurations; final results were not used to refit or retune"
+}
