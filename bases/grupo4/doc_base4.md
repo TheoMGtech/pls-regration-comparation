@@ -14,7 +14,7 @@ Este documento registra a documentação inicial da base usada pelo grupo para a
 | Granularidade adotada para modelagem | Horária |
 | Variável-alvo | `T (degC)` |
 | Unidade da variável-alvo | Graus Celsius (°C) |
-| Observações brutas | 159.023 linhas |
+| Observações brutas | 420.552 linhas |
 | Duplicidades temporais observadas | Sim; foram tratadas por média por instante |
 | Dados ausentes no conjunto bruto | Não há datas inválidas; há ausência temporal pontual em séries agregadas e valores truncados em bins incompletos |
 
@@ -106,26 +106,6 @@ Velocidade do vento média e máxima no intervalo de coleta. Pode impactar troca
 ### `wd (deg)`
 
 Direção do vento em graus. Como é uma variável circular, o tratamento adequado exige representações cíclicas (seno/cosseno) em vez de média aritmética simples.
-
-## Diagnóstico do arquivo recebido
-
-Os valores abaixo refletem o diagnóstico realizado sobre o arquivo efetivamente recebido.
-
-| Indicador | Resultado |
-| --- | ---: |
-| Linhas originais | 159.023 |
-| Datas inválidas | 0 |
-| Linhas após remoção de duplicidades | 158.879 |
-| Timestamps duplicados envolvidos | 288 |
-| Linhas duplicadas agregadas | 144 |
-| Frequência original inferida | 10 minutos |
-| Observações esperadas por hora | 6 |
-| Bins horários incompletos descartados | 2 |
-| Linhas horárias completas | 26.479 |
-| Intervalos irregulares identificados | 1 |
-| Timestamps horários ausentes inseridos | 1 |
-| Início da série horária | 01/01/2009 01:00 |
-| Final da série horária | 09/01/2012 08:00 |
 
 ## Tratamento dos dados
 
