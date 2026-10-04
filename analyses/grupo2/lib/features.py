@@ -25,15 +25,14 @@ def add_calendar_and_lags(df: pd.DataFrame) -> pd.DataFrame:
     out["month_cos"] = np.cos(2 * np.pi * out["month"] / 12)
 
     y = out[config.TARGET]
-    out["y_lag_1"] = y.shift(1)
-    out["y_lag_24"] = y.shift(24)
-    out["y_lag_168"] = y.shift(168)
+    for lag in (1, 2, 3, 6, 12, 23, 24, 25, 48, 72, 167, 168, 169, 336):
+        out[f"y_lag_{lag}"] = y.shift(lag)
 
     # Rolling sempre sobre valores já observados (shift 1 antes da janela)
     prior = y.shift(1)
-    out["y_roll_mean_24"] = prior.rolling(24, min_periods=12).mean()
-    out["y_roll_std_24"] = prior.rolling(24, min_periods=12).std()
-    out["y_roll_mean_168"] = prior.rolling(168, min_periods=24).mean()
+    for window in (6, 24, 168):
+        out[f"y_roll_mean_{window}"] = prior.rolling(window).mean()
+        out[f"y_roll_std_{window}"] = prior.rolling(window).std()
 
     # Exógenas climáticas: observação realizada → usa defasagem de 1h
     out["temp_lag_1"] = out["temp"].shift(1)
@@ -41,13 +40,21 @@ def add_calendar_and_lags(df: pd.DataFrame) -> pd.DataFrame:
     out["snow_lag_1"] = out["snow_1h"].shift(1)
     out["clouds_lag_1"] = out["clouds_all"].shift(1)
 
-    # Alvo de previsão 1 passo à frente (para clareza; modelos usam y em t+h)
-    out["target_h1"] = y.shift(-config.HORIZON)
+    # Informa se os lags principais vieram de uma observação real ou do
+    # preenchimento causal. A informação também é conhecida na origem.
+    observed = out["target_observed"].astype(float)
+    for lag in (1, 24, 168, 336):
+        out[f"observed_lag_{lag}"] = observed.shift(lag)
 
     return out
 
 
 def modeling_matrix(df: pd.DataFrame) -> pd.DataFrame:
     """Remove linhas com NaN gerados por lags/janelas no início da série."""
-    cols = [config.DATETIME_COL, config.TARGET, *config.FEATURE_COLS]
+    cols = [
+        config.DATETIME_COL,
+        config.TARGET,
+        "target_observed",
+        *config.FEATURE_COLS,
+    ]
     return df[cols].dropna().reset_index(drop=True)

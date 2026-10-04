@@ -3,7 +3,7 @@
   "n_unique_timestamps": 40575,
   "n_duplicate_timestamps": 7629,
   "nulls_raw": {
-    "holiday": 48143,
+    "holiday": 0,
     "temp": 0,
     "rain_1h": 0,
     "snow_1h": 0,
@@ -14,11 +14,19 @@
     "traffic_volume": 0
   },
   "n_after_dedup": 40575,
-  "n_regular_hours": 52551,
-  "missing_hours_before_fill": 11976,
-  "start": "2012-10-02 09:00:00",
+  "n_observed_in_selected_segment": 26677,
+  "n_regular_hours": 28972,
+  "missing_hours_before_fill": 2295,
+  "largest_gap_hours": 7387.0,
+  "segment_policy": "segmento posterior à maior lacuna",
+  "target_fill_policy": "lag 168h, lag 24h, forward-fill; somente passado",
+  "holiday_policy": "feriado nomeado expandido para todas as horas do dia",
+  "n_holiday_dates": 53,
+  "n_observed_targets": 26677,
+  "n_imputed_targets": 2295,
+  "start": "2015-06-11 20:00:00",
   "end": "2018-09-30 23:00:00",
   "target_min": 0.0,
   "target_max": 7280.0,
-  "target_mean": 2906.180452723721
+  "target_mean": 3300.3441253624187
 }

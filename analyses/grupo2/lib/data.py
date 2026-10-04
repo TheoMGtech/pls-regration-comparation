@@ -24,13 +24,22 @@ def ensure_output_dirs() -> None:
 
 def load_raw(path: Path | None = None) -> pd.DataFrame:
     path = path or config.RAW_PATH
-    df = pd.read_csv(path)
+    # "None" em holiday é uma categoria real, não valor ausente.
+    df = pd.read_csv(path, keep_default_na=False)
     df[config.DATETIME_COL] = pd.to_datetime(df[config.DATETIME_COL])
     return df
 
 
 def clean_and_regularize(raw: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
-    """Deduplica horários, agrega clima/tráfego e reindexa em grade horária completa."""
+    """Deduplica e cria grade horária sem usar observações futuras.
+
+    O arquivo tem uma lacuna estrutural de mais de dez meses. O segmento
+    anterior à maior lacuna é removido em vez de inventar milhares de alvos.
+    Dentro do segmento final, faltas são preenchidas causalmente: mesmo horário
+    da semana anterior, mesmo horário do dia anterior e, por fim, último valor.
+    Uma flag preserva quais alvos foram realmente observados para que validação
+    e teste nunca sejam calculados sobre alvos imputados.
+    """
     df = raw.copy()
     report: dict = {
         "n_raw": int(len(df)),
@@ -39,9 +48,12 @@ def clean_and_regularize(raw: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
         "nulls_raw": {c: int(df[c].isna().sum()) for c in df.columns},
     }
 
-    # holiday: string "None" -> 0; feriados nomeados -> 1
+    # holiday: string "None" -> 0; feriados nomeados -> 1.
     holiday_raw = df["holiday"].astype(str)
     df["is_holiday_row"] = (~holiday_raw.str.strip().isin(["None", "nan", ""])).astype(int)
+    holiday_dates = set(
+        df.loc[df["is_holiday_row"] == 1, config.DATETIME_COL].dt.normalize()
+    )
 
     agg = (
         df.groupby(config.DATETIME_COL, as_index=False)
@@ -57,6 +69,14 @@ def clean_and_regularize(raw: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
         .sort_values(config.DATETIME_COL)
         .reset_index(drop=True)
     )
+    n_after_dedup = int(len(agg))
+
+    # A maior lacuna (7.387 h na versão congelada) separa dois regimes de
+    # cobertura. Manter só o segmento posterior evita uma longa faixa sintética.
+    gaps = agg[config.DATETIME_COL].diff().dt.total_seconds().div(3600)
+    largest_gap_hours = float(gaps.max())
+    segment_start = agg.loc[gaps.idxmax(), config.DATETIME_COL]
+    agg = agg.loc[agg[config.DATETIME_COL] >= segment_start].copy()
 
     full_idx = pd.date_range(
         agg[config.DATETIME_COL].min(),
@@ -66,22 +86,42 @@ def clean_and_regularize(raw: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
     series = agg.set_index(config.DATETIME_COL).reindex(full_idx)
     series.index.name = config.DATETIME_COL
 
-    missing_hours = int(series[config.TARGET].isna().sum())
-    # Preenchimento conservador: interpolação linear do alvo em gaps curtos; ffill/bfill residual
-    series[config.TARGET] = series[config.TARGET].interpolate(method="time", limit=6)
-    series[config.TARGET] = series[config.TARGET].ffill().bfill()
+    series["target_observed"] = series[config.TARGET].notna().astype(int)
+    missing_hours = int((series["target_observed"] == 0).sum())
+
+    # Somente passado: t-168, t-24 e último valor conhecido.
+    for lag in (config.WEEKLY_PERIOD, config.SEASONAL_PERIOD):
+        series[config.TARGET] = series[config.TARGET].fillna(
+            series[config.TARGET].shift(lag)
+        )
+    series[config.TARGET] = series[config.TARGET].ffill()
 
     for col in ["temp", "rain_1h", "snow_1h", "clouds_all"]:
-        series[col] = series[col].interpolate(method="time", limit=6).ffill().bfill()
+        series[col] = series[col].ffill()
 
-    series["is_holiday"] = series["is_holiday"].fillna(0).astype(int)
-    series["weather_main"] = series["weather_main"].ffill().bfill()
+    # Na fonte o nome do feriado aparece apenas à meia-noite. A informação de
+    # calendário vale para todas as 24 horas daquele dia e é conhecida antes
+    # da previsão.
+    series["is_holiday"] = (
+        pd.Series(series.index.normalize(), index=series.index)
+        .isin(holiday_dates)
+        .astype(int)
+    )
+    series["weather_main"] = series["weather_main"].ffill().fillna("Unknown")
 
     report.update(
         {
-            "n_after_dedup": int(len(agg)),
+            "n_after_dedup": n_after_dedup,
+            "n_observed_in_selected_segment": int(len(agg)),
             "n_regular_hours": int(len(series)),
             "missing_hours_before_fill": missing_hours,
+            "largest_gap_hours": largest_gap_hours,
+            "segment_policy": "segmento posterior à maior lacuna",
+            "target_fill_policy": "lag 168h, lag 24h, forward-fill; somente passado",
+            "holiday_policy": "feriado nomeado expandido para todas as horas do dia",
+            "n_holiday_dates": int(len(holiday_dates)),
+            "n_observed_targets": int(series["target_observed"].sum()),
+            "n_imputed_targets": int((series["target_observed"] == 0).sum()),
             "start": str(series.index.min()),
             "end": str(series.index.max()),
             "target_min": float(series[config.TARGET].min()),
@@ -100,6 +140,17 @@ def chronological_split(df: pd.DataFrame, train_ratio: float = config.TRAIN_RATI
     train = df.iloc[:cut].copy()
     test = df.iloc[cut:].copy()
     return train, test, cut
+
+
+def temporal_boundaries(df: pd.DataFrame) -> tuple[int, int]:
+    """Retorna limites treino interno/validação e teste final.
+
+    Total: 70% treino interno, 10% validação, 20% teste final. O contrato
+    externo solicitado permanece 80/20.
+    """
+    validation_end = int(len(df) * config.TRAIN_RATIO)
+    train_end = int(validation_end * config.INNER_TRAIN_RATIO)
+    return train_end, validation_end
 
 
 def save_frame(df: pd.DataFrame, path: Path) -> None:

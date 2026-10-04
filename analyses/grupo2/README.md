@@ -2,33 +2,58 @@
 
 **Responsável:** Bruna Carvalho Cardoso
 
-## Ideia
+Implementação dos modelos Random Forest, PLS Regression, Holt-Winters e
+SARIMAX para previsão horária de volume de tráfego.
 
-Você roda os notebooks **em ordem**. Cada um **grava** o que o próximo precisa em `outputs/`.
+## Protocolo
 
-Abra primeiro: `00_ORDEM_DE_EXECUCAO.ipynb`.
+- granularidade: 1 hora;
+- horizonte: próxima hora;
+- divisão externa cronológica: 80% desenvolvimento / 20% teste;
+- `random_state=67`;
+- mesmas origens finais para os quatro modelos;
+- reajuste do modelo em toda origem e previsão de somente um passo;
+- MAE calculado apenas onde o alvo original foi observado;
+- tuning walk-forward em aproximadamente 260 origens dentro dos primeiros
+  80%, sem usar o teste final;
+- PLS escolhe conjuntamente conjunto de variáveis e 1–32 componentes;
+- Random Forest compara 12 configurações e Holt-Winters compara três janelas;
+- SARIMAX faz 72 triagens BIC e valida as cinco melhores estruturas;
+- flags indicam quando lags do alvo vieram de observação real ou imputação;
+- janelas móveis documentadas para viabilizar o custo da série horária.
 
-## Fluxo
+A maior lacuna da base tem 7.387 horas. Para não criar quase dez meses de
+tráfego sintético, a análise utiliza o segmento posterior a essa lacuna. As
+horas ausentes restantes são preenchidas somente com informação do passado.
 
-```
-01_dados (limpeza → features → EDA → STL)
-    ↓ outputs/data/*.csv
-02_modelos/* (tuning → walk-forward → resíduos)   ← um modelo por vez
-    ↓ outputs/results/predictions_*.csv, metrics_*.json
-03_resultados (MAE, Ljung-Box, importância, comparação)
-04_especialista_PLS + 05_relatorio
-```
+## Como executar
 
-## Atalho no terminal (opcional)
+Abra `00_ORDEM_DE_EXECUCAO.ipynb` e rode os notebooks na ordem indicada. Cada
+notebook mostra seus resultados e grava em `outputs/` os artefatos necessários
+para a próxima etapa.
+
+O tuning e o teste final podem levar aproximadamente 40–50 horas, dependendo
+do computador. Os rankings de tuning são gravados
+incrementalmente; se a execução for interrompida, rode novamente o notebook
+para continuar sem repetir candidatos concluídos.
+
+Atalho opcional para executar tudo:
 
 ```bash
-# na raiz do repo
 source .venv/bin/activate
-python analyses/grupo2/run_pipeline.py
+python analyses/grupo2/run_pipeline_v2.py
 ```
 
-## Ver resultados
+Resultados principais:
 
-- `outputs/results/mae_consolidado.csv`
-- `outputs/figures/`
-- `outputs/relatorio_base2.html`
+- `DOCUMENTACAO_BASE2.md` — contrato da base (estilo ouro/Jena);
+- `CHECKLIST_BASE2.md` — checklist técnico;
+- `outputs/PLS_technical_summary.md` — PLS conceitual + interpretação;
+- `outputs/relatorio_base2.html` — relatório paginado (abrir no navegador → PDF);
+- `outputs/results/mae_consolidado.csv`;
+- `outputs/results/predictions_<MODELO>.csv`;
+- `outputs/figures/`.
+
+Leia também `DIAGNOSTICO_RESULTADOS_ANTIGOS.md` para entender por que a versão
+anterior era muito mais rápida e por que seus números não devem ser usados como
+resultado final.
