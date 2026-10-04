@@ -1,15 +1,29 @@
-# Status do relatório — Base Ouro (Grupo 5)
+# Status da entrega - Base Ouro (Grupo 5)
 
-## [PRONTO]
+Data de fechamento: 04/10/2026.
 
-- Visão geral, fonte, unidade, cobertura, externas e qualidade da base Ouro.
-- Exploração, STL, features causais, leakage, protocolo e tuning V1 congelado.
-- MAE, baseline de persistência, resíduos, Ljung-Box, importância e estudo do PLS.
-- Conclusão limitada à base Ouro e referências específicas.
-- Seções 16, 17 e 18 atualizadas com a V2 como investigação complementar, sem alterar o ranking oficial V1.
+## Pronto nesta branch
 
-## [PENDENTE GLOBAL]
+- Relatório interpretativo da base Ouro com V1 oficial e V2 complementar.
+- Ranking V1 preservado e baseline de persistência mantido fora do ranking.
+- Contextualização do MAE, volatilidade, resíduos, importância e limitações.
+- Integração seletiva dos achados concluídos da V2 a partir de `d6f67bd`.
+- Gráficos sintéticos de targets, ablation, drift e extrapolação.
+- HTML autocontido e PDF paginado com a mesma narrativa.
+- Apêndice técnico, checklist, referências, roteiro e manifesto.
+- Aula geral de PLS em nove páginas, independente do Ouro, com estudo de caso na página 10.
+- Template das cinco bases e perguntas de conclusão global nas páginas 11-12, sem preencher dados ausentes.
 
-- Resumo executivo global e integrantes/responsabilidades.
-- Outras quatro bases, ranking entre bases, vitórias, posição média e comparação PLS entre as cinco bases.
-- Conclusão geral, HTML/PDF consolidado e registro global de demandas.
+## Estado correto da V2
+
+A Stage B está concluída. O antigo texto de `V2_STATUS.md` que marcava atividades como `deferred/not run` ficou desatualizado em relação a `V2_FINDINGS.md` e aos resultados finais do commit `d6f67bd`. Para a entrega, prevalece a evidência final desse commit.
+
+O resultado da validação permanece `PASS_WITH_METADATA_RECONCILIATION_REQUIRED`: nos arquivos brutos V2, `target_date` rotula a data da origem. As tabelas consolidadas usam o `target_date` do manifesto V1 congelado. A reconciliação corrige apenas o rótulo de metadado; previsões, `Y_TRUE`, origens e MAEs não foram alterados.
+
+## Fora do escopo da base Ouro
+
+- Consolidação das outras quatro bases.
+- Ranking global, vitórias e posição média entre bases.
+- Participantes e responsabilidades do grupo completo.
+- Conclusão global da atividade.
+- Resultados das Bases 1-4 para preencher comparação, vitórias, posição média e conclusão global do PLS.

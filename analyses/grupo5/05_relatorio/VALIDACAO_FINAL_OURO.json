@@ -1,0 +1,75 @@
+{
+  "validated_at": "2026-10-04",
+  "branch": "finalize/grupo5-ouro-entrega",
+  "v1_source_commit": "885edaab761981eae97f5224dc1740d2310c0214",
+  "v2_source_commit": "d6f67bd789ce780af2e5472f6b1fc47015e89f27",
+  "heavy_computation_executed": false,
+  "frozen_artifacts": [
+    {
+      "path": "bases/grupo5/gold_daily_modeling.csv",
+      "sha256_before": "38622FE40A18C3E94B89971488468F762353ED4234234E054F0439918CB5D1AC",
+      "sha256_after": "38622FE40A18C3E94B89971488468F762353ED4234234E054F0439918CB5D1AC",
+      "unchanged": true
+    },
+    {
+      "path": "analyses/grupo5/outputs/predictions.csv",
+      "sha256_before": "83C52112B6DDE640F520F3F870D30F0927CB4A03103098B4C284B24662AC6EC0",
+      "sha256_after": "83C52112B6DDE640F520F3F870D30F0927CB4A03103098B4C284B24662AC6EC0",
+      "unchanged": true
+    },
+    {
+      "path": "analyses/grupo5/outputs/metrics.csv",
+      "sha256_before": "F9FE5418EB7F5F14357ADA49BA64B7264282A148B81D3B2F792AE673F708E92E",
+      "sha256_after": "F9FE5418EB7F5F14357ADA49BA64B7264282A148B81D3B2F792AE673F708E92E",
+      "unchanged": true
+    },
+    {
+      "path": "analyses/grupo5/outputs/hyperparameters.csv",
+      "sha256_before": "4CB56A13CB6CC3A31B8ACC60E2BB3DD3ECEAE1448EB698D39B1540BFC5203886",
+      "sha256_after": "4CB56A13CB6CC3A31B8ACC60E2BB3DD3ECEAE1448EB698D39B1540BFC5203886",
+      "unchanged": true
+    },
+    {
+      "path": "analyses/grupo5/outputs/protocol.json",
+      "sha256_before": "21F258988ABF0E585F426137F8FD16943997985C01F0AAFE204445F6481D74C5",
+      "sha256_after": "21F258988ABF0E585F426137F8FD16943997985C01F0AAFE204445F6481D74C5",
+      "unchanged": true
+    }
+  ],
+  "technical_notebooks_checked": 24,
+  "technical_notebooks_unchanged": true,
+  "report_notebook": {
+    "code_cells": 14,
+    "executed_light_cells": 14,
+    "stored_outputs": 32,
+    "execution_errors": 0,
+    "heavy_terms_detected": 0,
+    "pls_general_theory_pages": 9,
+    "pls_gold_case_pages": 1,
+    "pls_future_structure_pages": 2
+  },
+  "html": {
+    "self_contained_images": 12,
+    "absolute_local_paths": 0,
+    "file_uris": 0,
+    "local_image_sources": 0,
+    "pls_module_pages": 12
+  },
+  "pdf": {
+    "format": "A4",
+    "pages": 29,
+    "blank_pages": 0,
+    "visual_pages_reviewed": 29,
+    "clipped_tables_or_figures": 0,
+    "generation_route": "Microsoft Edge headless print from self-contained HTML; no dependency installed"
+  },
+  "v2_validation_status": "PASS_WITH_METADATA_RECONCILIATION_REQUIRED",
+  "v2_stage_b_completed": true,
+  "v2_raw_target_date_issue_disclosed": true,
+  "repository_validators": {
+    "scripts_validate_project": "missing in repository",
+    "pytest": "no tests collected (exit code 5)",
+    "git_diff_check": "pass",
+    "custom_delivery_validation": "pass"
+  }
+}
