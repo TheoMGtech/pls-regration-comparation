@@ -1,0 +1,7 @@
+{
+  "damped_trend": false,
+  "max_train_rows": 1440,
+  "seasonal": "add",
+  "seasonal_periods": 168,
+  "trend": null
+}

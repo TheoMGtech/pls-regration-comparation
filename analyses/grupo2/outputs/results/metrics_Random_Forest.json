@@ -1,0 +1,31 @@
+{
+  "model": "Random_Forest",
+  "params": {
+    "max_depth": null,
+    "max_features": "sqrt",
+    "min_samples_leaf": 1,
+    "min_samples_split": 2,
+    "n_estimators": 900
+  },
+  "n_forecasts": 521,
+  "mae": 157.76216464064834,
+  "rmse": 255.57995856721607,
+  "median_absolute_error": 101.31444444444446,
+  "wape_percent": 4.698163456278088,
+  "bias": 13.810119428449564,
+  "r2": 0.9837055811985974,
+  "residual_acf_lag1": 0.11782459573302038,
+  "runtime_sec": 1804.0332836000002,
+  "mean_seconds_per_origin": 3.462635861036469,
+  "ljung_box_pvalue_lag24": 0.02316338711969998,
+  "ljung_box_pvalue_sampled_sequence_lag24": 0.02316338711969998,
+  "ljung_box_pvalues": {
+    "1": 0.007039879940680772,
+    "6": 0.01735709723721949,
+    "12": 0.04393057425981781,
+    "24": 0.02316338711969998
+  },
+  "fallback_count": 0,
+  "convergence_rate": 1.0,
+  "walk_forward": "refit em cada origem; horizonte 1h"
+}

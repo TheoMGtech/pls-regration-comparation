@@ -1,0 +1,37 @@
+{
+  "model": "SARIMAX",
+  "params": {
+    "order": [
+      2,
+      0,
+      1
+    ],
+    "seasonal_order": [
+      0,
+      1,
+      1,
+      24
+    ]
+  },
+  "n_forecasts": 521,
+  "mae": 263.6784199410402,
+  "rmse": 375.03027369329476,
+  "median_absolute_error": 179.41263039649948,
+  "wape_percent": 7.852353697085097,
+  "bias": -11.796177912489485,
+  "r2": 0.9649152862700293,
+  "residual_acf_lag1": -0.001773522196930261,
+  "runtime_sec": 27940.137766999993,
+  "mean_seconds_per_origin": 53.62790358349327,
+  "ljung_box_pvalue_lag24": 0.033983720057260705,
+  "ljung_box_pvalue_sampled_sequence_lag24": 0.033983720057260705,
+  "ljung_box_pvalues": {
+    "1": 0.9676143324207614,
+    "6": 0.20536572769616326,
+    "12": 0.037604687312575026,
+    "24": 0.033983720057260705
+  },
+  "fallback_count": 0,
+  "convergence_rate": 0.8349328214971209,
+  "walk_forward": "refit em cada origem; horizonte 1h"
+}

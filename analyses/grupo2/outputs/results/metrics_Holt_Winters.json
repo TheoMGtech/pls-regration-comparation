@@ -1,0 +1,31 @@
+{
+  "model": "Holt_Winters",
+  "params": {
+    "damped_trend": false,
+    "max_train_rows": 1440,
+    "seasonal": "add",
+    "seasonal_periods": 168,
+    "trend": null
+  },
+  "n_forecasts": 521,
+  "mae": 209.83331325758334,
+  "rmse": 368.72457910995377,
+  "median_absolute_error": 115.0,
+  "wape_percent": 6.248844306250889,
+  "bias": -4.263385873797327,
+  "r2": 0.9660851843490639,
+  "residual_acf_lag1": 0.09488604243557575,
+  "runtime_sec": 25.420278500008862,
+  "mean_seconds_per_origin": 0.048791321497137934,
+  "ljung_box_pvalue_lag24": 1.887499734772738e-05,
+  "ljung_box_pvalue_sampled_sequence_lag24": 1.887499734772738e-05,
+  "ljung_box_pvalues": {
+    "1": 0.03014176692634984,
+    "6": 0.0022440145304887353,
+    "12": 0.000610170010205795,
+    "24": 1.887499734772738e-05
+  },
+  "fallback_count": 167,
+  "convergence_rate": 0.6813819577735125,
+  "walk_forward": "refit em cada origem; horizonte 1h"
+}

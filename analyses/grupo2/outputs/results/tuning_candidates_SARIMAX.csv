@@ -1,0 +1,6 @@
+model,parameters,validation_mae,mean_seconds_per_origin,elapsed_seconds,convergence_rate,status,protocol_signature,order_complexity,max_order,mae_3
+SARIMAX,"{""order"": [2, 0, 1], ""seasonal_order"": [0, 1, 1, 24]}",292.47803394276673,37.86684274961243,9769.645429400007,0.9728682170542635,ok,e071c45707f5eb8d,5,2,292.478
+SARIMAX,"{""order"": [2, 0, 0], ""seasonal_order"": [0, 1, 1, 24]}",293.4876828296307,35.20248305620154,9082.240628499996,1.0,ok,e071c45707f5eb8d,4,2,293.488
+SARIMAX,"{""order"": [2, 1, 2], ""seasonal_order"": [0, 1, 1, 24]}",295.18168254983294,38.003191642635656,9804.8234438,1.0,ok,e071c45707f5eb8d,7,2,295.182
+SARIMAX,"{""order"": [2, 1, 1], ""seasonal_order"": [0, 1, 1, 24]}",296.05510494107375,71.71585915310078,18502.6916615,1.0,ok,e071c45707f5eb8d,6,2,296.055
+SARIMAX,"{""order"": [2, 0, 2], ""seasonal_order"": [0, 1, 1, 24]}",298.22665038639155,44.373458119767434,11448.352194899999,0.9186046511627907,ok,e071c45707f5eb8d,6,2,298.227

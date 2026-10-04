@@ -1,0 +1,14 @@
+{
+  "stl_sample_start": "2017-02-04 08:00:00",
+  "stl_sample_end": "2018-02-04 07:00:00",
+  "seasonal_strength": 0.8061200848269022,
+  "seasonal_period": 24,
+  "trend_start_mean": 3462.946645779143,
+  "trend_end_mean": 3450.8332102858776,
+  "figures": [
+    "01_serie_alvo.png",
+    "02_externas.png",
+    "03_perfil_horario.png",
+    "04_stl.png"
+  ]
+}

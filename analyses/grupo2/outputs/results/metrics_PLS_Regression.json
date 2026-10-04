@@ -1,0 +1,28 @@
+{
+  "model": "PLS_Regression",
+  "params": {
+    "feature_set": "no_weather",
+    "n_components": 15
+  },
+  "n_forecasts": 521,
+  "mae": 191.6959713618109,
+  "rmse": 292.3908639859715,
+  "median_absolute_error": 135.06396801610936,
+  "wape_percent": 5.708713552575973,
+  "bias": 2.4075028470309126,
+  "r2": 0.9786738293153047,
+  "residual_acf_lag1": 0.0049617990869595605,
+  "runtime_sec": 8.905333599977894,
+  "mean_seconds_per_origin": 0.017092770825293462,
+  "ljung_box_pvalue_lag24": 0.038742174584911915,
+  "ljung_box_pvalue_sampled_sequence_lag24": 0.038742174584911915,
+  "ljung_box_pvalues": {
+    "1": 0.9095988462128981,
+    "6": 0.009232325903072689,
+    "12": 0.008109635749311,
+    "24": 0.038742174584911915
+  },
+  "fallback_count": 0,
+  "convergence_rate": 1.0,
+  "walk_forward": "refit em cada origem; horizonte 1h"
+}
