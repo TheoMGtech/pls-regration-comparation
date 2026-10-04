@@ -1,9 +1,0 @@
-{
-  "period_hours": 24,
-  "observations": 70034,
-  "seasonal_strength": 0.6889455705571499,
-  "trend_min": -17.124409628433728,
-  "trend_max": 29.102086285415908,
-  "residual_mean": -0.06998398901456958,
-  "residual_std": 1.7240070139962864
-}
