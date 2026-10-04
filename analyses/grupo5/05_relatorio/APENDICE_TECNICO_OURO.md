@@ -72,6 +72,12 @@ RF e PLS foram avaliados com permutation importance. RF também tem importância
 
 Os valores não estabelecem causalidade. Colinearidade pode repartir ou desestabilizar importâncias. O uso de 11 componentes para 12 features implica compressão dimensional pequena.
 
+Para uma variável `j`, o VIP pode ser escrito como:
+
+$$VIP_j = \sqrt{p\,\frac{\sum_{a=1}^{A} SSY_a\left(w_{ja}/\lVert w_a\rVert\right)^2}{\sum_{a=1}^{A} SSY_a}}$$
+
+em que `p` é o número de features, `A` o número de componentes, `SSY_a` a parcela da resposta explicada pelo componente `a` e `w_{ja}` o peso da variável `j`. O uso de `VIP > 1` é uma regra heurística, não um teste de significância nem evidência causal. Coeficientes padronizados, VIP e permutação devem ser lidos em conjunto.
+
 ## H. Auditorias V1
 
 Evidências principais em `analyses/grupo5/outputs/`:

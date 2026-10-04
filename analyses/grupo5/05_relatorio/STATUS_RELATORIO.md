@@ -11,6 +11,8 @@ Data de fechamento: 04/10/2026.
 - Gráficos sintéticos de targets, ablation, drift e extrapolação.
 - HTML autocontido e PDF paginado com a mesma narrativa.
 - Apêndice técnico, checklist, referências, roteiro e manifesto.
+- Aula geral de PLS em nove páginas, independente do Ouro, com estudo de caso na página 10.
+- Template das cinco bases e perguntas de conclusão global nas páginas 11-12, sem preencher dados ausentes.
 
 ## Estado correto da V2
 
@@ -24,4 +26,4 @@ O resultado da validação permanece `PASS_WITH_METADATA_RECONCILIATION_REQUIRED
 - Ranking global, vitórias e posição média entre bases.
 - Participantes e responsabilidades do grupo completo.
 - Conclusão global da atividade.
-- Conteúdo didático completo de PLS Regression, reservado para incorporação posterior.
+- Resultados das Bases 1-4 para preencher comparação, vitórias, posição média e conclusão global do PLS.

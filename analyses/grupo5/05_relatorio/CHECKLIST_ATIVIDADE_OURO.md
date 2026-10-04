@@ -32,6 +32,8 @@ Legenda exigida:
 - [x] atendido - HTML autocontido e PDF com a mesma narrativa da base Ouro.
 - [x] atendido - Códigos, base, fontes e artefatos locais identificados no manifesto.
 - [x] atendido - V2 identificada explicitamente como estudo complementar.
+- [x] atendido - Explicação didática geral de PLS separada do estudo de caso Ouro.
+- [x] atendido - Template comparativo preparado sem inventar resultados das Bases 1-4.
 
 ## Requisitos que dependem das cinco bases
 
@@ -45,6 +47,6 @@ Legenda exigida:
 ## Requisitos que dependem do grupo ou da apresentação global
 
 - [ ] depende do grupo/apresentação global - Lista final de participantes e responsabilidades.
-- [ ] depende do grupo/apresentação global - Explicação didática completa de PLS Regression.
+- [ ] depende do grupo/apresentação global - Ensaiar e distribuir entre participantes a aula didática de PLS já incorporada.
 - [ ] depende do grupo/apresentação global - Ordem e tempo total da apresentação das cinco bases.
 - [ ] depende do grupo/apresentação global - Registro diário de demandas. O repositório registra que o grupo decidiu não mantê-lo; isso pode afetar a avaliação individual.

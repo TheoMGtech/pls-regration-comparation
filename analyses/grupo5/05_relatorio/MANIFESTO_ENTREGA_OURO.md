@@ -17,6 +17,7 @@ O SHA do commit de fechamento é registrado no histórico Git e informado no ato
 | `relatorio.ipynb` | Fonte executável leve e auditável do capítulo Ouro |
 | `relatorio_ouro.html` | Relatório autocontido e material visual da apresentação |
 | `relatorio_ouro.pdf` | Versão paginada para entrega e leitura |
+| `build_report.py` | Composição reprodutível do HTML a partir do notebook; o PDF é impresso pelo Edge já instalado |
 | `APENDICE_TECNICO_OURO.md` | Evidências detalhadas e rastreabilidade |
 | `CHECKLIST_ATIVIDADE_OURO.md` | Atendimento literal dos requisitos locais/globais |
 | `ROTEIRO_APRESENTACAO_OURO.md` | Sequência, tempo e mensagens para apresentação |
@@ -61,5 +62,5 @@ Nenhum arquivo bruto local de `experiments/` foi adicionado.
 - Ranking global, vitórias e posição média.
 - Participantes e responsabilidades globais.
 - Conclusão consolidada das cinco bases.
-- Aula didática completa de PLS Regression.
+- Resultados das Bases 1-4 necessários para preencher a comparação e a conclusão global do PLS.
 - Decisão do grupo sobre o registro diário de demandas.
