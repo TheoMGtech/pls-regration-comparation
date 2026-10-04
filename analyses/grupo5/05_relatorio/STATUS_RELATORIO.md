@@ -6,15 +6,10 @@
 - Exploração, STL, features causais, leakage, protocolo e tuning V1 congelado.
 - MAE, baseline de persistência, resíduos, Ljung-Box, importância e estudo do PLS.
 - Conclusão limitada à base Ouro e referências específicas.
-
-## [ATUALIZAR APÓS V2]
-
-- Seção 17: motivação e resultados conclusivos da V2.
-- Seção 16: limitações afetadas pela V2.
-- Seção 18: conclusão local e eventual comparação local de resultados.
+- Seções 16, 17 e 18 atualizadas com a V2 como investigação complementar, sem alterar o ranking oficial V1.
 
 ## [PENDENTE GLOBAL]
 
-- Resumo executivo, integrantes e divisão de responsabilidades.
-- Outras quatro bases, ranking global, vitórias, posição média e síntese PLS global.
+- Resumo executivo global e integrantes/responsabilidades.
+- Outras quatro bases, ranking entre bases, vitórias, posição média e comparação PLS entre as cinco bases.
 - Conclusão geral, HTML/PDF consolidado e registro global de demandas.
