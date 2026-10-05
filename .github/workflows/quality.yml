@@ -39,8 +39,14 @@ jobs:
 
           for group, filename in expected_bases.items():
               assert (root / "bases" / group / filename).is_file()
-              notebooks = list((root / "analyses" / group).rglob("*.ipynb"))
-              assert len(notebooks) == 25, (group, len(notebooks))
+              technical_notebooks = list((root / "analyses" / group).rglob("*.ipynb"))
+              report_notebooks = list((root / "docs" / "relatorios" / group).glob("*.ipynb"))
+              notebooks = technical_notebooks + report_notebooks
+              assert len(notebooks) == 25, (
+                  group,
+                  len(technical_notebooks),
+                  len(report_notebooks),
+              )
               assert {path.name for path in (root / "analyses" / group / "02_modelos").iterdir() if path.is_dir()} == expected_models
               for notebook in notebooks:
                   json.loads(notebook.read_text(encoding="utf-8"))
