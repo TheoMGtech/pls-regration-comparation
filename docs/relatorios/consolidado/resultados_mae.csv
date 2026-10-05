@@ -1,0 +1,21 @@
+base,modelo,mae,posicao,status
+Base 1,SARIMAX,,,PENDENTE
+Base 1,Holt-Winters,,,PENDENTE
+Base 1,Random Forest,,,PENDENTE
+Base 1,PLS Regression,,,PENDENTE
+Base 2,SARIMAX,,,PENDENTE
+Base 2,Holt-Winters,,,PENDENTE
+Base 2,Random Forest,,,PENDENTE
+Base 2,PLS Regression,,,PENDENTE
+Base 3,SARIMAX,,,PENDENTE
+Base 3,Holt-Winters,,,PENDENTE
+Base 3,Random Forest,,,PENDENTE
+Base 3,PLS Regression,,,PENDENTE
+Base 4,SARIMAX,,,PENDENTE
+Base 4,Holt-Winters,,,PENDENTE
+Base 4,Random Forest,,,PENDENTE
+Base 4,PLS Regression,,,PENDENTE
+Base 5 - Ouro,Holt-Winters,11.5331,1,OFICIAL_V1
+Base 5 - Ouro,SARIMAX,11.5988,2,OFICIAL_V1
+Base 5 - Ouro,PLS Regression,11.6002,3,OFICIAL_V1
+Base 5 - Ouro,Random Forest,14.2826,4,OFICIAL_V1

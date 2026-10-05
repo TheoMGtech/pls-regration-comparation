@@ -12,8 +12,10 @@ from PIL import Image, ImageChops
 
 
 HERE = Path(__file__).resolve().parent
-NOTEBOOK = HERE / "relatorio.ipynb"
-OUTPUT = HERE / "relatorio_ouro.html"
+ROOT = HERE.parents[2]
+REPORT = ROOT / "docs" / "relatorios" / "grupo5"
+NOTEBOOK = REPORT / "relatorio_ouro.ipynb"
+OUTPUT = REPORT / "relatorio_ouro.html"
 
 
 CSS = r"""
@@ -101,10 +103,10 @@ def main() -> None:
     document = (
         '<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">'
         '<meta name="viewport" content="width=device-width,initial-scale=1">'
-        '<title>Grupo 5 - Base Ouro e aula de PLS</title>'
+        '<title>Grupo 5 - Estudo de caso da Base Ouro</title>'
         f"<style>{CSS}</style></head><body><nav>{''.join(nav)}</nav><main>"
         f"{''.join(body)}"
-        '<footer>Grupo 5 - PLS geral com estudo de caso Ouro. V1 oficial; V2 complementar.</footer>'
+        '<footer>Grupo 5 - estudo de caso da Base Ouro. V1 oficial; V2 complementar.</footer>'
         "</main></body></html>"
     )
     OUTPUT.write_text(document, encoding="utf-8", newline="\n")

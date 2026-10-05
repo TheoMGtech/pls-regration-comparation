@@ -1,6 +1,6 @@
 {
   "validated_at": "2026-10-04",
-  "branch": "finalize/grupo5-ouro-entrega",
+  "branch": "finalize/reorganizada",
   "v1_source_commit": "885edaab761981eae97f5224dc1740d2310c0214",
   "v2_source_commit": "d6f67bd789ce780af2e5472f6b1fc47015e89f27",
   "heavy_computation_executed": false,
@@ -44,22 +44,22 @@
     "stored_outputs": 32,
     "execution_errors": 0,
     "heavy_terms_detected": 0,
-    "pls_general_theory_pages": 9,
+    "pls_general_theory_pages": 0,
     "pls_gold_case_pages": 1,
-    "pls_future_structure_pages": 2
+    "pls_future_structure_pages": 0
   },
   "html": {
     "self_contained_images": 12,
     "absolute_local_paths": 0,
     "file_uris": 0,
     "local_image_sources": 0,
-    "pls_module_pages": 12
+    "pls_module_pages": 0
   },
   "pdf": {
     "format": "A4",
-    "pages": 29,
+    "pages": 18,
     "blank_pages": 0,
-    "visual_pages_reviewed": 29,
+    "visual_pages_reviewed": 18,
     "clipped_tables_or_figures": 0,
     "generation_route": "Microsoft Edge headless print from self-contained HTML; no dependency installed"
   },

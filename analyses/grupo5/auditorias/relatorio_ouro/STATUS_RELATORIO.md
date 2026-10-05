@@ -11,8 +11,9 @@ Data de fechamento: 04/10/2026.
 - Gráficos sintéticos de targets, ablation, drift e extrapolação.
 - HTML autocontido e PDF paginado com a mesma narrativa.
 - Apêndice técnico, checklist, referências, roteiro e manifesto.
-- Aula geral de PLS em nove páginas, independente do Ouro, com estudo de caso na página 10.
-- Template das cinco bases e perguntas de conclusão global nas páginas 11-12, sem preencher dados ausentes.
+- Relatório local reposicionado como estudo de caso em `docs/relatorios/grupo5/`.
+- Aula geral de PLS e estrutura das cinco bases transferidas para o relatório consolidado.
+- QA e controles internos separados em `analyses/grupo5/auditorias/`.
 
 ## Estado correto da V2
 

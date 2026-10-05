@@ -2,9 +2,9 @@
 
 ## Identificação
 
-- Branch de trabalho: `finalize/grupo5-ouro-entrega`.
-- Base da branch: `docs/grupo5-ouro-relatorio` em `72417a55adae352d52926182c8bc63213adfb77c`.
-- V1 oficial incorporada em `main`/`develop`: `885edaab761981eae97f5224dc1740d2310c0214`.
+- Branch de trabalho: `finalize/reorganizada`.
+- Base da branch: `main` em `b56bd2124294fe3f1490bf66a481ad9a3a5d2e70`, já com a estrutura do PR #19.
+- V1 oficial incorporada em `develop`: `885edaab761981eae97f5224dc1740d2310c0214`.
 - Fonte seletiva V2: `d6f67bd789ce780af2e5472f6b1fc47015e89f27`.
 - Data de fechamento: 04/10/2026.
 
@@ -14,16 +14,14 @@ O SHA do commit de fechamento é registrado no histórico Git e informado no ato
 
 | Arquivo | Finalidade |
 |---|---|
-| `relatorio.ipynb` | Fonte executável leve e auditável do capítulo Ouro |
-| `relatorio_ouro.html` | Relatório autocontido e material visual da apresentação |
-| `relatorio_ouro.pdf` | Versão paginada para entrega e leitura |
-| `build_report.py` | Composição reprodutível do HTML a partir do notebook; o PDF é impresso pelo Edge já instalado |
-| `APENDICE_TECNICO_OURO.md` | Evidências detalhadas e rastreabilidade |
-| `CHECKLIST_ATIVIDADE_OURO.md` | Atendimento literal dos requisitos locais/globais |
-| `ROTEIRO_APRESENTACAO_OURO.md` | Sequência, tempo e mensagens para apresentação |
-| `REFERENCIAS_OURO.md` | Fontes institucionais, aquisição, bibliotecas e artigos |
-| `MANIFESTO_ENTREGA_OURO.md` | Inventário e governança desta entrega |
-| `VALIDACAO_FINAL_OURO.json` | Hashes antes/depois e resultados de QA |
+| `docs/relatorios/grupo5/relatorio_ouro.ipynb` | Fonte executável leve do estudo de caso Ouro |
+| `docs/relatorios/grupo5/relatorio_ouro.html` | Relatório local autocontido |
+| `docs/relatorios/grupo5/relatorio_ouro.pdf` | Versão paginada local |
+| `analyses/grupo5/05_relatorio/build_relatorio_ouro.py` | Composição reprodutível do HTML |
+| `docs/relatorios/grupo5/apendice_tecnico.md` | Evidências detalhadas e rastreabilidade |
+| `docs/relatorios/grupo5/roteiro_apresentacao_ouro.md` | Roteiro do estudo de caso |
+| `docs/relatorios/grupo5/referencias.md` | Fontes institucionais, aquisição, bibliotecas e artigos |
+| `analyses/grupo5/auditorias/relatorio_ouro/` | Checklist, manifesto, status e QA internos |
 
 ## Gráficos complementares
 
@@ -48,11 +46,11 @@ O SHA do commit de fechamento é registrado no histórico Git e informado no ato
 
 ## Evidências V2 incorporadas
 
-- `evidencias_v2/target_comparison_selected.csv`.
-- `evidencias_v2/ablation_selected.csv`.
-- `evidencias_v2/rf_a8_feature_drift_selected.csv`.
-- `evidencias_v2/v2_validation_summary.json`.
-- `evidencias_v2/V2_FINDINGS_FINAL.md`.
+- `analyses/grupo5/auditorias/v2/target_comparison_selected.csv`.
+- `analyses/grupo5/auditorias/v2/ablation_selected.csv`.
+- `analyses/grupo5/auditorias/v2/rf_a8_feature_drift_selected.csv`.
+- `analyses/grupo5/auditorias/v2/v2_validation_summary.json`.
+- `analyses/grupo5/auditorias/v2/V2_FINDINGS_FINAL.md`.
 
 Nenhum arquivo bruto local de `experiments/` foi adicionado.
 
@@ -63,4 +61,4 @@ Nenhum arquivo bruto local de `experiments/` foi adicionado.
 - Participantes e responsabilidades globais.
 - Conclusão consolidada das cinco bases.
 - Resultados das Bases 1-4 necessários para preencher a comparação e a conclusão global do PLS.
-- Decisão do grupo sobre o registro diário de demandas.
+- Conteúdo factual do registro diário de demandas; o consolidado contém apenas o template obrigatório.

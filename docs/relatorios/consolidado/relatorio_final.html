@@ -1,0 +1,532 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Séries Temporais — Relatório Final Consolidado</title><style>
+:root{--navy:#102d45;--blue:#185b78;--gold:#bd8b1d;--ink:#17242d;--muted:#5e6a73;--paper:#fff;--soft:#eef3f5;--pending:#8d4b2b}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#dfe6ea;color:var(--ink);font-family:Inter,"Segoe UI",Arial,sans-serif;line-height:1.5}
+nav{position:sticky;top:0;z-index:10;display:flex;gap:14px;overflow:auto;padding:10px 18px;background:rgba(16,45,69,.98);box-shadow:0 2px 12px #0003}nav a{color:#fff;text-decoration:none;white-space:nowrap;font-size:12px}nav a:hover{color:#f0cc6a}
+main{width:min(1160px,calc(100% - 30px));margin:22px auto 60px;background:var(--paper);box-shadow:0 10px 38px #22384a2c}
+section{padding:38px 56px 28px;min-height:620px;border-bottom:1px solid #dce2e5}.cover{min-height:78vh;display:flex;flex-direction:column;justify-content:center;background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;border-bottom:9px solid var(--gold)}
+.cover h1{font-size:48px;line-height:1.05;margin:0 0 18px;max-width:16ch}.cover h2{color:#f4d477;border:0;font-size:25px}.cover p{font-size:17px}.pls{background:linear-gradient(180deg,#fff,#f4f8fa)}
+h2{color:var(--navy);font-size:29px;border-bottom:3px solid var(--gold);padding-bottom:8px;margin:0 0 18px}p,ul,ol{max-width:94ch}table{border-collapse:collapse;width:100%;margin:18px 0 24px;font-size:13px}th{background:var(--navy);color:#fff;text-align:left}th,td{padding:9px;border:1px solid #d1d9de}tr:nth-child(even) td{background:#f5f7f8}
+.badge{display:inline-block;padding:6px 10px;border-radius:999px;margin:8px 6px 0 0;font-weight:700;font-size:12px}.badge.gold{background:#f4d477;color:#3d2c04}.badge.pending{background:#fff1e9;color:#743719}.callout,.pending-box{margin:22px 0;padding:15px 18px;border-left:5px solid var(--gold);background:#fff7df;max-width:94ch}.pending-box{border-color:var(--pending);background:#fff2eb}.flow{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin:28px 0;padding:22px;background:linear-gradient(135deg,#eef3f5,#fff7df);border:1px solid #d5dde1;border-radius:10px}.flow span{padding:12px 15px;background:#fff;border:2px solid var(--navy);border-radius:8px;font-weight:700;color:var(--navy)}.flow b{font-size:23px;color:var(--gold)}.formula{text-align:center;font-family:"Cambria Math",Cambria,serif;font-size:23px;margin:25px auto;padding:15px;background:#f1f5f7;border-left:4px solid var(--gold);max-width:70ch}code{background:#e9eef1;padding:2px 5px;border-radius:3px}footer{padding:24px 56px;color:var(--muted);font-size:12px}
+@media print{@page{size:A4;margin:15mm 14mm 16mm}body{background:#fff;font-size:10.5pt}nav{display:none}main{width:100%;margin:0;box-shadow:none}section{min-height:auto;border:0;break-before:page;padding:0 0 6mm}.cover{min-height:250mm}.cover h1{font-size:36pt}h2{font-size:19pt}table{font-size:8.4pt}table,.flow,.callout,.pending-box{break-inside:avoid}tr{break-inside:avoid}a{color:inherit;text-decoration:none}footer{padding:0}}
+</style></head><body><nav><a href="#s-ries-temporais-relat-rio-final-consolidado">Séries Temporais — Relatório Final Consolidado</a><a href="#1-resumo-executivo">1. Resumo executivo</a><a href="#2-integrantes-e-responsabilidades">2. Integrantes e responsabilidades</a><a href="#3-metodologia-comum">3. Metodologia comum</a><a href="#4-bases-da-atividade">4. Bases da atividade</a><a href="#5-aula-pls-regression-motiva-o">5. Aula — PLS Regression: motivação</a><a href="#5-1-multicolinearidade">5.1 Multicolinearidade</a><a href="#5-2-componentes-latentes">5.2 Componentes latentes</a><a href="#5-3-pls-pca">5.3 PLS × PCA</a><a href="#5-4-scaling-e-n-components">5.4 Scaling e `n_components`</a><a href="#5-5-pls-em-s-ries-temporais">5.5 PLS em séries temporais</a><a href="#5-6-walk-forward-e-leakage">5.6 Walk-forward e leakage</a><a href="#5-7-interpreta-o">5.7 Interpretação</a><a href="#5-8-compara-o-com-os-outros-modelos">5.8 Comparação com os outros modelos</a><a href="#6-aplica-o-do-pls-nas-cinco-bases">6. Aplicação do PLS nas cinco bases</a><a href="#7-compara-o-dos-quatro-modelos-nas-cinco-bases">7. Comparação dos quatro modelos nas cinco bases</a><a href="#8-resultados-mae-e-ranking-por-base">8. Resultados — MAE e ranking por base</a><a href="#9-ranking-geral-dos-modelos">9. Ranking geral dos modelos</a><a href="#10-res-duos-acf-e-ljung-box">10. Resíduos, ACF e Ljung-Box</a><a href="#11-feature-importance-e-interpretabilidade">11. Feature importance e interpretabilidade</a><a href="#12-conclus-es-dispon-veis">12. Conclusões disponíveis</a><a href="#13-limita-es-e-recomenda-es">13. Limitações e recomendações</a><a href="#14-refer-ncias-e-rastreabilidade">14. Referências e rastreabilidade</a></nav><main><section class="cover" id="s-ries-temporais-relat-rio-final-consolidado"><h1>Séries Temporais — Relatório Final Consolidado</h1>
+<h2>Quatro modelos, cinco bases e aula de PLS Regression</h2>
+<p><strong>Arquitetura de entrega — versão com Base Ouro concluída</strong></p>
+<p><span class="badge gold">Base 5 disponível</span>
+<span class="badge pending">Bases 1–4 pendentes</span>
+<span class="badge pending">Ranking global pendente</span></p>
+<p>Este documento é o material visual principal da apresentação. Campos pendentes
+são deliberados: nenhum resultado ausente foi estimado ou inventado.</p></section><section class="section" id="1-resumo-executivo"><h2>1. Resumo executivo</h2>
+<p>A atividade compara <strong>SARIMAX, Holt-Winters, Random Forest e PLS Regression</strong> em
+cinco séries temporais. Cada base deve ser julgada pelo próprio teste temporal;
+MAEs de escalas diferentes não são promediados diretamente.</p>
+<p>Até esta versão, apenas a <strong>Base 5 — Ouro</strong> está consolidada. Seu ranking oficial
+V1 é: Holt-Winters 11,5331; SARIMAX 11,5988; PLS 11,6002; Random Forest 14,2826.
+A persistência, 11,6377, é baseline diagnóstico e não integra o ranking.</p>
+<div class="callout">Conclusões globais, vitórias e posição média permanecem
+pendentes até a incorporação auditada das Bases 1–4.</div></section><section class="section" id="2-integrantes-e-responsabilidades"><h2>2. Integrantes e responsabilidades</h2>
+<div class="pending-box"><strong>PENDENTE — equipe global</strong><br>
+Inserir nomes, bases assumidas, responsável pela consolidação, responsável pela
+aula de PLS e responsável pela apresentação. Não preencher sem o registro oficial
+do grupo.</div>
+
+<table>
+<thead>
+<tr>
+<th>Responsabilidade</th>
+<th>Integrante</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base 1</td>
+<td>PENDENTE</td>
+<td>não informado</td>
+</tr>
+<tr>
+<td>Base 2</td>
+<td>PENDENTE</td>
+<td>não informado</td>
+</tr>
+<tr>
+<td>Base 3</td>
+<td>PENDENTE</td>
+<td>não informado</td>
+</tr>
+<tr>
+<td>Base 4</td>
+<td>PENDENTE</td>
+<td>não informado</td>
+</tr>
+<tr>
+<td>Base 5 — Ouro</td>
+<td>Grupo 5</td>
+<td>estudo de caso disponível</td>
+</tr>
+<tr>
+<td>Consolidação e apresentação</td>
+<td>PENDENTE</td>
+<td>não informado</td>
+</tr>
+</tbody>
+</table></section><section class="section" id="3-metodologia-comum"><h2>3. Metodologia comum</h2>
+<ol>
+<li>Ordenar cada série no tempo e fixar o horizonte de previsão.</li>
+<li>Construir features apenas com informação disponível na origem.</li>
+<li>Ajustar pré-processamento e modelo dentro de cada janela de treino.</li>
+<li>Selecionar hiperparâmetros na validação walk-forward.</li>
+<li>Congelar a especificação e avaliar o teste final uma única vez.</li>
+<li>Comparar os quatro modelos pelo MAE dentro da mesma base.</li>
+<li>Complementar o erro com resíduos, ACF, Ljung-Box e interpretabilidade.</li>
+</ol>
+<div class="flow"><span>treino</span><b>→</b><span>validação temporal</span><b>→</b><span>congelamento</span><b>→</b><span>teste final</span></div>
+
+<p>O teste final não escolhe features, componentes ou hiperparâmetros. Informações
+posteriores à origem não podem entrar no vetor preditor.</p></section><section class="section" id="4-bases-da-atividade"><h2>4. Bases da atividade</h2>
+<table>
+<thead>
+<tr>
+<th>Base</th>
+<th>Série/fonte</th>
+<th>Relatório local</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base 1</td>
+<td>PENDENTE</td>
+<td><code>../grupo1/</code></td>
+<td>não consolidada</td>
+</tr>
+<tr>
+<td>Base 2</td>
+<td>PENDENTE</td>
+<td><code>../grupo2/</code></td>
+<td>não consolidada</td>
+</tr>
+<tr>
+<td>Base 3</td>
+<td>PENDENTE</td>
+<td><code>../grupo3/</code></td>
+<td>não consolidada</td>
+</tr>
+<tr>
+<td>Base 4</td>
+<td>PENDENTE</td>
+<td><code>../grupo4/</code></td>
+<td>não consolidada</td>
+</tr>
+<tr>
+<td>Base 5 — Ouro</td>
+<td>preço do ouro; Bundesbank</td>
+<td><code>../grupo5/</code></td>
+<td>V1 oficial concluída</td>
+</tr>
+</tbody>
+</table>
+<p>Na Base Ouro, a série institucional é <code>BBEX3.D.XAU.USD.EA.AC.C05</code>; o protocolo
+registra a URL do arquivo usado e as séries externas. As demais fontes serão
+incluídas somente quando fornecidas pelos responsáveis.</p></section><section class="pls" id="5-aula-pls-regression-motiva-o"><h2>5. Aula — PLS Regression: motivação</h2>
+<p>A <strong>Partial Least Squares Regression (PLS)</strong> é útil quando há muitas variáveis
+explicativas correlacionadas e o objetivo é prever uma resposta contínua. Em vez
+de ajustar a regressão diretamente nas colunas originais, o método cria
+componentes latentes e regressa <code>y</code> nesses componentes.</p>
+<div class="flow"><span>features X</span><b>→</b><span>scaling</span><b>→</b><span>componentes T</span><b>→</b><span>previsão y</span></div>
+
+<p>A redução é <strong>supervisionada</strong>: a relação entre <code>X</code> e <code>y</code> participa da construção
+dos componentes.</p></section><section class="pls" id="5-1-multicolinearidade"><h2>5.1 Multicolinearidade</h2>
+<p>Em séries temporais, preço atual, lags e médias móveis frequentemente carregam
+informação parecida. Isso pode tornar coeficientes de uma regressão comum
+instáveis, mesmo quando a previsão é útil.</p>
+<table>
+<thead>
+<tr>
+<th>Sintoma</th>
+<th>Consequência</th>
+<th>Resposta da PLS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>features redundantes</td>
+<td>sinais sensíveis</td>
+<td>combina informação em componentes</td>
+</tr>
+<tr>
+<td>escalas diferentes</td>
+<td>uma unidade domina</td>
+<td>exige scaling coerente</td>
+</tr>
+<tr>
+<td>muitos preditores correlacionados</td>
+<td>interpretação difícil</td>
+<td>usa espaço latente menor</td>
+</tr>
+</tbody>
+</table>
+<p>PLS não transforma associação em causalidade e não elimina a validação.</p></section><section class="pls" id="5-2-componentes-latentes"><h2>5.2 Componentes latentes</h2>
+<p>Cada componente é uma combinação linear das features padronizadas:</p>
+<div class="formula">t<sub>k</sub> = X w<sub>k</sub></div>
+
+<p><code>w_k</code> contém pesos; <code>t_k</code> é o score do componente. Componentes sucessivos
+resumem informação ainda não capturada, buscando estrutura útil para a resposta.</p>
+<div class="callout">O componente é uma variável construída, não uma feature
+observada nem uma causa econômica.</div></section><section class="pls" id="5-3-pls-pca"><h2>5.3 PLS × PCA</h2>
+<table>
+<thead>
+<tr>
+<th>Critério</th>
+<th>PCA</th>
+<th>PLS Regression</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Usa <code>y</code> para formar componentes?</td>
+<td>não</td>
+<td>sim</td>
+</tr>
+<tr>
+<td>Objetivo</td>
+<td>explicar variação de <code>X</code></td>
+<td>prever <code>y</code> com estrutura de <code>X</code></td>
+</tr>
+<tr>
+<td>Redução</td>
+<td>não supervisionada</td>
+<td>supervisionada</td>
+</tr>
+<tr>
+<td>Maior variação</td>
+<td>pode ser pouco preditiva</td>
+<td>busca relevância para a resposta</td>
+</tr>
+</tbody>
+</table>
+<p>PCA e PLS respondem a perguntas diferentes. A escolha depende do objetivo, não
+apenas da quantidade de variância retida.</p></section><section class="pls" id="5-4-scaling-e-n-components"><h2>5.4 Scaling e <code>n_components</code></h2>
+<div class="formula">z = (x − μ<sub>treino</sub>) / σ<sub>treino</sub></div>
+
+<p>Média e desvio são estimados <strong>somente no treino</strong> de cada janela.
+<code>n_components</code> controla a dimensão latente: poucos componentes podem subajustar;
+muitos podem reintroduzir ruído. A escolha ocorre na validação temporal.</p>
+<div class="callout">Escolher 11 de 12 componentes não significa explicar
+91,7% da variância. Essa divisão conta dimensões e não mede variância explicada
+pela PLS.</div></section><section class="pls" id="5-5-pls-em-s-ries-temporais"><h2>5.5 PLS em séries temporais</h2>
+<p>Cada linha representa uma origem de previsão. Lags, janelas móveis, calendário e
+externas temporalmente válidas transformam a história em <code>X</code>.</p>
+<div class="flow"><span>história até t</span><b>→</b><span>features causais</span><b>→</b><span>PLS no passado</span><b>→</b><span>ŷ para t+h</span></div>
+
+<p>A PLS não modela automaticamente autocorrelação, sazonalidade ou estado
+temporal; essas estruturas precisam estar nas features e ser avaliadas fora da
+amostra.</p></section><section class="pls" id="5-6-walk-forward-e-leakage"><h2>5.6 Walk-forward e leakage</h2>
+<p>No walk-forward, a origem avança e o modelo é reestimado sem enxergar o futuro.
+O tuning compara candidatos apenas na validação; o teste final não decide
+componentes, features ou scaling.</p>
+<div class="flow"><span>passado</span><b>→</b><span>fit scaler + PLS</span><b>→</b><span>validação</span><b>→</b><span>congelar</span><b>→</b><span>teste</span></div>
+
+<p>Leakage inclui ajustar o scaler na série completa, usar janelas que contêm o alvo
+ou escolher <code>n_components</code> pelo MAE de teste.</p></section><section class="pls" id="5-7-interpreta-o"><h2>5.7 Interpretação</h2>
+<table>
+<thead>
+<tr>
+<th>Ferramenta</th>
+<th>O que responde</th>
+<th>Cuidado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>coeficiente padronizado</td>
+<td>direção no modelo</td>
+<td>colinearidade redistribui sinais</td>
+</tr>
+<tr>
+<td>VIP</td>
+<td>contribuição nos componentes</td>
+<td>limiar é heurístico</td>
+</tr>
+<tr>
+<td>permutation importance</td>
+<td>aumento do erro ao embaralhar</td>
+<td>correlacionadas dividem importância</td>
+</tr>
+</tbody>
+</table>
+<p>As leituras são complementares e descritivas. Concordância aumenta confiança;
+divergência pede cautela. Nenhuma delas estabelece causalidade.</p></section><section class="pls" id="5-8-compara-o-com-os-outros-modelos"><h2>5.8 Comparação com os outros modelos</h2>
+<table>
+<thead>
+<tr>
+<th>Modelo</th>
+<th>Força central</th>
+<th>Limitação típica</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PLS</td>
+<td>redução supervisionada com preditores correlacionados</td>
+<td>linearidade e dependência das features</td>
+</tr>
+<tr>
+<td>SARIMAX</td>
+<td>dinâmica temporal e estrutura de erros</td>
+<td>especificação das ordens</td>
+</tr>
+<tr>
+<td>Holt-Winters</td>
+<td>nível, tendência e sazonalidade univariada</td>
+<td>não usa exógenas</td>
+</tr>
+<tr>
+<td>Random Forest</td>
+<td>não linearidades e interações</td>
+<td>não extrapola naturalmente novos níveis</td>
+</tr>
+</tbody>
+</table>
+<p>Não existe vencedor universal. Alvo, horizonte, regime, features e protocolo
+determinam o desempenho fora da amostra.</p></section><section class="section" id="6-aplica-o-do-pls-nas-cinco-bases"><h2>6. Aplicação do PLS nas cinco bases</h2>
+<table>
+<thead>
+<tr>
+<th>Base</th>
+<th>Configuração PLS</th>
+<th style="text-align: right;">MAE oficial</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base 1</td>
+<td>PENDENTE</td>
+<td style="text-align: right;">—</td>
+<td>não consolidada</td>
+</tr>
+<tr>
+<td>Base 2</td>
+<td>PENDENTE</td>
+<td style="text-align: right;">—</td>
+<td>não consolidada</td>
+</tr>
+<tr>
+<td>Base 3</td>
+<td>PENDENTE</td>
+<td style="text-align: right;">—</td>
+<td>não consolidada</td>
+</tr>
+<tr>
+<td>Base 4</td>
+<td>PENDENTE</td>
+<td style="text-align: right;">—</td>
+<td>não consolidada</td>
+</tr>
+<tr>
+<td>Base 5 — Ouro</td>
+<td>12 features; <code>n_components=11</code>; horizonte 1</td>
+<td style="text-align: right;">11,6002</td>
+<td>V1 oficial</td>
+</tr>
+</tbody>
+</table>
+<p>No Ouro, a validação e o teste contêm 296 origens cada. O MAE de validação
+2,9701 e o MAE de teste 11,6002 pertencem a janelas temporais distintas, na
+mesma unidade. A mudança de regime e volatilidade contextualiza a diferença.</p></section><section class="section" id="7-compara-o-dos-quatro-modelos-nas-cinco-bases"><h2>7. Comparação dos quatro modelos nas cinco bases</h2>
+<table>
+<thead>
+<tr>
+<th>Base</th>
+<th style="text-align: right;">SARIMAX</th>
+<th style="text-align: right;">Holt-Winters</th>
+<th style="text-align: right;">Random Forest</th>
+<th style="text-align: right;">PLS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base 1</td>
+<td style="text-align: right;">PENDENTE</td>
+<td style="text-align: right;">PENDENTE</td>
+<td style="text-align: right;">PENDENTE</td>
+<td style="text-align: right;">PENDENTE</td>
+</tr>
+<tr>
+<td>Base 2</td>
+<td style="text-align: right;">PENDENTE</td>
+<td style="text-align: right;">PENDENTE</td>
+<td style="text-align: right;">PENDENTE</td>
+<td style="text-align: right;">PENDENTE</td>
+</tr>
+<tr>
+<td>Base 3</td>
+<td style="text-align: right;">PENDENTE</td>
+<td style="text-align: right;">PENDENTE</td>
+<td style="text-align: right;">PENDENTE</td>
+<td style="text-align: right;">PENDENTE</td>
+</tr>
+<tr>
+<td>Base 4</td>
+<td style="text-align: right;">PENDENTE</td>
+<td style="text-align: right;">PENDENTE</td>
+<td style="text-align: right;">PENDENTE</td>
+<td style="text-align: right;">PENDENTE</td>
+</tr>
+<tr>
+<td>Base 5 — Ouro</td>
+<td style="text-align: right;">11,5988</td>
+<td style="text-align: right;"><strong>11,5331</strong></td>
+<td style="text-align: right;">14,2826</td>
+<td style="text-align: right;">11,6002</td>
+</tr>
+</tbody>
+</table>
+<p>O Random Forest do Ouro teve dificuldade de extrapolação: no diagnóstico V2 A8,
+94,9% dos alvos de teste ficaram acima do máximo de treino. A V2 é explicativa e
+não substitui os resultados oficiais.</p></section><section class="section" id="8-resultados-mae-e-ranking-por-base"><h2>8. Resultados — MAE e ranking por base</h2>
+<table>
+<thead>
+<tr>
+<th>Base</th>
+<th>1º</th>
+<th>2º</th>
+<th>3º</th>
+<th>4º</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base 1</td>
+<td>PENDENTE</td>
+<td>PENDENTE</td>
+<td>PENDENTE</td>
+<td>PENDENTE</td>
+</tr>
+<tr>
+<td>Base 2</td>
+<td>PENDENTE</td>
+<td>PENDENTE</td>
+<td>PENDENTE</td>
+<td>PENDENTE</td>
+</tr>
+<tr>
+<td>Base 3</td>
+<td>PENDENTE</td>
+<td>PENDENTE</td>
+<td>PENDENTE</td>
+<td>PENDENTE</td>
+</tr>
+<tr>
+<td>Base 4</td>
+<td>PENDENTE</td>
+<td>PENDENTE</td>
+<td>PENDENTE</td>
+<td>PENDENTE</td>
+</tr>
+<tr>
+<td>Base 5 — Ouro</td>
+<td><strong>Holt-Winters — 11,5331</strong></td>
+<td>SARIMAX — 11,5988</td>
+<td>PLS — 11,6002</td>
+<td>Random Forest — 14,2826</td>
+</tr>
+</tbody>
+</table>
+<p>Persistência no Ouro: <strong>11,6377</strong>, usada como baseline diagnóstico e mantida fora
+do ranking dos quatro modelos.</p></section><section class="section" id="9-ranking-geral-dos-modelos"><h2>9. Ranking geral dos modelos</h2>
+<table>
+<thead>
+<tr>
+<th>Modelo</th>
+<th style="text-align: right;">Vitórias</th>
+<th style="text-align: right;">Posição média</th>
+<th style="text-align: right;">Ranking global</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SARIMAX</td>
+<td style="text-align: right;">PENDENTE</td>
+<td style="text-align: right;">PENDENTE</td>
+<td style="text-align: right;">PENDENTE</td>
+</tr>
+<tr>
+<td>Holt-Winters</td>
+<td style="text-align: right;">PENDENTE</td>
+<td style="text-align: right;">PENDENTE</td>
+<td style="text-align: right;">PENDENTE</td>
+</tr>
+<tr>
+<td>Random Forest</td>
+<td style="text-align: right;">PENDENTE</td>
+<td style="text-align: right;">PENDENTE</td>
+<td style="text-align: right;">PENDENTE</td>
+</tr>
+<tr>
+<td>PLS Regression</td>
+<td style="text-align: right;">PENDENTE</td>
+<td style="text-align: right;">PENDENTE</td>
+<td style="text-align: right;">PENDENTE</td>
+</tr>
+</tbody>
+</table>
+<div class="pending-box"><strong>NÃO CALCULADO.</strong> O ranking global exige
+as cinco bases. A comparação futura usará vitórias e posição média; não usará a
+média direta dos MAEs, pois as escalas e unidades podem ser diferentes.</div></section><section class="section" id="10-res-duos-acf-e-ljung-box"><h2>10. Resíduos, ACF e Ljung-Box</h2>
+<p>O diagnóstico residual deve acompanhar o MAE em cada base. Para o Ouro, a V1
+inclui resíduos completos, ACF e Ljung-Box. O PLS teve <strong>0 rejeições</strong> nos lags
+avaliados; isso indica ausência de evidência de autocorrelação residual nesses
+lags, não prova independência perfeita.</p>
+<table>
+<thead>
+<tr>
+<th>Base</th>
+<th>Resíduos/ACF/Ljung-Box</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bases 1–4</td>
+<td>PENDENTE</td>
+<td>não consolidado</td>
+</tr>
+<tr>
+<td>Base 5 — Ouro</td>
+<td>disponível no relatório local e apêndice</td>
+<td>concluído</td>
+</tr>
+</tbody>
+</table></section><section class="section" id="11-feature-importance-e-interpretabilidade"><h2>11. Feature importance e interpretabilidade</h2>
+<p>No Ouro, preço atual, lag 1, média móvel e lags 5/20 concentram a importância.
+A leitura é compatível com forte memória recente no horizonte 1, mas não é uma
+afirmação causal. A redundância entre features pode repartir importância.</p>
+<p>A V2 compara alvos <code>LEVEL</code>, <code>DELTA</code> e <code>LOG_RETURN</code>, ablation e drift. O menor MAE
+experimental foi RF/LOG_RETURN/A3, 11,2986, classificado como <code>INFORMATIVE</code>.
+Ele não altera o ranking oficial V1.</p></section><section class="section" id="12-conclus-es-dispon-veis"><h2>12. Conclusões disponíveis</h2>
+<p>Para a Base Ouro, Holt-Winters obteve o menor MAE oficial, seguido de SARIMAX e
+PLS com diferenças pequenas; Random Forest ficou atrás. O PLS foi competitivo e
+apresentou diagnóstico residual favorável, mas um único estudo de caso não
+estabelece superioridade geral.</p>
+<div class="pending-box"><strong>Conclusão global pendente.</strong> Não é
+possível afirmar qual modelo vence a atividade, quantas vitórias cada um tem ou
+qual é sua posição média antes das Bases 1–4.</div></section><section class="section" id="13-limita-es-e-recomenda-es"><h2>13. Limitações e recomendações</h2>
+<ul>
+<li>quatro bases ainda não foram incorporadas ao consolidado;</li>
+<li>MAE depende de escala, horizonte e regime da série;</li>
+<li>a leitura de importância não é causal;</li>
+<li>árvores não extrapolam naturalmente regimes de nível inéditos;</li>
+<li>o diagnóstico V2 do Ouro é complementar, com
+  <code>PASS_WITH_METADATA_RECONCILIATION_REQUIRED</code> para <code>target_date</code>;</li>
+<li>a reconciliação corrige rótulo/metadado e não altera previsões ou MAEs;</li>
+<li>cada nova base deve entrar com protocolo, tabela de MAE, resíduos, referências
+  e rastreabilidade equivalentes.</li>
+</ul></section><section class="section" id="14-refer-ncias-e-rastreabilidade"><h2>14. Referências e rastreabilidade</h2>
+<p>As referências consolidadas estão em <code>referencias.md</code>; as fontes completas do
+Ouro, em <code>../grupo5/referencias.md</code>. O arquivo <code>resultados_mae.csv</code> mantém as 20
+combinações base-modelo, com placeholders explícitos para resultados ausentes.</p>
+<p>O apêndice técnico está em <code>apendice_tecnico.md</code> e o registro diário em
+<code>registro_demandas.md</code>. A fonte deste material é <code>relatorio_final.ipynb</code>.</p>
+<div class="callout">Versão atual: arquitetura pronta para integração; conteúdo
+global ainda incompleto por dependência das Bases 1–4 e da equipe.</div></section><footer>Relatório consolidado — Base Ouro concluída; Bases 1–4 e ranking global pendentes.</footer></main></body></html>
