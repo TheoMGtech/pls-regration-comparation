@@ -1,0 +1,4 @@
+estação,arquivo,linhas,início,fim,PM2.5_ausente,timestamps_fora_da_série_alvo,duplicidades_temporais,política_de_uso
+Changping,PRSA_Data_Changping_20130301-20170228.csv,35064,2013-03-01,2017-02-28 23:00:00,774,0,0,Somente medições no instante da origem ou anteriores
+Guanyuan,PRSA_Data_Guanyuan_20130301-20170228.csv,35064,2013-03-01,2017-02-28 23:00:00,616,0,0,Somente medições no instante da origem ou anteriores
+Wanliu,PRSA_Data_Wanliu_20130301-20170228.csv,35064,2013-03-01,2017-02-28 23:00:00,382,0,0,Somente medições no instante da origem ou anteriores

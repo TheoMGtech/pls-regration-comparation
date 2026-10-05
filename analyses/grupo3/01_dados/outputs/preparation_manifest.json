@@ -1,0 +1,47 @@
+{
+  "source": "https://archive.ics.uci.edu/dataset/501/beijing+multi+site+air+quality+data",
+  "input_files": [
+    "bases/grupo3/PRSA_Data_Aotizhongxin_20130301-20170228.csv",
+    "bases/grupo3/externas/PRSA_Data_Changping_20130301-20170228.csv",
+    "bases/grupo3/externas/PRSA_Data_Guanyuan_20130301-20170228.csv",
+    "bases/grupo3/externas/PRSA_Data_Wanliu_20130301-20170228.csv"
+  ],
+  "output_file": "analyses/grupo3/01_dados/outputs/prepared_base3.csv",
+  "target": "target_pm25",
+  "target_source": "Aotizhongxin.PM2.5",
+  "rows": 35064,
+  "columns": 103,
+  "time_start": "2013-03-01 00:00:00",
+  "time_end": "2017-02-28 23:00:00",
+  "frequency": "1 hour",
+  "duplicates_removed": 0,
+  "missing_slots_added": 0,
+  "missing_target_preserved": 925,
+  "imputation": {
+    "method": "forward fill only",
+    "direction": "past to future",
+    "target_imputed": false,
+    "predictors_imputed": true,
+    "initial_missing_values_preserved": true,
+    "backfill": false,
+    "interpolation": false
+  },
+  "outliers": {
+    "action": "preserved and flagged in Phase 1; no removal or winsorization",
+    "iqr_used_for_removal": false
+  },
+  "feature_engineering_deferred": true,
+  "random_state": 42,
+  "forecast_horizon_hours": 1,
+  "transformations": [
+    "timestamp constructed from year/month/day/hour",
+    "numeric and categorical types standardized",
+    "records sorted chronologically",
+    "all stations reindexed to the complete hourly grid",
+    "raw missingness flags retained",
+    "predictor missingness filled causally with ffill",
+    "target PM2.5 left unimputed",
+    "station columns prefixed to avoid ambiguity",
+    "calendar columns added"
+  ]
+}

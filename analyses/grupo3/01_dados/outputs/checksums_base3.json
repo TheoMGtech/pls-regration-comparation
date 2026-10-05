@@ -1,0 +1,18 @@
+[
+  {
+    "arquivo": "bases/grupo3/PRSA_Data_Aotizhongxin_20130301-20170228.csv",
+    "sha256": "a94fbcfc71708b6ffdc033360163d91efb7f675e496f6b5860929aa96b96351b"
+  },
+  {
+    "arquivo": "bases/grupo3/externas/PRSA_Data_Changping_20130301-20170228.csv",
+    "sha256": "a2e21402a6d95fb7043f87959e6e3dcbecb957aac356a6f8028a85b047c772e7"
+  },
+  {
+    "arquivo": "bases/grupo3/externas/PRSA_Data_Guanyuan_20130301-20170228.csv",
+    "sha256": "59390fee3b032597b387491f5230e7edb90a8558e30217ebd6d9befbe669fbf9"
+  },
+  {
+    "arquivo": "bases/grupo3/externas/PRSA_Data_Wanliu_20130301-20170228.csv",
+    "sha256": "0b1a6d754a07f0def2f55434ddfa3870dcd0063b7f766a6f66b6c11bb05a377a"
+  }
+]

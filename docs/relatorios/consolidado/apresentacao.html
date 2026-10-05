@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PLS Regression — comparação de cinco séries temporais</title>
+  <style>
+    :root {
+      --navy: #071a33;
+      --blue: #0d47a1;
+      --blue-2: #1565c0;
+      --cyan: #29b6f6;
+      --ice: #eaf4ff;
+      --white: #ffffff;
+      --muted: #a9bdd6;
+      --line: rgba(166, 211, 255, .24);
+      --gold: #ffd166;
+      --green: #78e08f;
+      --red: #ff8a80;
+      --shadow: 0 18px 55px rgba(0, 0, 0, .22);
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; background: var(--navy); color: var(--white); }
+    body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; overflow: hidden; }
+    button { font: inherit; }
+    .deck { width: 100vw; height: 100vh; position: relative; background:
+      radial-gradient(circle at 85% 12%, rgba(41,182,246,.18), transparent 26%),
+      radial-gradient(circle at 8% 90%, rgba(21,101,192,.22), transparent 32%),
+      var(--navy); }
+    .slide {
+      display: none; width: 100%; height: 100%; padding: 6.2vh 7vw 8vh;
+      position: relative; overflow: hidden;
+    }
+    .slide.active { display: block; }
+    .slide::before {
+      content: ""; position: absolute; left: 0; top: 0; width: 100%; height: 7px;
+      background: linear-gradient(90deg, var(--cyan), var(--blue-2), transparent 85%);
+    }
+    .slide::after {
+      content: ""; position: absolute; right: -12vw; bottom: -22vh; width: 40vw; height: 40vw;
+      border: 1px solid rgba(41,182,246,.12); border-radius: 50%; pointer-events: none;
+    }
+    .cover { display: none; align-items: center; justify-content: center; text-align: center; padding: 8vh 10vw; }
+    .cover.active { display: flex; }
+    .cover .inner { max-width: 1050px; position: relative; z-index: 1; }
+    .eyebrow { color: var(--cyan); font-size: clamp(12px, 1.4vw, 18px); letter-spacing: .16em; text-transform: uppercase; font-weight: 800; margin-bottom: 2.2vh; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { font-size: clamp(34px, 5.1vw, 76px); line-height: 1.02; letter-spacing: -.045em; margin-bottom: 2.8vh; }
+    h2 { font-size: clamp(25px, 3.2vw, 48px); line-height: 1.08; letter-spacing: -.03em; margin-bottom: 2.4vh; }
+    h3 { font-size: clamp(16px, 1.45vw, 23px); color: var(--ice); margin-bottom: 1.2vh; }
+    .subtitle { color: var(--muted); font-size: clamp(15px, 1.55vw, 24px); line-height: 1.4; }
+    .cover .names { margin: 4.8vh auto 0; display: flex; flex-wrap: wrap; gap: 9px; justify-content: center; color: var(--ice); font-size: clamp(13px, 1.25vw, 18px); }
+    .cover .names span { border: 1px solid var(--line); background: rgba(13,71,161,.32); padding: 9px 14px; border-radius: 999px; }
+    .date { margin-top: 4vh; color: var(--muted); font-size: 14px; }
+    .kicker { color: var(--cyan); font-size: clamp(11px, 1vw, 15px); letter-spacing: .12em; text-transform: uppercase; font-weight: 800; margin-bottom: 1.2vh; }
+    .lead { max-width: 1000px; color: var(--ice); font-size: clamp(17px, 1.65vw, 25px); line-height: 1.35; }
+    .small { color: var(--muted); font-size: clamp(11px, .95vw, 15px); line-height: 1.4; }
+    .grid { display: grid; gap: 18px; }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .card {
+      background: linear-gradient(145deg, rgba(21,101,192,.32), rgba(6,27,57,.72));
+      border: 1px solid var(--line); border-radius: 18px; padding: 20px 22px;
+      box-shadow: var(--shadow);
+    }
+    .card.soft { background: rgba(234,244,255,.07); box-shadow: none; }
+    .card p:last-child { margin-bottom: 0; }
+    .metric { font-size: clamp(28px, 3.2vw, 50px); font-weight: 850; letter-spacing: -.04em; color: var(--white); }
+    .metric-label { margin-top: 5px; color: var(--muted); font-size: clamp(11px, 1vw, 15px); line-height: 1.3; }
+    .accent { color: var(--cyan); }
+    .gold { color: var(--gold); }
+    .green { color: var(--green); }
+    .red { color: var(--red); }
+    .pill { display: inline-block; border: 1px solid var(--line); border-radius: 999px; padding: 5px 9px; color: var(--ice); font-size: 12px; margin: 2px 3px 2px 0; }
+    .model { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid rgba(166,211,255,.14); }
+    .model:last-child { border-bottom: 0; }
+    .model-name { font-weight: 750; }
+    .model-value { color: var(--cyan); font-weight: 800; white-space: nowrap; }
+    .bar-row { display: grid; grid-template-columns: 128px 1fr 80px; gap: 10px; align-items: center; margin: 12px 0; font-size: 14px; }
+    .bar { height: 13px; border-radius: 999px; background: rgba(255,255,255,.12); overflow: hidden; }
+    .bar i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--cyan), var(--blue-2)); }
+    .rank-list { counter-reset: rank; }
+    .rank-item { display: grid; grid-template-columns: 42px 1fr auto; gap: 12px; align-items: center; padding: 11px 0; border-bottom: 1px solid rgba(166,211,255,.14); }
+    .rank-item::before { counter-increment: rank; content: counter(rank); width: 30px; height: 30px; display: grid; place-items: center; border-radius: 50%; background: var(--blue-2); font-weight: 900; }
+    .rank-item:first-child::before { background: var(--gold); color: var(--navy); }
+    .rank-item .mae { color: var(--cyan); font-weight: 800; }
+    .bullet { padding-left: 21px; position: relative; margin: 9px 0; color: var(--ice); line-height: 1.35; font-size: clamp(13px, 1.1vw, 17px); }
+    .bullet::before { content: ""; position: absolute; left: 0; top: .55em; width: 7px; height: 7px; border-radius: 50%; background: var(--cyan); }
+    .two-col { display: grid; grid-template-columns: 1.12fr .88fr; gap: 24px; align-items: start; }
+    .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; align-items: start; }
+    .image-card { padding: 10px; background: rgba(255,255,255,.94); border-radius: 16px; }
+    .image-card img { display: block; width: 100%; max-height: 30vh; object-fit: contain; border-radius: 10px; }
+    .image-caption { color: #41627f; font-size: 11px; padding: 7px 3px 0; text-align: center; }
+    .quote { border-left: 4px solid var(--cyan); padding: 13px 18px; background: rgba(41,182,246,.08); color: var(--ice); font-size: clamp(15px, 1.35vw, 21px); line-height: 1.35; }
+    .footer { position: absolute; left: 7vw; right: 7vw; bottom: 3.2vh; display: flex; justify-content: space-between; color: var(--muted); font-size: 12px; z-index: 3; }
+    .controls { position: fixed; right: 24px; bottom: 20px; z-index: 20; display: flex; gap: 7px; }
+    .controls button { border: 1px solid var(--line); background: rgba(7,26,51,.82); color: var(--white); width: 38px; height: 34px; border-radius: 9px; cursor: pointer; }
+    .controls button:hover { background: var(--blue-2); }
+    .progress { position: fixed; left: 0; bottom: 0; height: 4px; background: var(--cyan); z-index: 20; transition: width .25s ease; }
+    .note { font-size: 11px; color: var(--muted); margin-top: 8px; }
+    .source { color: var(--muted); font-size: 10px; margin-top: 12px; }
+    .source code { color: #c5e6ff; }
+    .global-table { width: 100%; border-collapse: collapse; margin-top: 3vh; font-size: clamp(11px, 1vw, 15px); }
+    .global-table th, .global-table td { padding: 8px 10px; border-bottom: 1px solid rgba(166,211,255,.16); text-align: center; }
+    .global-table th { color: var(--cyan); font-weight: 800; }
+    .global-table td:first-child, .global-table th:first-child { text-align: left; }
+    .global-table tr:first-child td { color: var(--gold); }
+    .footer strong { color: var(--ice); }
+    @media (max-width: 850px) {
+      body { overflow: auto; }
+      .deck, .slide { min-height: 100vh; height: auto; }
+      .slide { padding: 7vh 6vw 11vh; }
+      .grid-3, .grid-4, .grid-2, .two-col, .three-col { grid-template-columns: 1fr; }
+      .bar-row { grid-template-columns: 105px 1fr 65px; }
+      .slide::after { display: none; }
+    }
+  </style>
+</head>
+<body>
+<main class="deck" aria-live="polite">
+  <section class="slide cover active" data-title="Capa">
+    <div class="inner">
+      <div class="eyebrow">Séries temporais · Grupo 5 · PLS Regression</div>
+      <h1>Como preparamos e comparamos cinco séries temporais</h1>
+      <p class="subtitle">Quatro previsores, protocolo walk-forward e leitura crítica dos resultados</p>
+      <div class="names">
+        <span>Raquel Tolomei</span><span>Theo Correia Martins</span>
+        <span>Guilherme Nacarelli Pinheiro</span><span>Bruna Carvalho Cardoso</span>
+        <span>Letícia Nascimento da Silva</span>
+      </div>
+      <p class="date">Apresentação · Outubro de 2026</p>
+    </div>
+    <div class="footer"><span>Use ← → ou clique nos controles</span><span>01</span></div>
+  </section>
+
+  <section class="slide" data-title="Resumo executivo">
+    <div class="kicker">Visão geral</div><h2>Resumo executivo</h2>
+    <p class="lead">O resultado não tem um vencedor universal: o desempenho depende da estrutura de cada série.</p>
+    <div class="grid grid-4" style="margin-top:4vh">
+      <div class="card"><div class="metric gold">2</div><div class="metric-label">vitórias do Holt-Winters</div><p class="small">Bitcoin e ouro</p></div>
+      <div class="card"><div class="metric accent">2</div><div class="metric-label">vitórias do Random Forest</div><p class="small">PM2.5 e tráfego</p></div>
+      <div class="card"><div class="metric green">1</div><div class="metric-label">vitória do PLS</div><p class="small">Temperatura de Jena</p></div>
+      <div class="card"><div class="metric">0</div><div class="metric-label">vitórias do SARIMAX</div><p class="small">mas segundo em três bases</p></div>
+    </div>
+    <div class="quote" style="margin-top:4vh">O MAE é comparado dentro de cada base. Não calculamos média direta de MAEs entre bases, porque as unidades são diferentes.</div>
+    <div class="footer"><span>Resumo executivo</span><span>02</span></div>
+  </section>
+
+  <section class="slide" data-title="Integrantes">
+    <div class="kicker">Equipe</div><h2>Integrantes e responsabilidades</h2>
+    <div class="two-col">
+      <div class="card">
+        <h3>Integrantes</h3>
+        <div class="model"><span class="model-name">Raquel Tolomei</span><span class="pill">Grupo 5</span></div>
+        <div class="model"><span class="model-name">Theo Correia Martins</span><span class="pill">Grupo 5</span></div>
+        <div class="model"><span class="model-name">Guilherme Nacarelli Pinheiro</span><span class="pill">Grupo 5</span></div>
+        <div class="model"><span class="model-name">Bruna Carvalho Cardoso</span><span class="pill">Grupo 5</span></div>
+        <div class="model"><span class="model-name">Letícia Nascimento da Silva</span><span class="pill">Grupo 5</span></div>
+      </div>
+      <div class="card">
+        <h3>Registro disponível</h3>
+        <p class="bullet"><strong>Bruna Carvalho Cardoso:</strong> responsabilidade técnica documentada pela Base 2 — tráfego da I-94, incluindo documentação, limpeza, features, STL, modelos, resíduos, PLS e relatório da base.</p>
+        <p class="bullet"><strong>Demais integrantes:</strong> os arquivos disponíveis não registram uma divisão individual confiável. Por isso, não atribuímos tarefas específicas sem evidência.</p>
+        <p class="note">A apresentação não inclui registro diário de demandas.</p>
+      </div>
+    </div>
+    <div class="footer"><span>Equipe e transparência documental</span><span>03</span></div>
+  </section>
+
+  <section class="slide" data-title="Metodologia">
+    <div class="kicker">Protocolo comum</div><h2>Metodologia comum</h2>
+    <div class="grid grid-4">
+      <div class="card"><h3>1 · Preparação</h3><p class="small">Fonte, qualidade, ausências, duplicidades, irregularidades, atípicos e transformação.</p></div>
+      <div class="card"><h3>2 · Features</h3><p class="small">Lags, janelas móveis, calendário e encoding cíclico, sempre sem informação futura.</p></div>
+      <div class="card"><h3>3 · Seleção</h3><p class="small">Busca temporal no desenvolvimento. O teste não escolhe hiperparâmetros.</p></div>
+      <div class="card"><h3>4 · Avaliação</h3><p class="small">Walk-forward de um passo, quatro modelos nas mesmas origens de cada base.</p></div>
+    </div>
+    <div class="two-col" style="margin-top:4vh">
+      <div class="card soft"><h3>Modelos comparados</h3><p class="pill">SARIMAX + externas</p><p class="pill">Holt-Winters univariado</p><p class="pill">Random Forest + externas</p><p class="pill">PLS Regression</p></div>
+      <div class="card soft"><h3>Métrica</h3><div class="metric accent">MAE</div><p class="small">Menor erro absoluto médio = melhor posição dentro da base.</p></div>
+    </div>
+    <div class="footer"><span>Horizonte: um passo em todas as bases</span><span>04</span></div>
+  </section>
+
+  <section class="slide" data-title="Bases">
+    <div class="kicker">Cinco séries</div><h2>Bases analisadas</h2>
+    <div class="grid grid-5 grid-3">
+      <div class="card"><div class="kicker">Base 1</div><h3>Bitcoin</h3><p class="small">CoinMarketCap · diário · USD</p><span class="pill">856 origens comuns</span></div>
+      <div class="card"><div class="kicker">Base 2</div><h3>Tráfego I-94</h3><p class="small">UCI / MNDoT · horário · veículos/h</p><span class="pill">521 origens</span></div>
+      <div class="card"><div class="kicker">Base 3</div><h3>PM2.5</h3><p class="small">UCI Aotizhongxin · horário · µg/m³</p><span class="pill">6.023 origens</span></div>
+      <div class="card"><div class="kicker">Base 4</div><h3>Jena</h3><p class="small">Max Planck · horário · °C</p><span class="pill">14.026 origens</span></div>
+      <div class="card"><div class="kicker">Base 5</div><h3>Ouro</h3><p class="small">Bundesbank · mercado · USD/onça</p><span class="pill">296 origens</span></div>
+    </div>
+    <p class="source">Cada base possui seu próprio protocolo temporal; os rankings são internos à escala da série.</p>
+    <div class="footer"><span>As pastas grupo1–grupo5 representam as cinco bases</span><span>05</span></div>
+  </section>
+
+  <section class="slide" data-title="Base 1">
+    <div class="kicker">Base 1 · Bitcoin</div><h2>Bitcoin: nível e tendência dominam</h2>
+    <div class="two-col">
+      <div class="card">
+        <h3>Documentação</h3>
+        <p class="bullet">Fonte: CoinMarketCap, fechamento diário <strong>priceClose</strong>.</p>
+        <p class="bullet">Alvo: fechamento do dia seguinte, em USD.</p>
+        <p class="bullet">Matriz tabular com <strong>51 atributos</strong>: lags, volume, retornos, janelas e calendário.</p>
+        <p class="bullet">Comparação comum: <strong>856 dias</strong>, de 09/05/2024 a 11/09/2026.</p>
+      </div>
+      <div class="card">
+        <h3>STL e leitura</h3>
+        <div class="bar-row"><span>Fs · 7 dias</span><div class="bar"><i style="width:0%"></i></div><b>0,000</b></div>
+        <div class="bar-row"><span>Fs · 30 dias</span><div class="bar"><i style="width:0%"></i></div><b>0,000</b></div>
+        <div class="bar-row"><span>Ft · 7 dias</span><div class="bar"><i style="width:99.67%"></i></div><b>0,997</b></div>
+        <p class="small">A tendência absorve o movimento lento; a sazonalidade medida não domina a previsão.</p>
+      </div>
+    </div>
+    <div class="card soft" style="margin-top:3vh"><h3>Decisões críticas</h3><p class="small">Cinco lacunas de 2023 foram interpoladas linearmente após a reindexação diária. O teste foi comparado somente na janela comum aos quatro modelos. Nenhum MAE entre bases foi agregado.</p></div>
+    <div class="footer"><span>Base 1 de 5</span><span>06</span></div>
+  </section>
+
+  <section class="slide" data-title="Base 2">
+    <div class="kicker">Base 2 · Tráfego I-94</div><h2>Tráfego: calendário e lags horários</h2>
+    <div class="two-col">
+      <div class="card">
+        <h3>Documentação</h3>
+        <p class="bullet">UCI, MNDoT e Weather Underground; volume horário em veículos/h.</p>
+        <p class="bullet">7.629 timestamps duplicados; maior lacuna: 7.387 horas, não interpolada.</p>
+        <p class="bullet">Segmento modelado posterior à lacuna; 2.295 horas internas imputadas causalmente.</p>
+        <p class="bullet"><strong>36 features</strong>; PLS vencedor usa 32, sem clima.</p>
+      </div>
+      <div class="card">
+        <h3>STL</h3>
+        <div class="metric accent">0,8061</div><div class="metric-label">força sazonal · 24 horas</div>
+        <p class="small" style="margin-top:14px">A tendência ficou estável: cerca de 3.463 veículos/h no início e 3.451 no fim.</p>
+        <p class="small">Teste: 521 origens, passo de 11 horas.</p>
+      </div>
+    </div>
+    <div class="image-card" style="margin-top:3vh"><img src="../../../analyses/grupo2/outputs/figures/01_serie_alvo.png" alt="Série do volume de tráfego"><div class="image-caption">Volume horário modelado na I-94</div></div>
+    <div class="footer"><span>Base 2 de 5</span><span>07</span></div>
+  </section>
+
+  <section class="slide" data-title="Base 3">
+    <div class="kicker">Base 3 · PM2.5</div><h2>PM2.5: concentração recente e hora do dia</h2>
+    <div class="two-col">
+      <div class="card">
+        <h3>Documentação</h3>
+        <p class="bullet">UCI Beijing Multi-Site Air-Quality, estação Aotizhongxin.</p>
+        <p class="bullet">Alvo horário em µg/m³; 925 ausências do alvo foram preservadas.</p>
+        <p class="bullet"><strong>17 features</strong>: lags, médias móveis, meteorologia e estações vizinhas.</p>
+        <p class="bullet">Teste com <strong>6.023 horas</strong>; previsões negativas foram cortadas em zero.</p>
+      </div>
+      <div class="card">
+        <h3>STL</h3>
+        <div class="bar-row"><span>Fs · 24 h</span><div class="bar"><i style="width:1.3%"></i></div><b>0,013</b></div>
+        <div class="bar-row"><span>Fs · 168 h</span><div class="bar"><i style="width:7.08%"></i></div><b>0,071</b></div>
+        <p class="small">A sazonalidade medida é fraca; o valor recente da concentração é mais informativo.</p>
+      </div>
+    </div>
+    <div class="image-card" style="margin-top:3vh"><img src="../../../analyses/grupo3/01_dados/outputs/eda/evolucao_temporal_pm25.png" alt="Evolução temporal do PM2.5"><div class="image-caption">Evolução temporal do PM2.5 em Aotizhongxin</div></div>
+    <div class="footer"><span>Base 3 de 5</span><span>08</span></div>
+  </section>
+
+  <section class="slide" data-title="Base 4">
+    <div class="kicker">Base 4 · Jena</div><h2>Jena: ciclo diário e meteorologia</h2>
+    <div class="two-col">
+      <div class="card">
+        <h3>Documentação</h3>
+        <p class="bullet">Max-Planck-Institut; medições de 10 minutos agregadas para hora.</p>
+        <p class="bullet">Alvo: temperatura do ar em °C, uma hora à frente.</p>
+        <p class="bullet"><strong>46 features</strong>: lags, diferenças, janelas e externas defasadas.</p>
+        <p class="bullet">Teste reservado: <strong>14.026 horas</strong>, em 42 blocos.</p>
+      </div>
+      <div class="card">
+        <h3>STL</h3>
+        <div class="bar-row"><span>Fs · 24 h</span><div class="bar"><i style="width:68.6%"></i></div><b>0,686</b></div>
+        <div class="bar-row"><span>Ft · 24 h</span><div class="bar"><i style="width:95.3%"></i></div><b>0,953</b></div>
+        <p class="small">O ciclo diário e a meteorologia defasada ajudam a explicar o próximo valor.</p>
+      </div>
+    </div>
+    <div class="quote" style="margin-top:3vh">A auditoria de causalidade foi aprovada em cinco origens: alterar o futuro não modifica as features da origem.</div>
+    <div class="footer"><span>Base 4 de 5</span><span>09</span></div>
+  </section>
+
+  <section class="slide" data-title="Base 5">
+    <div class="kicker">Base 5 · Ouro</div><h2>Ouro: série de mercado e pouca sazonalidade</h2>
+    <div class="two-col">
+      <div class="card">
+        <h3>Documentação</h3>
+        <p class="bullet">Fixing da tarde em Londres, série do Deutsche Bundesbank.</p>
+        <p class="bullet">USD por onça fina; 9.864 observações modeláveis.</p>
+        <p class="bullet"><strong>12 features</strong>: preço, lags, janelas, Treasury, Fed Funds e calendário cíclico.</p>
+        <p class="bullet">Teste: <strong>296 origens</strong>, a cada 5 observações de mercado.</p>
+      </div>
+      <div class="card">
+        <h3>STL</h3>
+        <div class="bar-row"><span>Fs · 5 obs.</span><div class="bar"><i style="width:0%"></i></div><b>0,000</b></div>
+        <div class="bar-row"><span>Fs · 20 obs.</span><div class="bar"><i style="width:0%"></i></div><b>0,000</b></div>
+        <div class="bar-row"><span>Ft · 5 obs.</span><div class="bar"><i style="width:99.8%"></i></div><b>0,998</b></div>
+        <p class="small">A configuração final manteve período 5 por decisão de validação, apesar da Fs nula.</p>
+      </div>
+    </div>
+    <div class="image-card" style="margin-top:3vh"><img src="../../../analyses/grupo5/outputs/graficos/gold_price_full.png" alt="Preço do ouro"><div class="image-caption">Preço diário do ouro utilizado na modelagem</div></div>
+    <div class="footer"><span>Base 5 de 5</span><span>10</span></div>
+  </section>
+
+  <section class="slide" data-title="Aula — PLS">
+    <div class="kicker">Aula</div><h2>PLS Regression: o modelo de especialização</h2>
+    <div class="three-col">
+      <div class="card"><h3>Problema</h3><p class="small">Muitos lags e externas repetem a mesma informação. A colinearidade torna uma regressão comum instável.</p></div>
+      <div class="card"><h3>Ideia</h3><p class="small">Construir componentes lineares que maximizam a covariância entre os preditores e o alvo.</p></div>
+      <div class="card"><h3>Resultado</h3><p class="small">Regredir o alvo em poucas componentes, com padronização e escolha temporal do número de componentes.</p></div>
+    </div>
+    <div class="quote" style="margin-top:4vh">PLS não é PCA sobre X: cada componente é orientada também por Y. É por isso que ele resume colunas colineares sem ignorar o alvo.</div>
+    <div class="grid grid-3" style="margin-top:4vh">
+      <div class="card soft"><h3>Vantagens</h3><p class="small">Colinearidade, VIP, coeficientes e boa velocidade.</p></div>
+      <div class="card soft"><h3>Hipóteses</h3><p class="small">Relação linear nas componentes; features disponíveis na origem.</p></div>
+      <div class="card soft"><h3>Limitações</h3><p class="small">Não captura bem limiares e interações não lineares.</p></div>
+    </div>
+    <div class="footer"><span>PLS Regression</span><span>11</span></div>
+  </section>
+
+  <section class="slide" data-title="PLS nas bases">
+    <div class="kicker">Especialização</div><h2>Aplicação do PLS nas cinco bases</h2>
+    <div class="grid grid-5 grid-3">
+      <div class="card"><h3>Bitcoin</h3><div class="metric">9</div><div class="metric-label">componentes · 51 atributos</div><p class="small">MAE 2.608,61 · 4º</p></div>
+      <div class="card"><h3>PM2.5</h3><div class="metric">14</div><div class="metric-label">componentes · 17 atributos</div><p class="small">MAE 9,6643 · 2º</p></div>
+      <div class="card"><h3>Jena</h3><div class="metric">40</div><div class="metric-label">componentes · 46 atributos</div><p class="small">MAE 0,3983 · 1º</p></div>
+      <div class="card"><h3>Ouro</h3><div class="metric">11</div><div class="metric-label">componentes · 12 atributos</div><p class="small">MAE 11,6002 · 3º</p></div>
+      <div class="card"><h3>Tráfego</h3><div class="metric">15</div><div class="metric-label">componentes · 32 sem clima</div><p class="small">MAE 191,70 · 2º</p></div>
+    </div>
+    <p class="lead" style="margin-top:4vh">O PLS venceu Jena, ficou próximo do Random Forest no PM2.5 e no tráfego, e perdeu para modelos mais simples nas séries de preço.</p>
+    <div class="footer"><span>Seleção por menor MAE de validação temporal</span><span>12</span></div>
+  </section>
+
+  <section class="slide" data-title="Comparação dos modelos">
+    <div class="kicker">Comparação</div><h2>Quatro modelos, cinco estruturas</h2>
+    <div class="grid grid-4">
+      <div class="card"><h3>Holt-Winters</h3><p class="small">Referência univariada. Forte em níveis de preço; depende da configuração sazonal.</p><span class="pill gold">2 vitórias</span></div>
+      <div class="card"><h3>SARIMAX</h3><p class="small">Linear, com externas. Estável em segundo lugar, mas custoso no tráfego.</p><span class="pill">0 vitórias</span></div>
+      <div class="card"><h3>Random Forest</h3><p class="small">Não linear. Forte quando lags e calendário formam regras locais.</p><span class="pill">2 vitórias</span></div>
+      <div class="card"><h3>PLS</h3><p class="small">Linear nas componentes. Forte com colinearidade e externas informativas.</p><span class="pill green">1 vitória</span></div>
+    </div>
+    <div class="card soft" style="margin-top:4vh">
+      <h3>Leitura crítica</h3>
+      <p class="bullet">Preço: o último nível observado é difícil de superar em um passo.</p>
+      <p class="bullet">Jena: ciclo diário e meteorologia dão espaço para o PLS.</p>
+      <p class="bullet">Tráfego: lags 1, 168 e 336 dominam; a árvore captura relações locais.</p>
+      <p class="bullet">PM2.5: Random Forest e PLS ficam muito próximos.</p>
+    </div>
+    <div class="footer"><span>O melhor modelo depende da base</span><span>13</span></div>
+  </section>
+
+  <section class="slide" data-title="Ranking — Bitcoin">
+    <div class="kicker">MAE + ranking por base · 1/5</div><h2>Bitcoin</h2>
+    <div class="two-col">
+      <div class="card rank-list">
+        <div class="rank-item"><span>Holt-Winters</span><span class="mae">1.406,54 USD</span></div>
+        <div class="rank-item"><span>SARIMAX</span><span class="mae">1.590,77 USD</span></div>
+        <div class="rank-item"><span>Random Forest</span><span class="mae">2.108,00 USD</span></div>
+        <div class="rank-item"><span>PLS</span><span class="mae">2.608,61 USD</span></div>
+      </div>
+      <div class="card"><h3>Vencedor</h3><div class="metric gold">Holt-Winters</div><p class="small">A comparação usa 856 datas comuns. A força sazonal STL foi nula nos períodos avaliados; a tendência foi muito forte.</p><p class="small">O PLS termina em 4º com 51 atributos colineares.</p></div>
+    </div>
+    <div class="footer"><span>Unidade: USD · horizonte: 1 dia</span><span>14</span></div>
+  </section>
+
+  <section class="slide" data-title="Ranking — Tráfego">
+    <div class="kicker">MAE + ranking por base · 2/5</div><h2>Tráfego da I-94</h2>
+    <div class="two-col">
+      <div class="card rank-list">
+        <div class="rank-item"><span>Random Forest</span><span class="mae">157,76 veíc./h</span></div>
+        <div class="rank-item"><span>PLS</span><span class="mae">191,70 veíc./h</span></div>
+        <div class="rank-item"><span>Holt-Winters</span><span class="mae">209,83 veíc./h</span></div>
+        <div class="rank-item"><span>SARIMAX</span><span class="mae">263,68 veíc./h</span></div>
+      </div>
+      <div class="card"><h3>Vencedor</h3><div class="metric accent">Random Forest</div><p class="small">521 origens, passo de 11 horas. Redução de 44,3% contra o baseline sazonal de 168 horas.</p><p class="small">PLS sem clima fica em segundo; SARIMAX teve convergência de 83,5% no teste.</p></div>
+    </div>
+    <div class="footer"><span>Unidade: veículos por hora · horizonte: 1 hora</span><span>15</span></div>
+  </section>
+
+  <section class="slide" data-title="Ranking — PM2.5">
+    <div class="kicker">MAE + ranking por base · 3/5</div><h2>PM2.5 de Aotizhongxin</h2>
+    <div class="two-col">
+      <div class="card rank-list">
+        <div class="rank-item"><span>Random Forest</span><span class="mae">9,5131 µg/m³</span></div>
+        <div class="rank-item"><span>PLS</span><span class="mae">9,6643 µg/m³</span></div>
+        <div class="rank-item"><span>SARIMAX</span><span class="mae">10,2225 µg/m³</span></div>
+        <div class="rank-item"><span>Holt-Winters</span><span class="mae">12,9122 µg/m³</span></div>
+      </div>
+      <div class="card"><h3>Vencedor</h3><div class="metric accent">Random Forest</div><p class="small">A diferença para o PLS é 0,1512 µg/m³. Ambos usam as mesmas 17 features.</p><p class="small">A STL mostrou força sazonal diária muito baixa: 0,0130.</p></div>
+    </div>
+    <div class="footer"><span>Unidade: µg/m³ · horizonte: 1 hora</span><span>16</span></div>
+  </section>
+
+  <section class="slide" data-title="Ranking — Jena">
+    <div class="kicker">MAE + ranking por base · 4/5</div><h2>Temperatura horária de Jena</h2>
+    <div class="two-col">
+      <div class="card rank-list">
+        <div class="rank-item"><span>PLS</span><span class="mae">0,3983 °C</span></div>
+        <div class="rank-item"><span>SARIMAX</span><span class="mae">0,4064 °C</span></div>
+        <div class="rank-item"><span>Random Forest</span><span class="mae">0,4114 °C</span></div>
+        <div class="rank-item"><span>Holt-Winters</span><span class="mae">0,4259 °C</span></div>
+      </div>
+      <div class="card"><h3>Vencedor</h3><div class="metric green">PLS</div><p class="small">Ganho de 41,5% contra a persistência de 0,6813 °C.</p><p class="small">Venceu 21 dos 42 blocos de 336 horas; o ciclo diário teve força sazonal 0,686.</p></div>
+    </div>
+    <div class="footer"><span>Unidade: °C · horizonte: 1 hora</span><span>17</span></div>
+  </section>
+
+  <section class="slide" data-title="Ranking — Ouro">
+    <div class="kicker">MAE + ranking por base · 5/5</div><h2>Ouro diário de Londres</h2>
+    <div class="two-col">
+      <div class="card rank-list">
+        <div class="rank-item"><span>Holt-Winters</span><span class="mae">11,5331 USD/onça</span></div>
+        <div class="rank-item"><span>SARIMAX</span><span class="mae">11,5988 USD/onça</span></div>
+        <div class="rank-item"><span>PLS</span><span class="mae">11,6002 USD/onça</span></div>
+        <div class="rank-item"><span>Random Forest</span><span class="mae">14,2826 USD/onça</span></div>
+      </div>
+      <div class="card"><h3>Vencedor</h3><div class="metric gold">Holt-Winters</div><p class="small">A validação havia escolhido o PLS; o teste inverteu a ordem. Os hiperparâmetros continuaram congelados.</p><p class="small">Os três primeiros ficaram próximos da persistência: 11,6377 USD/onça.</p></div>
+    </div>
+    <div class="footer"><span>Unidade: USD por onça fina · horizonte: 1 observação</span><span>18</span></div>
+  </section>
+
+  <section class="slide" data-title="Ranking global">
+    <div class="kicker">Consolidação</div><h2>Ranking global dos modelos</h2>
+    <div class="grid grid-4">
+      <div class="card"><div class="metric gold">2</div><h3>Holt-Winters</h3><p class="small">vitórias: Bitcoin e ouro</p><p class="small">posição média: 2,60</p></div>
+      <div class="card"><div class="metric accent">2</div><h3>Random Forest</h3><p class="small">vitórias: PM2.5 e tráfego</p><p class="small">posição média: 2,40</p></div>
+      <div class="card"><div class="metric green">1</div><h3>PLS</h3><p class="small">vitória: Jena</p><p class="small">posição média: 2,40</p></div>
+      <div class="card"><div class="metric">0</div><h3>SARIMAX</h3><p class="small">nenhuma vitória</p><p class="small">posição média: 2,60</p></div>
+    </div>
+    <table class="global-table">
+      <thead><tr><th>Modelo</th><th>Bitcoin</th><th>PM2.5</th><th>Jena</th><th>Ouro</th><th>Tráfego</th><th>Vitórias</th><th>Média</th></tr></thead>
+      <tbody>
+        <tr><td>Random Forest</td><td>3º</td><td>1º</td><td>3º</td><td>4º</td><td>1º</td><td>2</td><td>2,40</td></tr>
+        <tr><td>PLS</td><td>4º</td><td>2º</td><td>1º</td><td>3º</td><td>2º</td><td>1</td><td>2,40</td></tr>
+        <tr><td>Holt-Winters</td><td>1º</td><td>4º</td><td>4º</td><td>1º</td><td>3º</td><td>2</td><td>2,60</td></tr>
+        <tr><td>SARIMAX</td><td>2º</td><td>3º</td><td>2º</td><td>2º</td><td>4º</td><td>0</td><td>2,60</td></tr>
+      </tbody>
+    </table>
+    <div class="card soft" style="margin-top:4vh">
+      <div class="bar-row"><span>Empate · Random Forest</span><div class="bar"><i style="width:60%"></i></div><b>2,40</b></div>
+      <div class="bar-row"><span>Empate · PLS</span><div class="bar"><i style="width:60%"></i></div><b>2,40</b></div>
+      <div class="bar-row"><span>Empate · Holt-Winters</span><div class="bar"><i style="width:65%"></i></div><b>2,60</b></div>
+      <div class="bar-row"><span>Empate · SARIMAX</span><div class="bar"><i style="width:65%"></i></div><b>2,60</b></div>
+    </div>
+    <p class="source">Empates na posição média são possíveis; o número de vitórias diferencia os modelos.</p>
+    <div class="footer"><span>Posição média não é média de MAE</span><span>19</span></div>
+  </section>
+
+  <section class="slide" data-title="Resíduos">
+    <div class="kicker">Diagnóstico</div><h2>Resíduos, ACF e Ljung-Box</h2>
+    <div class="two-col">
+      <div class="card">
+        <h3>Leitura dos resíduos</h3>
+        <p class="bullet">Bitcoin: Holt-Winters não rejeita no lag 1; os outros três rejeitam.</p>
+        <p class="bullet">PM2.5: os quatro rejeitam no lag 24; a ACF residual permanece detectável.</p>
+        <p class="bullet">Jena: os quatro rejeitam no lag 24, apesar de ACF muito pequena no PLS.</p>
+        <p class="bullet">Ouro: Holt-Winters e PLS não rejeitam nos lags 1–20.</p>
+        <p class="bullet">Tráfego: PLS não rejeita o lag 24; Holt-Winters mantém ACF forte.</p>
+      </div>
+      <div class="card">
+        <h3>Tráfego · sequência horária</h3>
+        <div class="model"><span class="model-name">Random Forest · p24</span><span class="model-value">1,45×10⁻¹¹</span></div>
+        <div class="model"><span class="model-name">PLS · p24</span><span class="model-value">0,061</span></div>
+        <div class="model"><span class="model-name">Holt-Winters · p24</span><span class="model-value">≈ 0</span></div>
+        <div class="model"><span class="model-name">SARIMAX · p24</span><span class="model-value">0,026</span></div>
+        <p class="small">O teste usa 168 previsões horárias consecutivas para interpretar o ciclo principal.</p>
+      </div>
+    </div>
+    <div class="grid grid-2" style="margin-top:3vh">
+      <div class="image-card"><img src="../../../analyses/grupo3/03_resultados/outputs/acf_residuos.png" alt="ACF dos resíduos do PM2.5"><div class="image-caption">ACF dos resíduos · PM2.5</div></div>
+      <div class="image-card"><img src="../../../analyses/grupo2/outputs/figures/residuos_Random_Forest.png" alt="Resíduos do Random Forest no tráfego"><div class="image-caption">Resíduos · Random Forest no tráfego</div></div>
+    </div>
+    <div class="footer"><span>Resíduo = observado − previsto</span><span>20</span></div>
+  </section>
+
+  <section class="slide" data-title="Feature importance">
+    <div class="kicker">Interpretabilidade</div><h2>Feature importance: o passado recente domina</h2>
+    <div class="grid grid-3">
+      <div class="card"><h3>Bitcoin</h3><p class="bullet">RF: log_close_lag1 0,448</p><p class="bullet">RF: close_lag1 0,363</p><p class="bullet">PLS: maior coeficiente em close_lag1</p></div>
+      <div class="card"><h3>PM2.5</h3><p class="bullet">RF: pm25_t 0,547</p><p class="bullet">RF: média de 3 h 0,231</p><p class="bullet">PLS VIP: pm25_t 1,52</p></div>
+      <div class="card"><h3>Jena</h3><p class="bullet">RF: T_lag1 0,785</p><p class="bullet">PLS VIP: T_lag1 1,575</p><p class="bullet">Externa: rho_lag1 1,515</p></div>
+      <div class="card"><h3>Ouro</h3><p class="bullet">RF: GOLD_PRICE 0,901</p><p class="bullet">PLS VIP: GOLD_PRICE 1,50</p><p class="bullet">Permutação: +348 USD de MAE</p></div>
+      <div class="card"><h3>Tráfego</h3><p class="bullet">RF: y_lag1 0,157</p><p class="bullet">RF: y_lag168 0,155</p><p class="bullet">PLS: permutação y_lag1 +1.425,60</p></div>
+      <div class="card"><h3>Como ler</h3><p class="bullet">Impureza mede divisão nas árvores.</p><p class="bullet">VIP acompanha contribuição nas componentes.</p><p class="bullet">Permutação mede aumento do MAE.</p></div>
+    </div>
+    <div class="footer"><span>Importância não é causalidade; é evidência de contribuição preditiva</span><span>21</span></div>
+  </section>
+
+  <section class="slide" data-title="Conclusões">
+    <div class="kicker">Síntese</div><h2>Conclusões</h2>
+    <div class="grid grid-3">
+      <div class="card"><h3>Não há vencedor único</h3><p class="small">A estrutura da série define o melhor compromisso entre nível, sazonalidade, relações lineares e não lineares.</p></div>
+      <div class="card"><h3>PLS funciona melhor com contexto</h3><p class="small">Jena é o melhor caso: ciclo diário forte, externas defasadas e colinearidade controlada.</p></div>
+      <div class="card"><h3>O baseline importa</h3><p class="small">No ouro, os três primeiros modelos ficam muito próximos da persistência.</p></div>
+    </div>
+    <div class="quote" style="margin-top:4vh">A comparação é justa dentro de cada base: mesmas origens, mesmo horizonte, teste posterior à seleção e ranking sem misturar escalas.</div>
+    <div class="card soft" style="margin-top:3vh"><p class="bullet">Holt-Winters: referência forte para séries de nível.</p><p class="bullet">Random Forest: melhor quando regras locais e não linearidades ajudam.</p><p class="bullet">PLS: alternativa interpretável para features colineares.</p><p class="bullet">SARIMAX: modelo linear útil, mas mais custoso no tráfego.</p></div>
+    <div class="footer"><span>Conclusões</span><span>22</span></div>
+  </section>
+
+  <section class="slide" data-title="Limitações">
+    <div class="kicker">Próximos passos</div><h2>Limitações e recomendações</h2>
+    <div class="two-col">
+      <div class="card">
+        <h3>Limitações registradas</h3>
+        <p class="bullet">Protocolos diferem em cadência, janela e tamanho de teste.</p>
+        <p class="bullet">MAE não pode ser agregado diretamente entre bases.</p>
+        <p class="bullet">Alguns p-valores de exógenas do SARIMAX não foram exportados.</p>
+        <p class="bullet">Gráficos de Bitcoin e Jena ficam nos notebooks executados.</p>
+        <p class="bullet">A força anual do Bitcoin e a força de tendência do tráfego não foram impressas.</p>
+      </div>
+      <div class="card">
+        <h3>Recomendações</h3>
+        <p class="bullet">Exportar as tabelas completas de coeficientes e p-valores do SARIMAX.</p>
+        <p class="bullet">Corrigir o rótulo de datas do arquivo de previsões do PLS do Bitcoin.</p>
+        <p class="bullet">Manter baselines junto aos resultados oficiais.</p>
+        <p class="bullet">Avaliar horizontes maiores, especialmente no ouro e no Bitcoin.</p>
+      </div>
+    </div>
+    <div class="footer"><span>As limitações não invalidam os rankings internos</span><span>23</span></div>
+  </section>
+
+  <section class="slide" data-title="Referências">
+    <div class="kicker">Fontes</div><h2>Referências</h2>
+    <div class="grid grid-2">
+      <div class="card">
+        <p class="bullet">CLEVELAND et al. STL: a seasonal-trend decomposition procedure based on loess. 1990.</p>
+        <p class="bullet">HYNDMAN; ATHANASOPOULOS. <em>Forecasting: Principles and Practice</em>. 2021.</p>
+        <p class="bullet">WOLD; SJÖSTRÖM; ERIKSSON. PLS-regression: a basic tool of chemometrics. 2001.</p>
+        <p class="bullet">BREIMAN. Random forests. <em>Machine Learning</em>, 2001.</p>
+        <p class="bullet">LJUNG; BOX. On a measure of lack of fit in time series models. 1978.</p>
+      </div>
+      <div class="card">
+        <p class="bullet">UCI Machine Learning Repository — Beijing Multi-Site Air-Quality.</p>
+        <p class="bullet">UCI Machine Learning Repository — Metro Interstate Traffic Volume.</p>
+        <p class="bullet">Max-Planck-Institut für Biogeochemie — Jena Climate.</p>
+        <p class="bullet">Deutsche Bundesbank — série BBEX3.D.XAU.USD.EA.AC.C05.</p>
+        <p class="bullet">CoinMarketCap — série diária BTC/USD.</p>
+      </div>
+    </div>
+    <div class="quote" style="margin-top:4vh">Resultados e figuras: <code>analyses/grupo1</code> a <code>analyses/grupo5</code> · relatório consolidado: <code>docs/relatorios/consolidado</code></div>
+    <div class="footer"><span>Fim</span><span>24</span></div>
+  </section>
+
+  <div class="controls" aria-label="Controles da apresentação">
+    <button type="button" id="prev" aria-label="Slide anterior">←</button>
+    <button type="button" id="next" aria-label="Próximo slide">→</button>
+  </div>
+  <div class="progress" id="progress"></div>
+</main>
+<script>
+  (() => {
+    const slides = [...document.querySelectorAll(".slide")];
+    const progress = document.getElementById("progress");
+    let index = 0;
+    function show(next) {
+      index = Math.max(0, Math.min(slides.length - 1, next));
+      slides.forEach((slide, i) => slide.classList.toggle("active", i === index));
+      progress.style.width = `${((index + 1) / slides.length) * 100}%`;
+      document.title = `${String(index + 1).padStart(2, "0")} · ${slides[index].dataset.title} · PLS Regression`;
+      history.replaceState(null, "", `#${index + 1}`);
+    }
+    function move(delta) { show(index + delta); }
+    document.getElementById("prev").addEventListener("click", () => move(-1));
+    document.getElementById("next").addEventListener("click", () => move(1));
+    document.addEventListener("keydown", (event) => {
+      if (["ArrowRight", "PageDown", " "].includes(event.key)) { event.preventDefault(); move(1); }
+      if (["ArrowLeft", "PageUp"].includes(event.key)) { event.preventDefault(); move(-1); }
+      if (event.key === "Home") { event.preventDefault(); show(0); }
+      if (event.key === "End") { event.preventDefault(); show(slides.length - 1); }
+    });
+    const hash = Number.parseInt(location.hash.slice(1), 10);
+    show(Number.isFinite(hash) && hash > 0 ? hash - 1 : 0);
+  })();
+</script>
+</body>
+</html>
