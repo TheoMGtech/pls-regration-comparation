@@ -1,0 +1,18 @@
+feature,disponivel_em
+pm25_t,origem t
+pm25_t_1,origem t
+pm25_t_2,origem t
+pm25_t_23,origem t
+pm25_roll_mean_3,origem t
+pm25_roll_mean_24,origem t
+local_PM10,origem t
+local_CO,origem t
+local_TEMP,origem t
+local_WSPM,origem t
+local_DEWP,origem t
+Changping_PM2.5,origem t
+Wanliu_PM2.5,origem t
+target_hour_sin,"t+1, conhecido antes"
+target_hour_cos,"t+1, conhecido antes"
+target_dow_sin,"t+1, conhecido antes"
+target_dow_cos,"t+1, conhecido antes"
