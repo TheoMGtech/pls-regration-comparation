@@ -28,4 +28,5 @@ reports/output/
 reports/figures/
 tmp/
 *.log
-notebooks/grupo3/01_dados/outputs/features_base3.csv
+analyses/grupo3/01_dados/outputs/features_base3.csv
+analyses/grupo3.zip

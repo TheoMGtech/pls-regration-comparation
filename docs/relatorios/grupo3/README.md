@@ -1,3 +1,3 @@
-# Relatório da base do Grupo 3
+# Relatório da Base 3
 
-Armazene aqui os artefatos finais deste grupo.
+O HTML e o PDF estão em `analyses/grupo3/05_relatorio/` (`relatorio_base3.html` e `relatorio_base3.pdf`). Os dois têm o mesmo conteúdo.

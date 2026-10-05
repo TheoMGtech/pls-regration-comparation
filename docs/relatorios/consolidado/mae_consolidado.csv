@@ -1,0 +1,21 @@
+base,status,modelo,mae_teste,n_previsoes,rank_na_base,unidade,inicio,fim,fonte,observacao
+Bitcoin,modelado,Holt-Winters,1406.540849002242,856,1,USD,2024-05-09,2026-09-11,analyses/grupo1/03_resultados/mae_consolidado.csv,MAE na janela comum aos quatro modelos
+Bitcoin,modelado,PLS,2608.6145072385693,856,4,USD,2024-05-09,2026-09-11,analyses/grupo1/03_resultados/mae_consolidado.csv,MAE na janela comum aos quatro modelos
+Bitcoin,modelado,Random Forest,2108.0016646989848,856,3,USD,2024-05-09,2026-09-11,analyses/grupo1/03_resultados/mae_consolidado.csv,MAE na janela comum aos quatro modelos
+Bitcoin,modelado,SARIMAX,1590.770366622039,856,2,USD,2024-05-09,2026-09-11,analyses/grupo1/03_resultados/mae_consolidado.csv,MAE na janela comum aos quatro modelos
+PM2.5 Aotizhongxin,modelado,Random Forest,9.5131,6023,1,µg/m³,2016-05-16 05:00:00,,analyses/grupo3/03_resultados/outputs/mae_consolidado.csv,mesmas 6023 origens de teste para os quatro modelos
+PM2.5 Aotizhongxin,modelado,PLS,9.6643,6023,2,µg/m³,2016-05-16 05:00:00,,analyses/grupo3/03_resultados/outputs/mae_consolidado.csv,mesmas 6023 origens de teste para os quatro modelos
+PM2.5 Aotizhongxin,modelado,SARIMAX,10.2225,6023,3,µg/m³,2016-05-16 05:00:00,,analyses/grupo3/03_resultados/outputs/mae_consolidado.csv,mesmas 6023 origens de teste para os quatro modelos
+PM2.5 Aotizhongxin,modelado,Holt-Winters,12.9122,6023,4,µg/m³,2016-05-16 05:00:00,,analyses/grupo3/03_resultados/outputs/mae_consolidado.csv,mesmas 6023 origens de teste para os quatro modelos
+Jena temperatura,modelado,PLS,0.3983,14026,1,°C,2015-05-27 14:00:00,2016-12-31 23:00:00,analyses/grupo4/trabalho_grupo5_pls_jena_horario.ipynb,n é o teste reservado impresso no notebook; MAE com 4 casas como publicado
+Jena temperatura,modelado,SARIMAX,0.4064,14026,2,°C,2015-05-27 14:00:00,2016-12-31 23:00:00,analyses/grupo4/trabalho_grupo5_pls_jena_horario.ipynb,n é o teste reservado impresso no notebook; MAE com 4 casas como publicado
+Jena temperatura,modelado,Random Forest,0.4114,14026,3,°C,2015-05-27 14:00:00,2016-12-31 23:00:00,analyses/grupo4/trabalho_grupo5_pls_jena_horario.ipynb,n é o teste reservado impresso no notebook; MAE com 4 casas como publicado
+Jena temperatura,modelado,Holt-Winters,0.4259,14026,4,°C,2015-05-27 14:00:00,2016-12-31 23:00:00,analyses/grupo4/trabalho_grupo5_pls_jena_horario.ipynb,n é o teste reservado impresso no notebook; MAE com 4 casas como publicado
+Ouro,modelado,Holt-Winters,11.533090239584595,296,1,USD por onça fina,2007-06-07,2014-04-04,analyses/grupo5/outputs/gold_model_comparison_summary.csv,origens a cada 5 observações de mercado; persistência fora do ranking
+Ouro,modelado,SARIMAX,11.598841071663152,296,2,USD por onça fina,2007-06-07,2014-04-04,analyses/grupo5/outputs/gold_model_comparison_summary.csv,origens a cada 5 observações de mercado; persistência fora do ranking
+Ouro,modelado,PLS,11.600211690058332,296,3,USD por onça fina,2007-06-07,2014-04-04,analyses/grupo5/outputs/gold_model_comparison_summary.csv,origens a cada 5 observações de mercado; persistência fora do ranking
+Ouro,modelado,Random Forest,14.282617565086287,296,4,USD por onça fina,2007-06-07,2014-04-04,analyses/grupo5/outputs/gold_model_comparison_summary.csv,origens a cada 5 observações de mercado; persistência fora do ranking
+Tráfego Metro Interstate,modelado,Random Forest,157.76216464064834,521,1,veículos por hora,2018-02-04 08:00:00,2018-09-30 16:00:00,analyses/grupo2/outputs/results/mae_consolidado.csv,521 origens a cada 11 horas; só alvos originalmente observados; baselines fora do ranking
+Tráfego Metro Interstate,modelado,PLS,191.6959713618109,521,2,veículos por hora,2018-02-04 08:00:00,2018-09-30 16:00:00,analyses/grupo2/outputs/results/mae_consolidado.csv,521 origens a cada 11 horas; só alvos originalmente observados; baselines fora do ranking
+Tráfego Metro Interstate,modelado,Holt-Winters,209.83331325758337,521,3,veículos por hora,2018-02-04 08:00:00,2018-09-30 16:00:00,analyses/grupo2/outputs/results/mae_consolidado.csv,521 origens a cada 11 horas; só alvos originalmente observados; baselines fora do ranking
+Tráfego Metro Interstate,modelado,SARIMAX,263.6784199410402,521,4,veículos por hora,2018-02-04 08:00:00,2018-09-30 16:00:00,analyses/grupo2/outputs/results/mae_consolidado.csv,521 origens a cada 11 horas; só alvos originalmente observados; baselines fora do ranking

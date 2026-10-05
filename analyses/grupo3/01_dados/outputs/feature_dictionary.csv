@@ -1,0 +1,675 @@
+feature,tipo,origem,formula,disponibilidade
+timestamp,origem da previsão,timestamp,timestamp(t),instante da origem
+target_pm25_t_plus_1,alvo,Aotizhongxin.PM2.5,PM2.5(t+1),rótulo fora da amostra; não usado como preditor
+target_timestamp,índice do alvo,timestamp,timestamp(t+1),calendário da previsão
+target_pm25_lag_1h,lag do alvo,Aotizhongxin.PM2.5,PM2.5(t-1),disponível em t
+target_pm25_lag_2h,lag do alvo,Aotizhongxin.PM2.5,PM2.5(t-2),disponível em t
+target_pm25_lag_3h,lag do alvo,Aotizhongxin.PM2.5,PM2.5(t-3),disponível em t
+target_pm25_lag_6h,lag do alvo,Aotizhongxin.PM2.5,PM2.5(t-6),disponível em t
+target_pm25_lag_12h,lag do alvo,Aotizhongxin.PM2.5,PM2.5(t-12),disponível em t
+target_pm25_lag_24h,lag do alvo,Aotizhongxin.PM2.5,PM2.5(t-24),disponível em t
+target_pm25_lag_168h,lag do alvo,Aotizhongxin.PM2.5,PM2.5(t-168),disponível em t
+target_pm25_rolling_mean_3h,estatística móvel do alvo,target_pm25,mean(target_pm25(t-3:t-1)),disponível em t
+target_pm25_rolling_std_3h,estatística móvel do alvo,target_pm25,std(target_pm25(t-3:t-1)),disponível em t
+target_pm25_rolling_mean_6h,estatística móvel do alvo,target_pm25,mean(target_pm25(t-6:t-1)),disponível em t
+target_pm25_rolling_std_6h,estatística móvel do alvo,target_pm25,std(target_pm25(t-6:t-1)),disponível em t
+target_pm25_rolling_mean_24h,estatística móvel do alvo,target_pm25,mean(target_pm25(t-24:t-1)),disponível em t
+target_pm25_rolling_std_24h,estatística móvel do alvo,target_pm25,std(target_pm25(t-24:t-1)),disponível em t
+target_pm25_rolling_mean_168h,estatística móvel do alvo,target_pm25,mean(target_pm25(t-168:t-1)),disponível em t
+target_pm25_rolling_std_168h,estatística móvel do alvo,target_pm25,std(target_pm25(t-168:t-1)),disponível em t
+local_PM10_lag_1h,lag exógeno,local_PM10,local_PM10(t-1),disponível em t
+local_PM10_lag_2h,lag exógeno,local_PM10,local_PM10(t-2),disponível em t
+local_PM10_lag_3h,lag exógeno,local_PM10,local_PM10(t-3),disponível em t
+local_PM10_lag_6h,lag exógeno,local_PM10,local_PM10(t-6),disponível em t
+local_PM10_lag_12h,lag exógeno,local_PM10,local_PM10(t-12),disponível em t
+local_PM10_lag_24h,lag exógeno,local_PM10,local_PM10(t-24),disponível em t
+local_PM10_lag_168h,lag exógeno,local_PM10,local_PM10(t-168),disponível em t
+local_PM10_rolling_mean_3h,estatística móvel exógena,local_PM10,mean(local_PM10(t-3:t-1)),disponível em t
+local_PM10_rolling_std_3h,estatística móvel exógena,local_PM10,std(local_PM10(t-3:t-1)),disponível em t
+local_PM10_rolling_mean_6h,estatística móvel exógena,local_PM10,mean(local_PM10(t-6:t-1)),disponível em t
+local_PM10_rolling_std_6h,estatística móvel exógena,local_PM10,std(local_PM10(t-6:t-1)),disponível em t
+local_PM10_rolling_mean_24h,estatística móvel exógena,local_PM10,mean(local_PM10(t-24:t-1)),disponível em t
+local_PM10_rolling_std_24h,estatística móvel exógena,local_PM10,std(local_PM10(t-24:t-1)),disponível em t
+local_PM10_rolling_mean_168h,estatística móvel exógena,local_PM10,mean(local_PM10(t-168:t-1)),disponível em t
+local_PM10_rolling_std_168h,estatística móvel exógena,local_PM10,std(local_PM10(t-168:t-1)),disponível em t
+local_SO2_lag_1h,lag exógeno,local_SO2,local_SO2(t-1),disponível em t
+local_SO2_lag_2h,lag exógeno,local_SO2,local_SO2(t-2),disponível em t
+local_SO2_lag_3h,lag exógeno,local_SO2,local_SO2(t-3),disponível em t
+local_SO2_lag_6h,lag exógeno,local_SO2,local_SO2(t-6),disponível em t
+local_SO2_lag_12h,lag exógeno,local_SO2,local_SO2(t-12),disponível em t
+local_SO2_lag_24h,lag exógeno,local_SO2,local_SO2(t-24),disponível em t
+local_SO2_lag_168h,lag exógeno,local_SO2,local_SO2(t-168),disponível em t
+local_SO2_rolling_mean_3h,estatística móvel exógena,local_SO2,mean(local_SO2(t-3:t-1)),disponível em t
+local_SO2_rolling_std_3h,estatística móvel exógena,local_SO2,std(local_SO2(t-3:t-1)),disponível em t
+local_SO2_rolling_mean_6h,estatística móvel exógena,local_SO2,mean(local_SO2(t-6:t-1)),disponível em t
+local_SO2_rolling_std_6h,estatística móvel exógena,local_SO2,std(local_SO2(t-6:t-1)),disponível em t
+local_SO2_rolling_mean_24h,estatística móvel exógena,local_SO2,mean(local_SO2(t-24:t-1)),disponível em t
+local_SO2_rolling_std_24h,estatística móvel exógena,local_SO2,std(local_SO2(t-24:t-1)),disponível em t
+local_SO2_rolling_mean_168h,estatística móvel exógena,local_SO2,mean(local_SO2(t-168:t-1)),disponível em t
+local_SO2_rolling_std_168h,estatística móvel exógena,local_SO2,std(local_SO2(t-168:t-1)),disponível em t
+local_NO2_lag_1h,lag exógeno,local_NO2,local_NO2(t-1),disponível em t
+local_NO2_lag_2h,lag exógeno,local_NO2,local_NO2(t-2),disponível em t
+local_NO2_lag_3h,lag exógeno,local_NO2,local_NO2(t-3),disponível em t
+local_NO2_lag_6h,lag exógeno,local_NO2,local_NO2(t-6),disponível em t
+local_NO2_lag_12h,lag exógeno,local_NO2,local_NO2(t-12),disponível em t
+local_NO2_lag_24h,lag exógeno,local_NO2,local_NO2(t-24),disponível em t
+local_NO2_lag_168h,lag exógeno,local_NO2,local_NO2(t-168),disponível em t
+local_NO2_rolling_mean_3h,estatística móvel exógena,local_NO2,mean(local_NO2(t-3:t-1)),disponível em t
+local_NO2_rolling_std_3h,estatística móvel exógena,local_NO2,std(local_NO2(t-3:t-1)),disponível em t
+local_NO2_rolling_mean_6h,estatística móvel exógena,local_NO2,mean(local_NO2(t-6:t-1)),disponível em t
+local_NO2_rolling_std_6h,estatística móvel exógena,local_NO2,std(local_NO2(t-6:t-1)),disponível em t
+local_NO2_rolling_mean_24h,estatística móvel exógena,local_NO2,mean(local_NO2(t-24:t-1)),disponível em t
+local_NO2_rolling_std_24h,estatística móvel exógena,local_NO2,std(local_NO2(t-24:t-1)),disponível em t
+local_NO2_rolling_mean_168h,estatística móvel exógena,local_NO2,mean(local_NO2(t-168:t-1)),disponível em t
+local_NO2_rolling_std_168h,estatística móvel exógena,local_NO2,std(local_NO2(t-168:t-1)),disponível em t
+local_CO_lag_1h,lag exógeno,local_CO,local_CO(t-1),disponível em t
+local_CO_lag_2h,lag exógeno,local_CO,local_CO(t-2),disponível em t
+local_CO_lag_3h,lag exógeno,local_CO,local_CO(t-3),disponível em t
+local_CO_lag_6h,lag exógeno,local_CO,local_CO(t-6),disponível em t
+local_CO_lag_12h,lag exógeno,local_CO,local_CO(t-12),disponível em t
+local_CO_lag_24h,lag exógeno,local_CO,local_CO(t-24),disponível em t
+local_CO_lag_168h,lag exógeno,local_CO,local_CO(t-168),disponível em t
+local_CO_rolling_mean_3h,estatística móvel exógena,local_CO,mean(local_CO(t-3:t-1)),disponível em t
+local_CO_rolling_std_3h,estatística móvel exógena,local_CO,std(local_CO(t-3:t-1)),disponível em t
+local_CO_rolling_mean_6h,estatística móvel exógena,local_CO,mean(local_CO(t-6:t-1)),disponível em t
+local_CO_rolling_std_6h,estatística móvel exógena,local_CO,std(local_CO(t-6:t-1)),disponível em t
+local_CO_rolling_mean_24h,estatística móvel exógena,local_CO,mean(local_CO(t-24:t-1)),disponível em t
+local_CO_rolling_std_24h,estatística móvel exógena,local_CO,std(local_CO(t-24:t-1)),disponível em t
+local_CO_rolling_mean_168h,estatística móvel exógena,local_CO,mean(local_CO(t-168:t-1)),disponível em t
+local_CO_rolling_std_168h,estatística móvel exógena,local_CO,std(local_CO(t-168:t-1)),disponível em t
+local_O3_lag_1h,lag exógeno,local_O3,local_O3(t-1),disponível em t
+local_O3_lag_2h,lag exógeno,local_O3,local_O3(t-2),disponível em t
+local_O3_lag_3h,lag exógeno,local_O3,local_O3(t-3),disponível em t
+local_O3_lag_6h,lag exógeno,local_O3,local_O3(t-6),disponível em t
+local_O3_lag_12h,lag exógeno,local_O3,local_O3(t-12),disponível em t
+local_O3_lag_24h,lag exógeno,local_O3,local_O3(t-24),disponível em t
+local_O3_lag_168h,lag exógeno,local_O3,local_O3(t-168),disponível em t
+local_O3_rolling_mean_3h,estatística móvel exógena,local_O3,mean(local_O3(t-3:t-1)),disponível em t
+local_O3_rolling_std_3h,estatística móvel exógena,local_O3,std(local_O3(t-3:t-1)),disponível em t
+local_O3_rolling_mean_6h,estatística móvel exógena,local_O3,mean(local_O3(t-6:t-1)),disponível em t
+local_O3_rolling_std_6h,estatística móvel exógena,local_O3,std(local_O3(t-6:t-1)),disponível em t
+local_O3_rolling_mean_24h,estatística móvel exógena,local_O3,mean(local_O3(t-24:t-1)),disponível em t
+local_O3_rolling_std_24h,estatística móvel exógena,local_O3,std(local_O3(t-24:t-1)),disponível em t
+local_O3_rolling_mean_168h,estatística móvel exógena,local_O3,mean(local_O3(t-168:t-1)),disponível em t
+local_O3_rolling_std_168h,estatística móvel exógena,local_O3,std(local_O3(t-168:t-1)),disponível em t
+local_TEMP_lag_1h,lag exógeno,local_TEMP,local_TEMP(t-1),disponível em t
+local_TEMP_lag_2h,lag exógeno,local_TEMP,local_TEMP(t-2),disponível em t
+local_TEMP_lag_3h,lag exógeno,local_TEMP,local_TEMP(t-3),disponível em t
+local_TEMP_lag_6h,lag exógeno,local_TEMP,local_TEMP(t-6),disponível em t
+local_TEMP_lag_12h,lag exógeno,local_TEMP,local_TEMP(t-12),disponível em t
+local_TEMP_lag_24h,lag exógeno,local_TEMP,local_TEMP(t-24),disponível em t
+local_TEMP_lag_168h,lag exógeno,local_TEMP,local_TEMP(t-168),disponível em t
+local_TEMP_rolling_mean_3h,estatística móvel exógena,local_TEMP,mean(local_TEMP(t-3:t-1)),disponível em t
+local_TEMP_rolling_std_3h,estatística móvel exógena,local_TEMP,std(local_TEMP(t-3:t-1)),disponível em t
+local_TEMP_rolling_mean_6h,estatística móvel exógena,local_TEMP,mean(local_TEMP(t-6:t-1)),disponível em t
+local_TEMP_rolling_std_6h,estatística móvel exógena,local_TEMP,std(local_TEMP(t-6:t-1)),disponível em t
+local_TEMP_rolling_mean_24h,estatística móvel exógena,local_TEMP,mean(local_TEMP(t-24:t-1)),disponível em t
+local_TEMP_rolling_std_24h,estatística móvel exógena,local_TEMP,std(local_TEMP(t-24:t-1)),disponível em t
+local_TEMP_rolling_mean_168h,estatística móvel exógena,local_TEMP,mean(local_TEMP(t-168:t-1)),disponível em t
+local_TEMP_rolling_std_168h,estatística móvel exógena,local_TEMP,std(local_TEMP(t-168:t-1)),disponível em t
+local_PRES_lag_1h,lag exógeno,local_PRES,local_PRES(t-1),disponível em t
+local_PRES_lag_2h,lag exógeno,local_PRES,local_PRES(t-2),disponível em t
+local_PRES_lag_3h,lag exógeno,local_PRES,local_PRES(t-3),disponível em t
+local_PRES_lag_6h,lag exógeno,local_PRES,local_PRES(t-6),disponível em t
+local_PRES_lag_12h,lag exógeno,local_PRES,local_PRES(t-12),disponível em t
+local_PRES_lag_24h,lag exógeno,local_PRES,local_PRES(t-24),disponível em t
+local_PRES_lag_168h,lag exógeno,local_PRES,local_PRES(t-168),disponível em t
+local_PRES_rolling_mean_3h,estatística móvel exógena,local_PRES,mean(local_PRES(t-3:t-1)),disponível em t
+local_PRES_rolling_std_3h,estatística móvel exógena,local_PRES,std(local_PRES(t-3:t-1)),disponível em t
+local_PRES_rolling_mean_6h,estatística móvel exógena,local_PRES,mean(local_PRES(t-6:t-1)),disponível em t
+local_PRES_rolling_std_6h,estatística móvel exógena,local_PRES,std(local_PRES(t-6:t-1)),disponível em t
+local_PRES_rolling_mean_24h,estatística móvel exógena,local_PRES,mean(local_PRES(t-24:t-1)),disponível em t
+local_PRES_rolling_std_24h,estatística móvel exógena,local_PRES,std(local_PRES(t-24:t-1)),disponível em t
+local_PRES_rolling_mean_168h,estatística móvel exógena,local_PRES,mean(local_PRES(t-168:t-1)),disponível em t
+local_PRES_rolling_std_168h,estatística móvel exógena,local_PRES,std(local_PRES(t-168:t-1)),disponível em t
+local_DEWP_lag_1h,lag exógeno,local_DEWP,local_DEWP(t-1),disponível em t
+local_DEWP_lag_2h,lag exógeno,local_DEWP,local_DEWP(t-2),disponível em t
+local_DEWP_lag_3h,lag exógeno,local_DEWP,local_DEWP(t-3),disponível em t
+local_DEWP_lag_6h,lag exógeno,local_DEWP,local_DEWP(t-6),disponível em t
+local_DEWP_lag_12h,lag exógeno,local_DEWP,local_DEWP(t-12),disponível em t
+local_DEWP_lag_24h,lag exógeno,local_DEWP,local_DEWP(t-24),disponível em t
+local_DEWP_lag_168h,lag exógeno,local_DEWP,local_DEWP(t-168),disponível em t
+local_DEWP_rolling_mean_3h,estatística móvel exógena,local_DEWP,mean(local_DEWP(t-3:t-1)),disponível em t
+local_DEWP_rolling_std_3h,estatística móvel exógena,local_DEWP,std(local_DEWP(t-3:t-1)),disponível em t
+local_DEWP_rolling_mean_6h,estatística móvel exógena,local_DEWP,mean(local_DEWP(t-6:t-1)),disponível em t
+local_DEWP_rolling_std_6h,estatística móvel exógena,local_DEWP,std(local_DEWP(t-6:t-1)),disponível em t
+local_DEWP_rolling_mean_24h,estatística móvel exógena,local_DEWP,mean(local_DEWP(t-24:t-1)),disponível em t
+local_DEWP_rolling_std_24h,estatística móvel exógena,local_DEWP,std(local_DEWP(t-24:t-1)),disponível em t
+local_DEWP_rolling_mean_168h,estatística móvel exógena,local_DEWP,mean(local_DEWP(t-168:t-1)),disponível em t
+local_DEWP_rolling_std_168h,estatística móvel exógena,local_DEWP,std(local_DEWP(t-168:t-1)),disponível em t
+local_RAIN_lag_1h,lag exógeno,local_RAIN,local_RAIN(t-1),disponível em t
+local_RAIN_lag_2h,lag exógeno,local_RAIN,local_RAIN(t-2),disponível em t
+local_RAIN_lag_3h,lag exógeno,local_RAIN,local_RAIN(t-3),disponível em t
+local_RAIN_lag_6h,lag exógeno,local_RAIN,local_RAIN(t-6),disponível em t
+local_RAIN_lag_12h,lag exógeno,local_RAIN,local_RAIN(t-12),disponível em t
+local_RAIN_lag_24h,lag exógeno,local_RAIN,local_RAIN(t-24),disponível em t
+local_RAIN_lag_168h,lag exógeno,local_RAIN,local_RAIN(t-168),disponível em t
+local_RAIN_rolling_mean_3h,estatística móvel exógena,local_RAIN,mean(local_RAIN(t-3:t-1)),disponível em t
+local_RAIN_rolling_std_3h,estatística móvel exógena,local_RAIN,std(local_RAIN(t-3:t-1)),disponível em t
+local_RAIN_rolling_mean_6h,estatística móvel exógena,local_RAIN,mean(local_RAIN(t-6:t-1)),disponível em t
+local_RAIN_rolling_std_6h,estatística móvel exógena,local_RAIN,std(local_RAIN(t-6:t-1)),disponível em t
+local_RAIN_rolling_mean_24h,estatística móvel exógena,local_RAIN,mean(local_RAIN(t-24:t-1)),disponível em t
+local_RAIN_rolling_std_24h,estatística móvel exógena,local_RAIN,std(local_RAIN(t-24:t-1)),disponível em t
+local_RAIN_rolling_mean_168h,estatística móvel exógena,local_RAIN,mean(local_RAIN(t-168:t-1)),disponível em t
+local_RAIN_rolling_std_168h,estatística móvel exógena,local_RAIN,std(local_RAIN(t-168:t-1)),disponível em t
+local_WSPM_lag_1h,lag exógeno,local_WSPM,local_WSPM(t-1),disponível em t
+local_WSPM_lag_2h,lag exógeno,local_WSPM,local_WSPM(t-2),disponível em t
+local_WSPM_lag_3h,lag exógeno,local_WSPM,local_WSPM(t-3),disponível em t
+local_WSPM_lag_6h,lag exógeno,local_WSPM,local_WSPM(t-6),disponível em t
+local_WSPM_lag_12h,lag exógeno,local_WSPM,local_WSPM(t-12),disponível em t
+local_WSPM_lag_24h,lag exógeno,local_WSPM,local_WSPM(t-24),disponível em t
+local_WSPM_lag_168h,lag exógeno,local_WSPM,local_WSPM(t-168),disponível em t
+local_WSPM_rolling_mean_3h,estatística móvel exógena,local_WSPM,mean(local_WSPM(t-3:t-1)),disponível em t
+local_WSPM_rolling_std_3h,estatística móvel exógena,local_WSPM,std(local_WSPM(t-3:t-1)),disponível em t
+local_WSPM_rolling_mean_6h,estatística móvel exógena,local_WSPM,mean(local_WSPM(t-6:t-1)),disponível em t
+local_WSPM_rolling_std_6h,estatística móvel exógena,local_WSPM,std(local_WSPM(t-6:t-1)),disponível em t
+local_WSPM_rolling_mean_24h,estatística móvel exógena,local_WSPM,mean(local_WSPM(t-24:t-1)),disponível em t
+local_WSPM_rolling_std_24h,estatística móvel exógena,local_WSPM,std(local_WSPM(t-24:t-1)),disponível em t
+local_WSPM_rolling_mean_168h,estatística móvel exógena,local_WSPM,mean(local_WSPM(t-168:t-1)),disponível em t
+local_WSPM_rolling_std_168h,estatística móvel exógena,local_WSPM,std(local_WSPM(t-168:t-1)),disponível em t
+Changping_PM2_5_lag_1h,lag exógeno,Changping_PM2.5,Changping_PM2.5(t-1),disponível em t
+Changping_PM2_5_lag_2h,lag exógeno,Changping_PM2.5,Changping_PM2.5(t-2),disponível em t
+Changping_PM2_5_lag_3h,lag exógeno,Changping_PM2.5,Changping_PM2.5(t-3),disponível em t
+Changping_PM2_5_lag_6h,lag exógeno,Changping_PM2.5,Changping_PM2.5(t-6),disponível em t
+Changping_PM2_5_lag_12h,lag exógeno,Changping_PM2.5,Changping_PM2.5(t-12),disponível em t
+Changping_PM2_5_lag_24h,lag exógeno,Changping_PM2.5,Changping_PM2.5(t-24),disponível em t
+Changping_PM2_5_lag_168h,lag exógeno,Changping_PM2.5,Changping_PM2.5(t-168),disponível em t
+Changping_PM2_5_rolling_mean_3h,estatística móvel exógena,Changping_PM2.5,mean(Changping_PM2.5(t-3:t-1)),disponível em t
+Changping_PM2_5_rolling_std_3h,estatística móvel exógena,Changping_PM2.5,std(Changping_PM2.5(t-3:t-1)),disponível em t
+Changping_PM2_5_rolling_mean_6h,estatística móvel exógena,Changping_PM2.5,mean(Changping_PM2.5(t-6:t-1)),disponível em t
+Changping_PM2_5_rolling_std_6h,estatística móvel exógena,Changping_PM2.5,std(Changping_PM2.5(t-6:t-1)),disponível em t
+Changping_PM2_5_rolling_mean_24h,estatística móvel exógena,Changping_PM2.5,mean(Changping_PM2.5(t-24:t-1)),disponível em t
+Changping_PM2_5_rolling_std_24h,estatística móvel exógena,Changping_PM2.5,std(Changping_PM2.5(t-24:t-1)),disponível em t
+Changping_PM2_5_rolling_mean_168h,estatística móvel exógena,Changping_PM2.5,mean(Changping_PM2.5(t-168:t-1)),disponível em t
+Changping_PM2_5_rolling_std_168h,estatística móvel exógena,Changping_PM2.5,std(Changping_PM2.5(t-168:t-1)),disponível em t
+Changping_PM10_lag_1h,lag exógeno,Changping_PM10,Changping_PM10(t-1),disponível em t
+Changping_PM10_lag_2h,lag exógeno,Changping_PM10,Changping_PM10(t-2),disponível em t
+Changping_PM10_lag_3h,lag exógeno,Changping_PM10,Changping_PM10(t-3),disponível em t
+Changping_PM10_lag_6h,lag exógeno,Changping_PM10,Changping_PM10(t-6),disponível em t
+Changping_PM10_lag_12h,lag exógeno,Changping_PM10,Changping_PM10(t-12),disponível em t
+Changping_PM10_lag_24h,lag exógeno,Changping_PM10,Changping_PM10(t-24),disponível em t
+Changping_PM10_lag_168h,lag exógeno,Changping_PM10,Changping_PM10(t-168),disponível em t
+Changping_PM10_rolling_mean_3h,estatística móvel exógena,Changping_PM10,mean(Changping_PM10(t-3:t-1)),disponível em t
+Changping_PM10_rolling_std_3h,estatística móvel exógena,Changping_PM10,std(Changping_PM10(t-3:t-1)),disponível em t
+Changping_PM10_rolling_mean_6h,estatística móvel exógena,Changping_PM10,mean(Changping_PM10(t-6:t-1)),disponível em t
+Changping_PM10_rolling_std_6h,estatística móvel exógena,Changping_PM10,std(Changping_PM10(t-6:t-1)),disponível em t
+Changping_PM10_rolling_mean_24h,estatística móvel exógena,Changping_PM10,mean(Changping_PM10(t-24:t-1)),disponível em t
+Changping_PM10_rolling_std_24h,estatística móvel exógena,Changping_PM10,std(Changping_PM10(t-24:t-1)),disponível em t
+Changping_PM10_rolling_mean_168h,estatística móvel exógena,Changping_PM10,mean(Changping_PM10(t-168:t-1)),disponível em t
+Changping_PM10_rolling_std_168h,estatística móvel exógena,Changping_PM10,std(Changping_PM10(t-168:t-1)),disponível em t
+Changping_SO2_lag_1h,lag exógeno,Changping_SO2,Changping_SO2(t-1),disponível em t
+Changping_SO2_lag_2h,lag exógeno,Changping_SO2,Changping_SO2(t-2),disponível em t
+Changping_SO2_lag_3h,lag exógeno,Changping_SO2,Changping_SO2(t-3),disponível em t
+Changping_SO2_lag_6h,lag exógeno,Changping_SO2,Changping_SO2(t-6),disponível em t
+Changping_SO2_lag_12h,lag exógeno,Changping_SO2,Changping_SO2(t-12),disponível em t
+Changping_SO2_lag_24h,lag exógeno,Changping_SO2,Changping_SO2(t-24),disponível em t
+Changping_SO2_lag_168h,lag exógeno,Changping_SO2,Changping_SO2(t-168),disponível em t
+Changping_SO2_rolling_mean_3h,estatística móvel exógena,Changping_SO2,mean(Changping_SO2(t-3:t-1)),disponível em t
+Changping_SO2_rolling_std_3h,estatística móvel exógena,Changping_SO2,std(Changping_SO2(t-3:t-1)),disponível em t
+Changping_SO2_rolling_mean_6h,estatística móvel exógena,Changping_SO2,mean(Changping_SO2(t-6:t-1)),disponível em t
+Changping_SO2_rolling_std_6h,estatística móvel exógena,Changping_SO2,std(Changping_SO2(t-6:t-1)),disponível em t
+Changping_SO2_rolling_mean_24h,estatística móvel exógena,Changping_SO2,mean(Changping_SO2(t-24:t-1)),disponível em t
+Changping_SO2_rolling_std_24h,estatística móvel exógena,Changping_SO2,std(Changping_SO2(t-24:t-1)),disponível em t
+Changping_SO2_rolling_mean_168h,estatística móvel exógena,Changping_SO2,mean(Changping_SO2(t-168:t-1)),disponível em t
+Changping_SO2_rolling_std_168h,estatística móvel exógena,Changping_SO2,std(Changping_SO2(t-168:t-1)),disponível em t
+Changping_NO2_lag_1h,lag exógeno,Changping_NO2,Changping_NO2(t-1),disponível em t
+Changping_NO2_lag_2h,lag exógeno,Changping_NO2,Changping_NO2(t-2),disponível em t
+Changping_NO2_lag_3h,lag exógeno,Changping_NO2,Changping_NO2(t-3),disponível em t
+Changping_NO2_lag_6h,lag exógeno,Changping_NO2,Changping_NO2(t-6),disponível em t
+Changping_NO2_lag_12h,lag exógeno,Changping_NO2,Changping_NO2(t-12),disponível em t
+Changping_NO2_lag_24h,lag exógeno,Changping_NO2,Changping_NO2(t-24),disponível em t
+Changping_NO2_lag_168h,lag exógeno,Changping_NO2,Changping_NO2(t-168),disponível em t
+Changping_NO2_rolling_mean_3h,estatística móvel exógena,Changping_NO2,mean(Changping_NO2(t-3:t-1)),disponível em t
+Changping_NO2_rolling_std_3h,estatística móvel exógena,Changping_NO2,std(Changping_NO2(t-3:t-1)),disponível em t
+Changping_NO2_rolling_mean_6h,estatística móvel exógena,Changping_NO2,mean(Changping_NO2(t-6:t-1)),disponível em t
+Changping_NO2_rolling_std_6h,estatística móvel exógena,Changping_NO2,std(Changping_NO2(t-6:t-1)),disponível em t
+Changping_NO2_rolling_mean_24h,estatística móvel exógena,Changping_NO2,mean(Changping_NO2(t-24:t-1)),disponível em t
+Changping_NO2_rolling_std_24h,estatística móvel exógena,Changping_NO2,std(Changping_NO2(t-24:t-1)),disponível em t
+Changping_NO2_rolling_mean_168h,estatística móvel exógena,Changping_NO2,mean(Changping_NO2(t-168:t-1)),disponível em t
+Changping_NO2_rolling_std_168h,estatística móvel exógena,Changping_NO2,std(Changping_NO2(t-168:t-1)),disponível em t
+Changping_CO_lag_1h,lag exógeno,Changping_CO,Changping_CO(t-1),disponível em t
+Changping_CO_lag_2h,lag exógeno,Changping_CO,Changping_CO(t-2),disponível em t
+Changping_CO_lag_3h,lag exógeno,Changping_CO,Changping_CO(t-3),disponível em t
+Changping_CO_lag_6h,lag exógeno,Changping_CO,Changping_CO(t-6),disponível em t
+Changping_CO_lag_12h,lag exógeno,Changping_CO,Changping_CO(t-12),disponível em t
+Changping_CO_lag_24h,lag exógeno,Changping_CO,Changping_CO(t-24),disponível em t
+Changping_CO_lag_168h,lag exógeno,Changping_CO,Changping_CO(t-168),disponível em t
+Changping_CO_rolling_mean_3h,estatística móvel exógena,Changping_CO,mean(Changping_CO(t-3:t-1)),disponível em t
+Changping_CO_rolling_std_3h,estatística móvel exógena,Changping_CO,std(Changping_CO(t-3:t-1)),disponível em t
+Changping_CO_rolling_mean_6h,estatística móvel exógena,Changping_CO,mean(Changping_CO(t-6:t-1)),disponível em t
+Changping_CO_rolling_std_6h,estatística móvel exógena,Changping_CO,std(Changping_CO(t-6:t-1)),disponível em t
+Changping_CO_rolling_mean_24h,estatística móvel exógena,Changping_CO,mean(Changping_CO(t-24:t-1)),disponível em t
+Changping_CO_rolling_std_24h,estatística móvel exógena,Changping_CO,std(Changping_CO(t-24:t-1)),disponível em t
+Changping_CO_rolling_mean_168h,estatística móvel exógena,Changping_CO,mean(Changping_CO(t-168:t-1)),disponível em t
+Changping_CO_rolling_std_168h,estatística móvel exógena,Changping_CO,std(Changping_CO(t-168:t-1)),disponível em t
+Changping_O3_lag_1h,lag exógeno,Changping_O3,Changping_O3(t-1),disponível em t
+Changping_O3_lag_2h,lag exógeno,Changping_O3,Changping_O3(t-2),disponível em t
+Changping_O3_lag_3h,lag exógeno,Changping_O3,Changping_O3(t-3),disponível em t
+Changping_O3_lag_6h,lag exógeno,Changping_O3,Changping_O3(t-6),disponível em t
+Changping_O3_lag_12h,lag exógeno,Changping_O3,Changping_O3(t-12),disponível em t
+Changping_O3_lag_24h,lag exógeno,Changping_O3,Changping_O3(t-24),disponível em t
+Changping_O3_lag_168h,lag exógeno,Changping_O3,Changping_O3(t-168),disponível em t
+Changping_O3_rolling_mean_3h,estatística móvel exógena,Changping_O3,mean(Changping_O3(t-3:t-1)),disponível em t
+Changping_O3_rolling_std_3h,estatística móvel exógena,Changping_O3,std(Changping_O3(t-3:t-1)),disponível em t
+Changping_O3_rolling_mean_6h,estatística móvel exógena,Changping_O3,mean(Changping_O3(t-6:t-1)),disponível em t
+Changping_O3_rolling_std_6h,estatística móvel exógena,Changping_O3,std(Changping_O3(t-6:t-1)),disponível em t
+Changping_O3_rolling_mean_24h,estatística móvel exógena,Changping_O3,mean(Changping_O3(t-24:t-1)),disponível em t
+Changping_O3_rolling_std_24h,estatística móvel exógena,Changping_O3,std(Changping_O3(t-24:t-1)),disponível em t
+Changping_O3_rolling_mean_168h,estatística móvel exógena,Changping_O3,mean(Changping_O3(t-168:t-1)),disponível em t
+Changping_O3_rolling_std_168h,estatística móvel exógena,Changping_O3,std(Changping_O3(t-168:t-1)),disponível em t
+Changping_TEMP_lag_1h,lag exógeno,Changping_TEMP,Changping_TEMP(t-1),disponível em t
+Changping_TEMP_lag_2h,lag exógeno,Changping_TEMP,Changping_TEMP(t-2),disponível em t
+Changping_TEMP_lag_3h,lag exógeno,Changping_TEMP,Changping_TEMP(t-3),disponível em t
+Changping_TEMP_lag_6h,lag exógeno,Changping_TEMP,Changping_TEMP(t-6),disponível em t
+Changping_TEMP_lag_12h,lag exógeno,Changping_TEMP,Changping_TEMP(t-12),disponível em t
+Changping_TEMP_lag_24h,lag exógeno,Changping_TEMP,Changping_TEMP(t-24),disponível em t
+Changping_TEMP_lag_168h,lag exógeno,Changping_TEMP,Changping_TEMP(t-168),disponível em t
+Changping_TEMP_rolling_mean_3h,estatística móvel exógena,Changping_TEMP,mean(Changping_TEMP(t-3:t-1)),disponível em t
+Changping_TEMP_rolling_std_3h,estatística móvel exógena,Changping_TEMP,std(Changping_TEMP(t-3:t-1)),disponível em t
+Changping_TEMP_rolling_mean_6h,estatística móvel exógena,Changping_TEMP,mean(Changping_TEMP(t-6:t-1)),disponível em t
+Changping_TEMP_rolling_std_6h,estatística móvel exógena,Changping_TEMP,std(Changping_TEMP(t-6:t-1)),disponível em t
+Changping_TEMP_rolling_mean_24h,estatística móvel exógena,Changping_TEMP,mean(Changping_TEMP(t-24:t-1)),disponível em t
+Changping_TEMP_rolling_std_24h,estatística móvel exógena,Changping_TEMP,std(Changping_TEMP(t-24:t-1)),disponível em t
+Changping_TEMP_rolling_mean_168h,estatística móvel exógena,Changping_TEMP,mean(Changping_TEMP(t-168:t-1)),disponível em t
+Changping_TEMP_rolling_std_168h,estatística móvel exógena,Changping_TEMP,std(Changping_TEMP(t-168:t-1)),disponível em t
+Changping_PRES_lag_1h,lag exógeno,Changping_PRES,Changping_PRES(t-1),disponível em t
+Changping_PRES_lag_2h,lag exógeno,Changping_PRES,Changping_PRES(t-2),disponível em t
+Changping_PRES_lag_3h,lag exógeno,Changping_PRES,Changping_PRES(t-3),disponível em t
+Changping_PRES_lag_6h,lag exógeno,Changping_PRES,Changping_PRES(t-6),disponível em t
+Changping_PRES_lag_12h,lag exógeno,Changping_PRES,Changping_PRES(t-12),disponível em t
+Changping_PRES_lag_24h,lag exógeno,Changping_PRES,Changping_PRES(t-24),disponível em t
+Changping_PRES_lag_168h,lag exógeno,Changping_PRES,Changping_PRES(t-168),disponível em t
+Changping_PRES_rolling_mean_3h,estatística móvel exógena,Changping_PRES,mean(Changping_PRES(t-3:t-1)),disponível em t
+Changping_PRES_rolling_std_3h,estatística móvel exógena,Changping_PRES,std(Changping_PRES(t-3:t-1)),disponível em t
+Changping_PRES_rolling_mean_6h,estatística móvel exógena,Changping_PRES,mean(Changping_PRES(t-6:t-1)),disponível em t
+Changping_PRES_rolling_std_6h,estatística móvel exógena,Changping_PRES,std(Changping_PRES(t-6:t-1)),disponível em t
+Changping_PRES_rolling_mean_24h,estatística móvel exógena,Changping_PRES,mean(Changping_PRES(t-24:t-1)),disponível em t
+Changping_PRES_rolling_std_24h,estatística móvel exógena,Changping_PRES,std(Changping_PRES(t-24:t-1)),disponível em t
+Changping_PRES_rolling_mean_168h,estatística móvel exógena,Changping_PRES,mean(Changping_PRES(t-168:t-1)),disponível em t
+Changping_PRES_rolling_std_168h,estatística móvel exógena,Changping_PRES,std(Changping_PRES(t-168:t-1)),disponível em t
+Changping_DEWP_lag_1h,lag exógeno,Changping_DEWP,Changping_DEWP(t-1),disponível em t
+Changping_DEWP_lag_2h,lag exógeno,Changping_DEWP,Changping_DEWP(t-2),disponível em t
+Changping_DEWP_lag_3h,lag exógeno,Changping_DEWP,Changping_DEWP(t-3),disponível em t
+Changping_DEWP_lag_6h,lag exógeno,Changping_DEWP,Changping_DEWP(t-6),disponível em t
+Changping_DEWP_lag_12h,lag exógeno,Changping_DEWP,Changping_DEWP(t-12),disponível em t
+Changping_DEWP_lag_24h,lag exógeno,Changping_DEWP,Changping_DEWP(t-24),disponível em t
+Changping_DEWP_lag_168h,lag exógeno,Changping_DEWP,Changping_DEWP(t-168),disponível em t
+Changping_DEWP_rolling_mean_3h,estatística móvel exógena,Changping_DEWP,mean(Changping_DEWP(t-3:t-1)),disponível em t
+Changping_DEWP_rolling_std_3h,estatística móvel exógena,Changping_DEWP,std(Changping_DEWP(t-3:t-1)),disponível em t
+Changping_DEWP_rolling_mean_6h,estatística móvel exógena,Changping_DEWP,mean(Changping_DEWP(t-6:t-1)),disponível em t
+Changping_DEWP_rolling_std_6h,estatística móvel exógena,Changping_DEWP,std(Changping_DEWP(t-6:t-1)),disponível em t
+Changping_DEWP_rolling_mean_24h,estatística móvel exógena,Changping_DEWP,mean(Changping_DEWP(t-24:t-1)),disponível em t
+Changping_DEWP_rolling_std_24h,estatística móvel exógena,Changping_DEWP,std(Changping_DEWP(t-24:t-1)),disponível em t
+Changping_DEWP_rolling_mean_168h,estatística móvel exógena,Changping_DEWP,mean(Changping_DEWP(t-168:t-1)),disponível em t
+Changping_DEWP_rolling_std_168h,estatística móvel exógena,Changping_DEWP,std(Changping_DEWP(t-168:t-1)),disponível em t
+Changping_RAIN_lag_1h,lag exógeno,Changping_RAIN,Changping_RAIN(t-1),disponível em t
+Changping_RAIN_lag_2h,lag exógeno,Changping_RAIN,Changping_RAIN(t-2),disponível em t
+Changping_RAIN_lag_3h,lag exógeno,Changping_RAIN,Changping_RAIN(t-3),disponível em t
+Changping_RAIN_lag_6h,lag exógeno,Changping_RAIN,Changping_RAIN(t-6),disponível em t
+Changping_RAIN_lag_12h,lag exógeno,Changping_RAIN,Changping_RAIN(t-12),disponível em t
+Changping_RAIN_lag_24h,lag exógeno,Changping_RAIN,Changping_RAIN(t-24),disponível em t
+Changping_RAIN_lag_168h,lag exógeno,Changping_RAIN,Changping_RAIN(t-168),disponível em t
+Changping_RAIN_rolling_mean_3h,estatística móvel exógena,Changping_RAIN,mean(Changping_RAIN(t-3:t-1)),disponível em t
+Changping_RAIN_rolling_std_3h,estatística móvel exógena,Changping_RAIN,std(Changping_RAIN(t-3:t-1)),disponível em t
+Changping_RAIN_rolling_mean_6h,estatística móvel exógena,Changping_RAIN,mean(Changping_RAIN(t-6:t-1)),disponível em t
+Changping_RAIN_rolling_std_6h,estatística móvel exógena,Changping_RAIN,std(Changping_RAIN(t-6:t-1)),disponível em t
+Changping_RAIN_rolling_mean_24h,estatística móvel exógena,Changping_RAIN,mean(Changping_RAIN(t-24:t-1)),disponível em t
+Changping_RAIN_rolling_std_24h,estatística móvel exógena,Changping_RAIN,std(Changping_RAIN(t-24:t-1)),disponível em t
+Changping_RAIN_rolling_mean_168h,estatística móvel exógena,Changping_RAIN,mean(Changping_RAIN(t-168:t-1)),disponível em t
+Changping_RAIN_rolling_std_168h,estatística móvel exógena,Changping_RAIN,std(Changping_RAIN(t-168:t-1)),disponível em t
+Changping_WSPM_lag_1h,lag exógeno,Changping_WSPM,Changping_WSPM(t-1),disponível em t
+Changping_WSPM_lag_2h,lag exógeno,Changping_WSPM,Changping_WSPM(t-2),disponível em t
+Changping_WSPM_lag_3h,lag exógeno,Changping_WSPM,Changping_WSPM(t-3),disponível em t
+Changping_WSPM_lag_6h,lag exógeno,Changping_WSPM,Changping_WSPM(t-6),disponível em t
+Changping_WSPM_lag_12h,lag exógeno,Changping_WSPM,Changping_WSPM(t-12),disponível em t
+Changping_WSPM_lag_24h,lag exógeno,Changping_WSPM,Changping_WSPM(t-24),disponível em t
+Changping_WSPM_lag_168h,lag exógeno,Changping_WSPM,Changping_WSPM(t-168),disponível em t
+Changping_WSPM_rolling_mean_3h,estatística móvel exógena,Changping_WSPM,mean(Changping_WSPM(t-3:t-1)),disponível em t
+Changping_WSPM_rolling_std_3h,estatística móvel exógena,Changping_WSPM,std(Changping_WSPM(t-3:t-1)),disponível em t
+Changping_WSPM_rolling_mean_6h,estatística móvel exógena,Changping_WSPM,mean(Changping_WSPM(t-6:t-1)),disponível em t
+Changping_WSPM_rolling_std_6h,estatística móvel exógena,Changping_WSPM,std(Changping_WSPM(t-6:t-1)),disponível em t
+Changping_WSPM_rolling_mean_24h,estatística móvel exógena,Changping_WSPM,mean(Changping_WSPM(t-24:t-1)),disponível em t
+Changping_WSPM_rolling_std_24h,estatística móvel exógena,Changping_WSPM,std(Changping_WSPM(t-24:t-1)),disponível em t
+Changping_WSPM_rolling_mean_168h,estatística móvel exógena,Changping_WSPM,mean(Changping_WSPM(t-168:t-1)),disponível em t
+Changping_WSPM_rolling_std_168h,estatística móvel exógena,Changping_WSPM,std(Changping_WSPM(t-168:t-1)),disponível em t
+Guanyuan_PM2_5_lag_1h,lag exógeno,Guanyuan_PM2.5,Guanyuan_PM2.5(t-1),disponível em t
+Guanyuan_PM2_5_lag_2h,lag exógeno,Guanyuan_PM2.5,Guanyuan_PM2.5(t-2),disponível em t
+Guanyuan_PM2_5_lag_3h,lag exógeno,Guanyuan_PM2.5,Guanyuan_PM2.5(t-3),disponível em t
+Guanyuan_PM2_5_lag_6h,lag exógeno,Guanyuan_PM2.5,Guanyuan_PM2.5(t-6),disponível em t
+Guanyuan_PM2_5_lag_12h,lag exógeno,Guanyuan_PM2.5,Guanyuan_PM2.5(t-12),disponível em t
+Guanyuan_PM2_5_lag_24h,lag exógeno,Guanyuan_PM2.5,Guanyuan_PM2.5(t-24),disponível em t
+Guanyuan_PM2_5_lag_168h,lag exógeno,Guanyuan_PM2.5,Guanyuan_PM2.5(t-168),disponível em t
+Guanyuan_PM2_5_rolling_mean_3h,estatística móvel exógena,Guanyuan_PM2.5,mean(Guanyuan_PM2.5(t-3:t-1)),disponível em t
+Guanyuan_PM2_5_rolling_std_3h,estatística móvel exógena,Guanyuan_PM2.5,std(Guanyuan_PM2.5(t-3:t-1)),disponível em t
+Guanyuan_PM2_5_rolling_mean_6h,estatística móvel exógena,Guanyuan_PM2.5,mean(Guanyuan_PM2.5(t-6:t-1)),disponível em t
+Guanyuan_PM2_5_rolling_std_6h,estatística móvel exógena,Guanyuan_PM2.5,std(Guanyuan_PM2.5(t-6:t-1)),disponível em t
+Guanyuan_PM2_5_rolling_mean_24h,estatística móvel exógena,Guanyuan_PM2.5,mean(Guanyuan_PM2.5(t-24:t-1)),disponível em t
+Guanyuan_PM2_5_rolling_std_24h,estatística móvel exógena,Guanyuan_PM2.5,std(Guanyuan_PM2.5(t-24:t-1)),disponível em t
+Guanyuan_PM2_5_rolling_mean_168h,estatística móvel exógena,Guanyuan_PM2.5,mean(Guanyuan_PM2.5(t-168:t-1)),disponível em t
+Guanyuan_PM2_5_rolling_std_168h,estatística móvel exógena,Guanyuan_PM2.5,std(Guanyuan_PM2.5(t-168:t-1)),disponível em t
+Guanyuan_PM10_lag_1h,lag exógeno,Guanyuan_PM10,Guanyuan_PM10(t-1),disponível em t
+Guanyuan_PM10_lag_2h,lag exógeno,Guanyuan_PM10,Guanyuan_PM10(t-2),disponível em t
+Guanyuan_PM10_lag_3h,lag exógeno,Guanyuan_PM10,Guanyuan_PM10(t-3),disponível em t
+Guanyuan_PM10_lag_6h,lag exógeno,Guanyuan_PM10,Guanyuan_PM10(t-6),disponível em t
+Guanyuan_PM10_lag_12h,lag exógeno,Guanyuan_PM10,Guanyuan_PM10(t-12),disponível em t
+Guanyuan_PM10_lag_24h,lag exógeno,Guanyuan_PM10,Guanyuan_PM10(t-24),disponível em t
+Guanyuan_PM10_lag_168h,lag exógeno,Guanyuan_PM10,Guanyuan_PM10(t-168),disponível em t
+Guanyuan_PM10_rolling_mean_3h,estatística móvel exógena,Guanyuan_PM10,mean(Guanyuan_PM10(t-3:t-1)),disponível em t
+Guanyuan_PM10_rolling_std_3h,estatística móvel exógena,Guanyuan_PM10,std(Guanyuan_PM10(t-3:t-1)),disponível em t
+Guanyuan_PM10_rolling_mean_6h,estatística móvel exógena,Guanyuan_PM10,mean(Guanyuan_PM10(t-6:t-1)),disponível em t
+Guanyuan_PM10_rolling_std_6h,estatística móvel exógena,Guanyuan_PM10,std(Guanyuan_PM10(t-6:t-1)),disponível em t
+Guanyuan_PM10_rolling_mean_24h,estatística móvel exógena,Guanyuan_PM10,mean(Guanyuan_PM10(t-24:t-1)),disponível em t
+Guanyuan_PM10_rolling_std_24h,estatística móvel exógena,Guanyuan_PM10,std(Guanyuan_PM10(t-24:t-1)),disponível em t
+Guanyuan_PM10_rolling_mean_168h,estatística móvel exógena,Guanyuan_PM10,mean(Guanyuan_PM10(t-168:t-1)),disponível em t
+Guanyuan_PM10_rolling_std_168h,estatística móvel exógena,Guanyuan_PM10,std(Guanyuan_PM10(t-168:t-1)),disponível em t
+Guanyuan_SO2_lag_1h,lag exógeno,Guanyuan_SO2,Guanyuan_SO2(t-1),disponível em t
+Guanyuan_SO2_lag_2h,lag exógeno,Guanyuan_SO2,Guanyuan_SO2(t-2),disponível em t
+Guanyuan_SO2_lag_3h,lag exógeno,Guanyuan_SO2,Guanyuan_SO2(t-3),disponível em t
+Guanyuan_SO2_lag_6h,lag exógeno,Guanyuan_SO2,Guanyuan_SO2(t-6),disponível em t
+Guanyuan_SO2_lag_12h,lag exógeno,Guanyuan_SO2,Guanyuan_SO2(t-12),disponível em t
+Guanyuan_SO2_lag_24h,lag exógeno,Guanyuan_SO2,Guanyuan_SO2(t-24),disponível em t
+Guanyuan_SO2_lag_168h,lag exógeno,Guanyuan_SO2,Guanyuan_SO2(t-168),disponível em t
+Guanyuan_SO2_rolling_mean_3h,estatística móvel exógena,Guanyuan_SO2,mean(Guanyuan_SO2(t-3:t-1)),disponível em t
+Guanyuan_SO2_rolling_std_3h,estatística móvel exógena,Guanyuan_SO2,std(Guanyuan_SO2(t-3:t-1)),disponível em t
+Guanyuan_SO2_rolling_mean_6h,estatística móvel exógena,Guanyuan_SO2,mean(Guanyuan_SO2(t-6:t-1)),disponível em t
+Guanyuan_SO2_rolling_std_6h,estatística móvel exógena,Guanyuan_SO2,std(Guanyuan_SO2(t-6:t-1)),disponível em t
+Guanyuan_SO2_rolling_mean_24h,estatística móvel exógena,Guanyuan_SO2,mean(Guanyuan_SO2(t-24:t-1)),disponível em t
+Guanyuan_SO2_rolling_std_24h,estatística móvel exógena,Guanyuan_SO2,std(Guanyuan_SO2(t-24:t-1)),disponível em t
+Guanyuan_SO2_rolling_mean_168h,estatística móvel exógena,Guanyuan_SO2,mean(Guanyuan_SO2(t-168:t-1)),disponível em t
+Guanyuan_SO2_rolling_std_168h,estatística móvel exógena,Guanyuan_SO2,std(Guanyuan_SO2(t-168:t-1)),disponível em t
+Guanyuan_NO2_lag_1h,lag exógeno,Guanyuan_NO2,Guanyuan_NO2(t-1),disponível em t
+Guanyuan_NO2_lag_2h,lag exógeno,Guanyuan_NO2,Guanyuan_NO2(t-2),disponível em t
+Guanyuan_NO2_lag_3h,lag exógeno,Guanyuan_NO2,Guanyuan_NO2(t-3),disponível em t
+Guanyuan_NO2_lag_6h,lag exógeno,Guanyuan_NO2,Guanyuan_NO2(t-6),disponível em t
+Guanyuan_NO2_lag_12h,lag exógeno,Guanyuan_NO2,Guanyuan_NO2(t-12),disponível em t
+Guanyuan_NO2_lag_24h,lag exógeno,Guanyuan_NO2,Guanyuan_NO2(t-24),disponível em t
+Guanyuan_NO2_lag_168h,lag exógeno,Guanyuan_NO2,Guanyuan_NO2(t-168),disponível em t
+Guanyuan_NO2_rolling_mean_3h,estatística móvel exógena,Guanyuan_NO2,mean(Guanyuan_NO2(t-3:t-1)),disponível em t
+Guanyuan_NO2_rolling_std_3h,estatística móvel exógena,Guanyuan_NO2,std(Guanyuan_NO2(t-3:t-1)),disponível em t
+Guanyuan_NO2_rolling_mean_6h,estatística móvel exógena,Guanyuan_NO2,mean(Guanyuan_NO2(t-6:t-1)),disponível em t
+Guanyuan_NO2_rolling_std_6h,estatística móvel exógena,Guanyuan_NO2,std(Guanyuan_NO2(t-6:t-1)),disponível em t
+Guanyuan_NO2_rolling_mean_24h,estatística móvel exógena,Guanyuan_NO2,mean(Guanyuan_NO2(t-24:t-1)),disponível em t
+Guanyuan_NO2_rolling_std_24h,estatística móvel exógena,Guanyuan_NO2,std(Guanyuan_NO2(t-24:t-1)),disponível em t
+Guanyuan_NO2_rolling_mean_168h,estatística móvel exógena,Guanyuan_NO2,mean(Guanyuan_NO2(t-168:t-1)),disponível em t
+Guanyuan_NO2_rolling_std_168h,estatística móvel exógena,Guanyuan_NO2,std(Guanyuan_NO2(t-168:t-1)),disponível em t
+Guanyuan_CO_lag_1h,lag exógeno,Guanyuan_CO,Guanyuan_CO(t-1),disponível em t
+Guanyuan_CO_lag_2h,lag exógeno,Guanyuan_CO,Guanyuan_CO(t-2),disponível em t
+Guanyuan_CO_lag_3h,lag exógeno,Guanyuan_CO,Guanyuan_CO(t-3),disponível em t
+Guanyuan_CO_lag_6h,lag exógeno,Guanyuan_CO,Guanyuan_CO(t-6),disponível em t
+Guanyuan_CO_lag_12h,lag exógeno,Guanyuan_CO,Guanyuan_CO(t-12),disponível em t
+Guanyuan_CO_lag_24h,lag exógeno,Guanyuan_CO,Guanyuan_CO(t-24),disponível em t
+Guanyuan_CO_lag_168h,lag exógeno,Guanyuan_CO,Guanyuan_CO(t-168),disponível em t
+Guanyuan_CO_rolling_mean_3h,estatística móvel exógena,Guanyuan_CO,mean(Guanyuan_CO(t-3:t-1)),disponível em t
+Guanyuan_CO_rolling_std_3h,estatística móvel exógena,Guanyuan_CO,std(Guanyuan_CO(t-3:t-1)),disponível em t
+Guanyuan_CO_rolling_mean_6h,estatística móvel exógena,Guanyuan_CO,mean(Guanyuan_CO(t-6:t-1)),disponível em t
+Guanyuan_CO_rolling_std_6h,estatística móvel exógena,Guanyuan_CO,std(Guanyuan_CO(t-6:t-1)),disponível em t
+Guanyuan_CO_rolling_mean_24h,estatística móvel exógena,Guanyuan_CO,mean(Guanyuan_CO(t-24:t-1)),disponível em t
+Guanyuan_CO_rolling_std_24h,estatística móvel exógena,Guanyuan_CO,std(Guanyuan_CO(t-24:t-1)),disponível em t
+Guanyuan_CO_rolling_mean_168h,estatística móvel exógena,Guanyuan_CO,mean(Guanyuan_CO(t-168:t-1)),disponível em t
+Guanyuan_CO_rolling_std_168h,estatística móvel exógena,Guanyuan_CO,std(Guanyuan_CO(t-168:t-1)),disponível em t
+Guanyuan_O3_lag_1h,lag exógeno,Guanyuan_O3,Guanyuan_O3(t-1),disponível em t
+Guanyuan_O3_lag_2h,lag exógeno,Guanyuan_O3,Guanyuan_O3(t-2),disponível em t
+Guanyuan_O3_lag_3h,lag exógeno,Guanyuan_O3,Guanyuan_O3(t-3),disponível em t
+Guanyuan_O3_lag_6h,lag exógeno,Guanyuan_O3,Guanyuan_O3(t-6),disponível em t
+Guanyuan_O3_lag_12h,lag exógeno,Guanyuan_O3,Guanyuan_O3(t-12),disponível em t
+Guanyuan_O3_lag_24h,lag exógeno,Guanyuan_O3,Guanyuan_O3(t-24),disponível em t
+Guanyuan_O3_lag_168h,lag exógeno,Guanyuan_O3,Guanyuan_O3(t-168),disponível em t
+Guanyuan_O3_rolling_mean_3h,estatística móvel exógena,Guanyuan_O3,mean(Guanyuan_O3(t-3:t-1)),disponível em t
+Guanyuan_O3_rolling_std_3h,estatística móvel exógena,Guanyuan_O3,std(Guanyuan_O3(t-3:t-1)),disponível em t
+Guanyuan_O3_rolling_mean_6h,estatística móvel exógena,Guanyuan_O3,mean(Guanyuan_O3(t-6:t-1)),disponível em t
+Guanyuan_O3_rolling_std_6h,estatística móvel exógena,Guanyuan_O3,std(Guanyuan_O3(t-6:t-1)),disponível em t
+Guanyuan_O3_rolling_mean_24h,estatística móvel exógena,Guanyuan_O3,mean(Guanyuan_O3(t-24:t-1)),disponível em t
+Guanyuan_O3_rolling_std_24h,estatística móvel exógena,Guanyuan_O3,std(Guanyuan_O3(t-24:t-1)),disponível em t
+Guanyuan_O3_rolling_mean_168h,estatística móvel exógena,Guanyuan_O3,mean(Guanyuan_O3(t-168:t-1)),disponível em t
+Guanyuan_O3_rolling_std_168h,estatística móvel exógena,Guanyuan_O3,std(Guanyuan_O3(t-168:t-1)),disponível em t
+Guanyuan_TEMP_lag_1h,lag exógeno,Guanyuan_TEMP,Guanyuan_TEMP(t-1),disponível em t
+Guanyuan_TEMP_lag_2h,lag exógeno,Guanyuan_TEMP,Guanyuan_TEMP(t-2),disponível em t
+Guanyuan_TEMP_lag_3h,lag exógeno,Guanyuan_TEMP,Guanyuan_TEMP(t-3),disponível em t
+Guanyuan_TEMP_lag_6h,lag exógeno,Guanyuan_TEMP,Guanyuan_TEMP(t-6),disponível em t
+Guanyuan_TEMP_lag_12h,lag exógeno,Guanyuan_TEMP,Guanyuan_TEMP(t-12),disponível em t
+Guanyuan_TEMP_lag_24h,lag exógeno,Guanyuan_TEMP,Guanyuan_TEMP(t-24),disponível em t
+Guanyuan_TEMP_lag_168h,lag exógeno,Guanyuan_TEMP,Guanyuan_TEMP(t-168),disponível em t
+Guanyuan_TEMP_rolling_mean_3h,estatística móvel exógena,Guanyuan_TEMP,mean(Guanyuan_TEMP(t-3:t-1)),disponível em t
+Guanyuan_TEMP_rolling_std_3h,estatística móvel exógena,Guanyuan_TEMP,std(Guanyuan_TEMP(t-3:t-1)),disponível em t
+Guanyuan_TEMP_rolling_mean_6h,estatística móvel exógena,Guanyuan_TEMP,mean(Guanyuan_TEMP(t-6:t-1)),disponível em t
+Guanyuan_TEMP_rolling_std_6h,estatística móvel exógena,Guanyuan_TEMP,std(Guanyuan_TEMP(t-6:t-1)),disponível em t
+Guanyuan_TEMP_rolling_mean_24h,estatística móvel exógena,Guanyuan_TEMP,mean(Guanyuan_TEMP(t-24:t-1)),disponível em t
+Guanyuan_TEMP_rolling_std_24h,estatística móvel exógena,Guanyuan_TEMP,std(Guanyuan_TEMP(t-24:t-1)),disponível em t
+Guanyuan_TEMP_rolling_mean_168h,estatística móvel exógena,Guanyuan_TEMP,mean(Guanyuan_TEMP(t-168:t-1)),disponível em t
+Guanyuan_TEMP_rolling_std_168h,estatística móvel exógena,Guanyuan_TEMP,std(Guanyuan_TEMP(t-168:t-1)),disponível em t
+Guanyuan_PRES_lag_1h,lag exógeno,Guanyuan_PRES,Guanyuan_PRES(t-1),disponível em t
+Guanyuan_PRES_lag_2h,lag exógeno,Guanyuan_PRES,Guanyuan_PRES(t-2),disponível em t
+Guanyuan_PRES_lag_3h,lag exógeno,Guanyuan_PRES,Guanyuan_PRES(t-3),disponível em t
+Guanyuan_PRES_lag_6h,lag exógeno,Guanyuan_PRES,Guanyuan_PRES(t-6),disponível em t
+Guanyuan_PRES_lag_12h,lag exógeno,Guanyuan_PRES,Guanyuan_PRES(t-12),disponível em t
+Guanyuan_PRES_lag_24h,lag exógeno,Guanyuan_PRES,Guanyuan_PRES(t-24),disponível em t
+Guanyuan_PRES_lag_168h,lag exógeno,Guanyuan_PRES,Guanyuan_PRES(t-168),disponível em t
+Guanyuan_PRES_rolling_mean_3h,estatística móvel exógena,Guanyuan_PRES,mean(Guanyuan_PRES(t-3:t-1)),disponível em t
+Guanyuan_PRES_rolling_std_3h,estatística móvel exógena,Guanyuan_PRES,std(Guanyuan_PRES(t-3:t-1)),disponível em t
+Guanyuan_PRES_rolling_mean_6h,estatística móvel exógena,Guanyuan_PRES,mean(Guanyuan_PRES(t-6:t-1)),disponível em t
+Guanyuan_PRES_rolling_std_6h,estatística móvel exógena,Guanyuan_PRES,std(Guanyuan_PRES(t-6:t-1)),disponível em t
+Guanyuan_PRES_rolling_mean_24h,estatística móvel exógena,Guanyuan_PRES,mean(Guanyuan_PRES(t-24:t-1)),disponível em t
+Guanyuan_PRES_rolling_std_24h,estatística móvel exógena,Guanyuan_PRES,std(Guanyuan_PRES(t-24:t-1)),disponível em t
+Guanyuan_PRES_rolling_mean_168h,estatística móvel exógena,Guanyuan_PRES,mean(Guanyuan_PRES(t-168:t-1)),disponível em t
+Guanyuan_PRES_rolling_std_168h,estatística móvel exógena,Guanyuan_PRES,std(Guanyuan_PRES(t-168:t-1)),disponível em t
+Guanyuan_DEWP_lag_1h,lag exógeno,Guanyuan_DEWP,Guanyuan_DEWP(t-1),disponível em t
+Guanyuan_DEWP_lag_2h,lag exógeno,Guanyuan_DEWP,Guanyuan_DEWP(t-2),disponível em t
+Guanyuan_DEWP_lag_3h,lag exógeno,Guanyuan_DEWP,Guanyuan_DEWP(t-3),disponível em t
+Guanyuan_DEWP_lag_6h,lag exógeno,Guanyuan_DEWP,Guanyuan_DEWP(t-6),disponível em t
+Guanyuan_DEWP_lag_12h,lag exógeno,Guanyuan_DEWP,Guanyuan_DEWP(t-12),disponível em t
+Guanyuan_DEWP_lag_24h,lag exógeno,Guanyuan_DEWP,Guanyuan_DEWP(t-24),disponível em t
+Guanyuan_DEWP_lag_168h,lag exógeno,Guanyuan_DEWP,Guanyuan_DEWP(t-168),disponível em t
+Guanyuan_DEWP_rolling_mean_3h,estatística móvel exógena,Guanyuan_DEWP,mean(Guanyuan_DEWP(t-3:t-1)),disponível em t
+Guanyuan_DEWP_rolling_std_3h,estatística móvel exógena,Guanyuan_DEWP,std(Guanyuan_DEWP(t-3:t-1)),disponível em t
+Guanyuan_DEWP_rolling_mean_6h,estatística móvel exógena,Guanyuan_DEWP,mean(Guanyuan_DEWP(t-6:t-1)),disponível em t
+Guanyuan_DEWP_rolling_std_6h,estatística móvel exógena,Guanyuan_DEWP,std(Guanyuan_DEWP(t-6:t-1)),disponível em t
+Guanyuan_DEWP_rolling_mean_24h,estatística móvel exógena,Guanyuan_DEWP,mean(Guanyuan_DEWP(t-24:t-1)),disponível em t
+Guanyuan_DEWP_rolling_std_24h,estatística móvel exógena,Guanyuan_DEWP,std(Guanyuan_DEWP(t-24:t-1)),disponível em t
+Guanyuan_DEWP_rolling_mean_168h,estatística móvel exógena,Guanyuan_DEWP,mean(Guanyuan_DEWP(t-168:t-1)),disponível em t
+Guanyuan_DEWP_rolling_std_168h,estatística móvel exógena,Guanyuan_DEWP,std(Guanyuan_DEWP(t-168:t-1)),disponível em t
+Guanyuan_RAIN_lag_1h,lag exógeno,Guanyuan_RAIN,Guanyuan_RAIN(t-1),disponível em t
+Guanyuan_RAIN_lag_2h,lag exógeno,Guanyuan_RAIN,Guanyuan_RAIN(t-2),disponível em t
+Guanyuan_RAIN_lag_3h,lag exógeno,Guanyuan_RAIN,Guanyuan_RAIN(t-3),disponível em t
+Guanyuan_RAIN_lag_6h,lag exógeno,Guanyuan_RAIN,Guanyuan_RAIN(t-6),disponível em t
+Guanyuan_RAIN_lag_12h,lag exógeno,Guanyuan_RAIN,Guanyuan_RAIN(t-12),disponível em t
+Guanyuan_RAIN_lag_24h,lag exógeno,Guanyuan_RAIN,Guanyuan_RAIN(t-24),disponível em t
+Guanyuan_RAIN_lag_168h,lag exógeno,Guanyuan_RAIN,Guanyuan_RAIN(t-168),disponível em t
+Guanyuan_RAIN_rolling_mean_3h,estatística móvel exógena,Guanyuan_RAIN,mean(Guanyuan_RAIN(t-3:t-1)),disponível em t
+Guanyuan_RAIN_rolling_std_3h,estatística móvel exógena,Guanyuan_RAIN,std(Guanyuan_RAIN(t-3:t-1)),disponível em t
+Guanyuan_RAIN_rolling_mean_6h,estatística móvel exógena,Guanyuan_RAIN,mean(Guanyuan_RAIN(t-6:t-1)),disponível em t
+Guanyuan_RAIN_rolling_std_6h,estatística móvel exógena,Guanyuan_RAIN,std(Guanyuan_RAIN(t-6:t-1)),disponível em t
+Guanyuan_RAIN_rolling_mean_24h,estatística móvel exógena,Guanyuan_RAIN,mean(Guanyuan_RAIN(t-24:t-1)),disponível em t
+Guanyuan_RAIN_rolling_std_24h,estatística móvel exógena,Guanyuan_RAIN,std(Guanyuan_RAIN(t-24:t-1)),disponível em t
+Guanyuan_RAIN_rolling_mean_168h,estatística móvel exógena,Guanyuan_RAIN,mean(Guanyuan_RAIN(t-168:t-1)),disponível em t
+Guanyuan_RAIN_rolling_std_168h,estatística móvel exógena,Guanyuan_RAIN,std(Guanyuan_RAIN(t-168:t-1)),disponível em t
+Guanyuan_WSPM_lag_1h,lag exógeno,Guanyuan_WSPM,Guanyuan_WSPM(t-1),disponível em t
+Guanyuan_WSPM_lag_2h,lag exógeno,Guanyuan_WSPM,Guanyuan_WSPM(t-2),disponível em t
+Guanyuan_WSPM_lag_3h,lag exógeno,Guanyuan_WSPM,Guanyuan_WSPM(t-3),disponível em t
+Guanyuan_WSPM_lag_6h,lag exógeno,Guanyuan_WSPM,Guanyuan_WSPM(t-6),disponível em t
+Guanyuan_WSPM_lag_12h,lag exógeno,Guanyuan_WSPM,Guanyuan_WSPM(t-12),disponível em t
+Guanyuan_WSPM_lag_24h,lag exógeno,Guanyuan_WSPM,Guanyuan_WSPM(t-24),disponível em t
+Guanyuan_WSPM_lag_168h,lag exógeno,Guanyuan_WSPM,Guanyuan_WSPM(t-168),disponível em t
+Guanyuan_WSPM_rolling_mean_3h,estatística móvel exógena,Guanyuan_WSPM,mean(Guanyuan_WSPM(t-3:t-1)),disponível em t
+Guanyuan_WSPM_rolling_std_3h,estatística móvel exógena,Guanyuan_WSPM,std(Guanyuan_WSPM(t-3:t-1)),disponível em t
+Guanyuan_WSPM_rolling_mean_6h,estatística móvel exógena,Guanyuan_WSPM,mean(Guanyuan_WSPM(t-6:t-1)),disponível em t
+Guanyuan_WSPM_rolling_std_6h,estatística móvel exógena,Guanyuan_WSPM,std(Guanyuan_WSPM(t-6:t-1)),disponível em t
+Guanyuan_WSPM_rolling_mean_24h,estatística móvel exógena,Guanyuan_WSPM,mean(Guanyuan_WSPM(t-24:t-1)),disponível em t
+Guanyuan_WSPM_rolling_std_24h,estatística móvel exógena,Guanyuan_WSPM,std(Guanyuan_WSPM(t-24:t-1)),disponível em t
+Guanyuan_WSPM_rolling_mean_168h,estatística móvel exógena,Guanyuan_WSPM,mean(Guanyuan_WSPM(t-168:t-1)),disponível em t
+Guanyuan_WSPM_rolling_std_168h,estatística móvel exógena,Guanyuan_WSPM,std(Guanyuan_WSPM(t-168:t-1)),disponível em t
+Wanliu_PM2_5_lag_1h,lag exógeno,Wanliu_PM2.5,Wanliu_PM2.5(t-1),disponível em t
+Wanliu_PM2_5_lag_2h,lag exógeno,Wanliu_PM2.5,Wanliu_PM2.5(t-2),disponível em t
+Wanliu_PM2_5_lag_3h,lag exógeno,Wanliu_PM2.5,Wanliu_PM2.5(t-3),disponível em t
+Wanliu_PM2_5_lag_6h,lag exógeno,Wanliu_PM2.5,Wanliu_PM2.5(t-6),disponível em t
+Wanliu_PM2_5_lag_12h,lag exógeno,Wanliu_PM2.5,Wanliu_PM2.5(t-12),disponível em t
+Wanliu_PM2_5_lag_24h,lag exógeno,Wanliu_PM2.5,Wanliu_PM2.5(t-24),disponível em t
+Wanliu_PM2_5_lag_168h,lag exógeno,Wanliu_PM2.5,Wanliu_PM2.5(t-168),disponível em t
+Wanliu_PM2_5_rolling_mean_3h,estatística móvel exógena,Wanliu_PM2.5,mean(Wanliu_PM2.5(t-3:t-1)),disponível em t
+Wanliu_PM2_5_rolling_std_3h,estatística móvel exógena,Wanliu_PM2.5,std(Wanliu_PM2.5(t-3:t-1)),disponível em t
+Wanliu_PM2_5_rolling_mean_6h,estatística móvel exógena,Wanliu_PM2.5,mean(Wanliu_PM2.5(t-6:t-1)),disponível em t
+Wanliu_PM2_5_rolling_std_6h,estatística móvel exógena,Wanliu_PM2.5,std(Wanliu_PM2.5(t-6:t-1)),disponível em t
+Wanliu_PM2_5_rolling_mean_24h,estatística móvel exógena,Wanliu_PM2.5,mean(Wanliu_PM2.5(t-24:t-1)),disponível em t
+Wanliu_PM2_5_rolling_std_24h,estatística móvel exógena,Wanliu_PM2.5,std(Wanliu_PM2.5(t-24:t-1)),disponível em t
+Wanliu_PM2_5_rolling_mean_168h,estatística móvel exógena,Wanliu_PM2.5,mean(Wanliu_PM2.5(t-168:t-1)),disponível em t
+Wanliu_PM2_5_rolling_std_168h,estatística móvel exógena,Wanliu_PM2.5,std(Wanliu_PM2.5(t-168:t-1)),disponível em t
+Wanliu_PM10_lag_1h,lag exógeno,Wanliu_PM10,Wanliu_PM10(t-1),disponível em t
+Wanliu_PM10_lag_2h,lag exógeno,Wanliu_PM10,Wanliu_PM10(t-2),disponível em t
+Wanliu_PM10_lag_3h,lag exógeno,Wanliu_PM10,Wanliu_PM10(t-3),disponível em t
+Wanliu_PM10_lag_6h,lag exógeno,Wanliu_PM10,Wanliu_PM10(t-6),disponível em t
+Wanliu_PM10_lag_12h,lag exógeno,Wanliu_PM10,Wanliu_PM10(t-12),disponível em t
+Wanliu_PM10_lag_24h,lag exógeno,Wanliu_PM10,Wanliu_PM10(t-24),disponível em t
+Wanliu_PM10_lag_168h,lag exógeno,Wanliu_PM10,Wanliu_PM10(t-168),disponível em t
+Wanliu_PM10_rolling_mean_3h,estatística móvel exógena,Wanliu_PM10,mean(Wanliu_PM10(t-3:t-1)),disponível em t
+Wanliu_PM10_rolling_std_3h,estatística móvel exógena,Wanliu_PM10,std(Wanliu_PM10(t-3:t-1)),disponível em t
+Wanliu_PM10_rolling_mean_6h,estatística móvel exógena,Wanliu_PM10,mean(Wanliu_PM10(t-6:t-1)),disponível em t
+Wanliu_PM10_rolling_std_6h,estatística móvel exógena,Wanliu_PM10,std(Wanliu_PM10(t-6:t-1)),disponível em t
+Wanliu_PM10_rolling_mean_24h,estatística móvel exógena,Wanliu_PM10,mean(Wanliu_PM10(t-24:t-1)),disponível em t
+Wanliu_PM10_rolling_std_24h,estatística móvel exógena,Wanliu_PM10,std(Wanliu_PM10(t-24:t-1)),disponível em t
+Wanliu_PM10_rolling_mean_168h,estatística móvel exógena,Wanliu_PM10,mean(Wanliu_PM10(t-168:t-1)),disponível em t
+Wanliu_PM10_rolling_std_168h,estatística móvel exógena,Wanliu_PM10,std(Wanliu_PM10(t-168:t-1)),disponível em t
+Wanliu_SO2_lag_1h,lag exógeno,Wanliu_SO2,Wanliu_SO2(t-1),disponível em t
+Wanliu_SO2_lag_2h,lag exógeno,Wanliu_SO2,Wanliu_SO2(t-2),disponível em t
+Wanliu_SO2_lag_3h,lag exógeno,Wanliu_SO2,Wanliu_SO2(t-3),disponível em t
+Wanliu_SO2_lag_6h,lag exógeno,Wanliu_SO2,Wanliu_SO2(t-6),disponível em t
+Wanliu_SO2_lag_12h,lag exógeno,Wanliu_SO2,Wanliu_SO2(t-12),disponível em t
+Wanliu_SO2_lag_24h,lag exógeno,Wanliu_SO2,Wanliu_SO2(t-24),disponível em t
+Wanliu_SO2_lag_168h,lag exógeno,Wanliu_SO2,Wanliu_SO2(t-168),disponível em t
+Wanliu_SO2_rolling_mean_3h,estatística móvel exógena,Wanliu_SO2,mean(Wanliu_SO2(t-3:t-1)),disponível em t
+Wanliu_SO2_rolling_std_3h,estatística móvel exógena,Wanliu_SO2,std(Wanliu_SO2(t-3:t-1)),disponível em t
+Wanliu_SO2_rolling_mean_6h,estatística móvel exógena,Wanliu_SO2,mean(Wanliu_SO2(t-6:t-1)),disponível em t
+Wanliu_SO2_rolling_std_6h,estatística móvel exógena,Wanliu_SO2,std(Wanliu_SO2(t-6:t-1)),disponível em t
+Wanliu_SO2_rolling_mean_24h,estatística móvel exógena,Wanliu_SO2,mean(Wanliu_SO2(t-24:t-1)),disponível em t
+Wanliu_SO2_rolling_std_24h,estatística móvel exógena,Wanliu_SO2,std(Wanliu_SO2(t-24:t-1)),disponível em t
+Wanliu_SO2_rolling_mean_168h,estatística móvel exógena,Wanliu_SO2,mean(Wanliu_SO2(t-168:t-1)),disponível em t
+Wanliu_SO2_rolling_std_168h,estatística móvel exógena,Wanliu_SO2,std(Wanliu_SO2(t-168:t-1)),disponível em t
+Wanliu_NO2_lag_1h,lag exógeno,Wanliu_NO2,Wanliu_NO2(t-1),disponível em t
+Wanliu_NO2_lag_2h,lag exógeno,Wanliu_NO2,Wanliu_NO2(t-2),disponível em t
+Wanliu_NO2_lag_3h,lag exógeno,Wanliu_NO2,Wanliu_NO2(t-3),disponível em t
+Wanliu_NO2_lag_6h,lag exógeno,Wanliu_NO2,Wanliu_NO2(t-6),disponível em t
+Wanliu_NO2_lag_12h,lag exógeno,Wanliu_NO2,Wanliu_NO2(t-12),disponível em t
+Wanliu_NO2_lag_24h,lag exógeno,Wanliu_NO2,Wanliu_NO2(t-24),disponível em t
+Wanliu_NO2_lag_168h,lag exógeno,Wanliu_NO2,Wanliu_NO2(t-168),disponível em t
+Wanliu_NO2_rolling_mean_3h,estatística móvel exógena,Wanliu_NO2,mean(Wanliu_NO2(t-3:t-1)),disponível em t
+Wanliu_NO2_rolling_std_3h,estatística móvel exógena,Wanliu_NO2,std(Wanliu_NO2(t-3:t-1)),disponível em t
+Wanliu_NO2_rolling_mean_6h,estatística móvel exógena,Wanliu_NO2,mean(Wanliu_NO2(t-6:t-1)),disponível em t
+Wanliu_NO2_rolling_std_6h,estatística móvel exógena,Wanliu_NO2,std(Wanliu_NO2(t-6:t-1)),disponível em t
+Wanliu_NO2_rolling_mean_24h,estatística móvel exógena,Wanliu_NO2,mean(Wanliu_NO2(t-24:t-1)),disponível em t
+Wanliu_NO2_rolling_std_24h,estatística móvel exógena,Wanliu_NO2,std(Wanliu_NO2(t-24:t-1)),disponível em t
+Wanliu_NO2_rolling_mean_168h,estatística móvel exógena,Wanliu_NO2,mean(Wanliu_NO2(t-168:t-1)),disponível em t
+Wanliu_NO2_rolling_std_168h,estatística móvel exógena,Wanliu_NO2,std(Wanliu_NO2(t-168:t-1)),disponível em t
+Wanliu_CO_lag_1h,lag exógeno,Wanliu_CO,Wanliu_CO(t-1),disponível em t
+Wanliu_CO_lag_2h,lag exógeno,Wanliu_CO,Wanliu_CO(t-2),disponível em t
+Wanliu_CO_lag_3h,lag exógeno,Wanliu_CO,Wanliu_CO(t-3),disponível em t
+Wanliu_CO_lag_6h,lag exógeno,Wanliu_CO,Wanliu_CO(t-6),disponível em t
+Wanliu_CO_lag_12h,lag exógeno,Wanliu_CO,Wanliu_CO(t-12),disponível em t
+Wanliu_CO_lag_24h,lag exógeno,Wanliu_CO,Wanliu_CO(t-24),disponível em t
+Wanliu_CO_lag_168h,lag exógeno,Wanliu_CO,Wanliu_CO(t-168),disponível em t
+Wanliu_CO_rolling_mean_3h,estatística móvel exógena,Wanliu_CO,mean(Wanliu_CO(t-3:t-1)),disponível em t
+Wanliu_CO_rolling_std_3h,estatística móvel exógena,Wanliu_CO,std(Wanliu_CO(t-3:t-1)),disponível em t
+Wanliu_CO_rolling_mean_6h,estatística móvel exógena,Wanliu_CO,mean(Wanliu_CO(t-6:t-1)),disponível em t
+Wanliu_CO_rolling_std_6h,estatística móvel exógena,Wanliu_CO,std(Wanliu_CO(t-6:t-1)),disponível em t
+Wanliu_CO_rolling_mean_24h,estatística móvel exógena,Wanliu_CO,mean(Wanliu_CO(t-24:t-1)),disponível em t
+Wanliu_CO_rolling_std_24h,estatística móvel exógena,Wanliu_CO,std(Wanliu_CO(t-24:t-1)),disponível em t
+Wanliu_CO_rolling_mean_168h,estatística móvel exógena,Wanliu_CO,mean(Wanliu_CO(t-168:t-1)),disponível em t
+Wanliu_CO_rolling_std_168h,estatística móvel exógena,Wanliu_CO,std(Wanliu_CO(t-168:t-1)),disponível em t
+Wanliu_O3_lag_1h,lag exógeno,Wanliu_O3,Wanliu_O3(t-1),disponível em t
+Wanliu_O3_lag_2h,lag exógeno,Wanliu_O3,Wanliu_O3(t-2),disponível em t
+Wanliu_O3_lag_3h,lag exógeno,Wanliu_O3,Wanliu_O3(t-3),disponível em t
+Wanliu_O3_lag_6h,lag exógeno,Wanliu_O3,Wanliu_O3(t-6),disponível em t
+Wanliu_O3_lag_12h,lag exógeno,Wanliu_O3,Wanliu_O3(t-12),disponível em t
+Wanliu_O3_lag_24h,lag exógeno,Wanliu_O3,Wanliu_O3(t-24),disponível em t
+Wanliu_O3_lag_168h,lag exógeno,Wanliu_O3,Wanliu_O3(t-168),disponível em t
+Wanliu_O3_rolling_mean_3h,estatística móvel exógena,Wanliu_O3,mean(Wanliu_O3(t-3:t-1)),disponível em t
+Wanliu_O3_rolling_std_3h,estatística móvel exógena,Wanliu_O3,std(Wanliu_O3(t-3:t-1)),disponível em t
+Wanliu_O3_rolling_mean_6h,estatística móvel exógena,Wanliu_O3,mean(Wanliu_O3(t-6:t-1)),disponível em t
+Wanliu_O3_rolling_std_6h,estatística móvel exógena,Wanliu_O3,std(Wanliu_O3(t-6:t-1)),disponível em t
+Wanliu_O3_rolling_mean_24h,estatística móvel exógena,Wanliu_O3,mean(Wanliu_O3(t-24:t-1)),disponível em t
+Wanliu_O3_rolling_std_24h,estatística móvel exógena,Wanliu_O3,std(Wanliu_O3(t-24:t-1)),disponível em t
+Wanliu_O3_rolling_mean_168h,estatística móvel exógena,Wanliu_O3,mean(Wanliu_O3(t-168:t-1)),disponível em t
+Wanliu_O3_rolling_std_168h,estatística móvel exógena,Wanliu_O3,std(Wanliu_O3(t-168:t-1)),disponível em t
+Wanliu_TEMP_lag_1h,lag exógeno,Wanliu_TEMP,Wanliu_TEMP(t-1),disponível em t
+Wanliu_TEMP_lag_2h,lag exógeno,Wanliu_TEMP,Wanliu_TEMP(t-2),disponível em t
+Wanliu_TEMP_lag_3h,lag exógeno,Wanliu_TEMP,Wanliu_TEMP(t-3),disponível em t
+Wanliu_TEMP_lag_6h,lag exógeno,Wanliu_TEMP,Wanliu_TEMP(t-6),disponível em t
+Wanliu_TEMP_lag_12h,lag exógeno,Wanliu_TEMP,Wanliu_TEMP(t-12),disponível em t
+Wanliu_TEMP_lag_24h,lag exógeno,Wanliu_TEMP,Wanliu_TEMP(t-24),disponível em t
+Wanliu_TEMP_lag_168h,lag exógeno,Wanliu_TEMP,Wanliu_TEMP(t-168),disponível em t
+Wanliu_TEMP_rolling_mean_3h,estatística móvel exógena,Wanliu_TEMP,mean(Wanliu_TEMP(t-3:t-1)),disponível em t
+Wanliu_TEMP_rolling_std_3h,estatística móvel exógena,Wanliu_TEMP,std(Wanliu_TEMP(t-3:t-1)),disponível em t
+Wanliu_TEMP_rolling_mean_6h,estatística móvel exógena,Wanliu_TEMP,mean(Wanliu_TEMP(t-6:t-1)),disponível em t
+Wanliu_TEMP_rolling_std_6h,estatística móvel exógena,Wanliu_TEMP,std(Wanliu_TEMP(t-6:t-1)),disponível em t
+Wanliu_TEMP_rolling_mean_24h,estatística móvel exógena,Wanliu_TEMP,mean(Wanliu_TEMP(t-24:t-1)),disponível em t
+Wanliu_TEMP_rolling_std_24h,estatística móvel exógena,Wanliu_TEMP,std(Wanliu_TEMP(t-24:t-1)),disponível em t
+Wanliu_TEMP_rolling_mean_168h,estatística móvel exógena,Wanliu_TEMP,mean(Wanliu_TEMP(t-168:t-1)),disponível em t
+Wanliu_TEMP_rolling_std_168h,estatística móvel exógena,Wanliu_TEMP,std(Wanliu_TEMP(t-168:t-1)),disponível em t
+Wanliu_PRES_lag_1h,lag exógeno,Wanliu_PRES,Wanliu_PRES(t-1),disponível em t
+Wanliu_PRES_lag_2h,lag exógeno,Wanliu_PRES,Wanliu_PRES(t-2),disponível em t
+Wanliu_PRES_lag_3h,lag exógeno,Wanliu_PRES,Wanliu_PRES(t-3),disponível em t
+Wanliu_PRES_lag_6h,lag exógeno,Wanliu_PRES,Wanliu_PRES(t-6),disponível em t
+Wanliu_PRES_lag_12h,lag exógeno,Wanliu_PRES,Wanliu_PRES(t-12),disponível em t
+Wanliu_PRES_lag_24h,lag exógeno,Wanliu_PRES,Wanliu_PRES(t-24),disponível em t
+Wanliu_PRES_lag_168h,lag exógeno,Wanliu_PRES,Wanliu_PRES(t-168),disponível em t
+Wanliu_PRES_rolling_mean_3h,estatística móvel exógena,Wanliu_PRES,mean(Wanliu_PRES(t-3:t-1)),disponível em t
+Wanliu_PRES_rolling_std_3h,estatística móvel exógena,Wanliu_PRES,std(Wanliu_PRES(t-3:t-1)),disponível em t
+Wanliu_PRES_rolling_mean_6h,estatística móvel exógena,Wanliu_PRES,mean(Wanliu_PRES(t-6:t-1)),disponível em t
+Wanliu_PRES_rolling_std_6h,estatística móvel exógena,Wanliu_PRES,std(Wanliu_PRES(t-6:t-1)),disponível em t
+Wanliu_PRES_rolling_mean_24h,estatística móvel exógena,Wanliu_PRES,mean(Wanliu_PRES(t-24:t-1)),disponível em t
+Wanliu_PRES_rolling_std_24h,estatística móvel exógena,Wanliu_PRES,std(Wanliu_PRES(t-24:t-1)),disponível em t
+Wanliu_PRES_rolling_mean_168h,estatística móvel exógena,Wanliu_PRES,mean(Wanliu_PRES(t-168:t-1)),disponível em t
+Wanliu_PRES_rolling_std_168h,estatística móvel exógena,Wanliu_PRES,std(Wanliu_PRES(t-168:t-1)),disponível em t
+Wanliu_DEWP_lag_1h,lag exógeno,Wanliu_DEWP,Wanliu_DEWP(t-1),disponível em t
+Wanliu_DEWP_lag_2h,lag exógeno,Wanliu_DEWP,Wanliu_DEWP(t-2),disponível em t
+Wanliu_DEWP_lag_3h,lag exógeno,Wanliu_DEWP,Wanliu_DEWP(t-3),disponível em t
+Wanliu_DEWP_lag_6h,lag exógeno,Wanliu_DEWP,Wanliu_DEWP(t-6),disponível em t
+Wanliu_DEWP_lag_12h,lag exógeno,Wanliu_DEWP,Wanliu_DEWP(t-12),disponível em t
+Wanliu_DEWP_lag_24h,lag exógeno,Wanliu_DEWP,Wanliu_DEWP(t-24),disponível em t
+Wanliu_DEWP_lag_168h,lag exógeno,Wanliu_DEWP,Wanliu_DEWP(t-168),disponível em t
+Wanliu_DEWP_rolling_mean_3h,estatística móvel exógena,Wanliu_DEWP,mean(Wanliu_DEWP(t-3:t-1)),disponível em t
+Wanliu_DEWP_rolling_std_3h,estatística móvel exógena,Wanliu_DEWP,std(Wanliu_DEWP(t-3:t-1)),disponível em t
+Wanliu_DEWP_rolling_mean_6h,estatística móvel exógena,Wanliu_DEWP,mean(Wanliu_DEWP(t-6:t-1)),disponível em t
+Wanliu_DEWP_rolling_std_6h,estatística móvel exógena,Wanliu_DEWP,std(Wanliu_DEWP(t-6:t-1)),disponível em t
+Wanliu_DEWP_rolling_mean_24h,estatística móvel exógena,Wanliu_DEWP,mean(Wanliu_DEWP(t-24:t-1)),disponível em t
+Wanliu_DEWP_rolling_std_24h,estatística móvel exógena,Wanliu_DEWP,std(Wanliu_DEWP(t-24:t-1)),disponível em t
+Wanliu_DEWP_rolling_mean_168h,estatística móvel exógena,Wanliu_DEWP,mean(Wanliu_DEWP(t-168:t-1)),disponível em t
+Wanliu_DEWP_rolling_std_168h,estatística móvel exógena,Wanliu_DEWP,std(Wanliu_DEWP(t-168:t-1)),disponível em t
+Wanliu_RAIN_lag_1h,lag exógeno,Wanliu_RAIN,Wanliu_RAIN(t-1),disponível em t
+Wanliu_RAIN_lag_2h,lag exógeno,Wanliu_RAIN,Wanliu_RAIN(t-2),disponível em t
+Wanliu_RAIN_lag_3h,lag exógeno,Wanliu_RAIN,Wanliu_RAIN(t-3),disponível em t
+Wanliu_RAIN_lag_6h,lag exógeno,Wanliu_RAIN,Wanliu_RAIN(t-6),disponível em t
+Wanliu_RAIN_lag_12h,lag exógeno,Wanliu_RAIN,Wanliu_RAIN(t-12),disponível em t
+Wanliu_RAIN_lag_24h,lag exógeno,Wanliu_RAIN,Wanliu_RAIN(t-24),disponível em t
+Wanliu_RAIN_lag_168h,lag exógeno,Wanliu_RAIN,Wanliu_RAIN(t-168),disponível em t
+Wanliu_RAIN_rolling_mean_3h,estatística móvel exógena,Wanliu_RAIN,mean(Wanliu_RAIN(t-3:t-1)),disponível em t
+Wanliu_RAIN_rolling_std_3h,estatística móvel exógena,Wanliu_RAIN,std(Wanliu_RAIN(t-3:t-1)),disponível em t
+Wanliu_RAIN_rolling_mean_6h,estatística móvel exógena,Wanliu_RAIN,mean(Wanliu_RAIN(t-6:t-1)),disponível em t
+Wanliu_RAIN_rolling_std_6h,estatística móvel exógena,Wanliu_RAIN,std(Wanliu_RAIN(t-6:t-1)),disponível em t
+Wanliu_RAIN_rolling_mean_24h,estatística móvel exógena,Wanliu_RAIN,mean(Wanliu_RAIN(t-24:t-1)),disponível em t
+Wanliu_RAIN_rolling_std_24h,estatística móvel exógena,Wanliu_RAIN,std(Wanliu_RAIN(t-24:t-1)),disponível em t
+Wanliu_RAIN_rolling_mean_168h,estatística móvel exógena,Wanliu_RAIN,mean(Wanliu_RAIN(t-168:t-1)),disponível em t
+Wanliu_RAIN_rolling_std_168h,estatística móvel exógena,Wanliu_RAIN,std(Wanliu_RAIN(t-168:t-1)),disponível em t
+Wanliu_WSPM_lag_1h,lag exógeno,Wanliu_WSPM,Wanliu_WSPM(t-1),disponível em t
+Wanliu_WSPM_lag_2h,lag exógeno,Wanliu_WSPM,Wanliu_WSPM(t-2),disponível em t
+Wanliu_WSPM_lag_3h,lag exógeno,Wanliu_WSPM,Wanliu_WSPM(t-3),disponível em t
+Wanliu_WSPM_lag_6h,lag exógeno,Wanliu_WSPM,Wanliu_WSPM(t-6),disponível em t
+Wanliu_WSPM_lag_12h,lag exógeno,Wanliu_WSPM,Wanliu_WSPM(t-12),disponível em t
+Wanliu_WSPM_lag_24h,lag exógeno,Wanliu_WSPM,Wanliu_WSPM(t-24),disponível em t
+Wanliu_WSPM_lag_168h,lag exógeno,Wanliu_WSPM,Wanliu_WSPM(t-168),disponível em t
+Wanliu_WSPM_rolling_mean_3h,estatística móvel exógena,Wanliu_WSPM,mean(Wanliu_WSPM(t-3:t-1)),disponível em t
+Wanliu_WSPM_rolling_std_3h,estatística móvel exógena,Wanliu_WSPM,std(Wanliu_WSPM(t-3:t-1)),disponível em t
+Wanliu_WSPM_rolling_mean_6h,estatística móvel exógena,Wanliu_WSPM,mean(Wanliu_WSPM(t-6:t-1)),disponível em t
+Wanliu_WSPM_rolling_std_6h,estatística móvel exógena,Wanliu_WSPM,std(Wanliu_WSPM(t-6:t-1)),disponível em t
+Wanliu_WSPM_rolling_mean_24h,estatística móvel exógena,Wanliu_WSPM,mean(Wanliu_WSPM(t-24:t-1)),disponível em t
+Wanliu_WSPM_rolling_std_24h,estatística móvel exógena,Wanliu_WSPM,std(Wanliu_WSPM(t-24:t-1)),disponível em t
+Wanliu_WSPM_rolling_mean_168h,estatística móvel exógena,Wanliu_WSPM,mean(Wanliu_WSPM(t-168:t-1)),disponível em t
+Wanliu_WSPM_rolling_std_168h,estatística móvel exógena,Wanliu_WSPM,std(Wanliu_WSPM(t-168:t-1)),disponível em t
+target_hour,calendário,target_timestamp,calendário de t+1,conhecido antecipadamente
+target_dayofweek,calendário,target_timestamp,calendário de t+1,conhecido antecipadamente
+target_is_weekend,calendário,target_timestamp,calendário de t+1,conhecido antecipadamente
+target_hour_sin,calendário,target_timestamp,calendário de t+1,conhecido antecipadamente
+target_hour_cos,calendário,target_timestamp,calendário de t+1,conhecido antecipadamente
+target_dayofweek_sin,calendário,target_timestamp,calendário de t+1,conhecido antecipadamente
+target_dayofweek_cos,calendário,target_timestamp,calendário de t+1,conhecido antecipadamente
+target_month_sin,calendário,target_timestamp,calendário de t+1,conhecido antecipadamente
+target_month_cos,calendário,target_timestamp,calendário de t+1,conhecido antecipadamente
+target_history_imputed,indicador de imputação,Aotizhongxin.PM2.5,1 se PM2.5(t) era ausente no bruto,disponível em t
+target_history_imputed_age,idade da imputação,Aotizhongxin.PM2.5,horas consecutivas desde último valor observado,disponível em t
