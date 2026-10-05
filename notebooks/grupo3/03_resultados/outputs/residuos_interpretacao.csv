@@ -1,0 +1,5 @@
+model,bias,residual_std,ljung_box_p_lag24,interpretacao
+Holt_Winters,0.056,23.747,0.0,"O erro médio é 0.06 µg/m³, então a previsão fica abaixo do observado. O desvio-padrão do resíduo é 23.75 µg/m³. No lag 24, ainda há autocorrelação nos resíduos (p=0)."
+SARIMAX,-0.101,18.035,1.5117692388512768e-21,"O erro médio é -0.10 µg/m³, então a previsão fica acima do observado. O desvio-padrão do resíduo é 18.03 µg/m³. No lag 24, ainda há autocorrelação nos resíduos (p=1.51e-21)."
+Random_Forest,0.588,17.714,1.742989479692547e-50,"O erro médio é 0.59 µg/m³, então a previsão fica abaixo do observado. O desvio-padrão do resíduo é 17.71 µg/m³. No lag 24, ainda há autocorrelação nos resíduos (p=1.74e-50)."
+PLS_Regression,0.548,17.601,4.091275986124287e-15,"O erro médio é 0.55 µg/m³, então a previsão fica abaixo do observado. O desvio-padrão do resíduo é 17.60 µg/m³. No lag 24, ainda há autocorrelação nos resíduos (p=4.09e-15)."

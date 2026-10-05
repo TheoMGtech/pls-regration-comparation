@@ -1,0 +1,37 @@
+{
+  "source": "https://archive.ics.uci.edu/dataset/501/beijing+multi+site+air+quality+data",
+  "input_file": "analyses/grupo3/01_dados/outputs/prepared_base3.csv",
+  "output_file": "analyses/grupo3/01_dados/outputs/features_base3.csv",
+  "target": "target_pm25_t_plus_1",
+  "origin_timestamp": "timestamp",
+  "horizon_hours": 1,
+  "rows": 33306,
+  "columns": 674,
+  "predictor_columns": 671,
+  "lags_hours": [
+    1,
+    2,
+    3,
+    6,
+    12,
+    24,
+    168
+  ],
+  "rolling_windows_hours": [
+    3,
+    6,
+    24,
+    168
+  ],
+  "external_scope": "all numeric local and external measurements from prepared_base3.csv",
+  "categorical_scope": "wind direction excluded from shared numeric matrix",
+  "rolling_formula": "shift(1).rolling(window, min_periods=window)",
+  "calendar_policy": "calendar features use t+1 and are known in advance",
+  "leakage_checks": {
+    "no_current_value_in_rolling_window": true,
+    "all_measurements_lagged": true,
+    "target_not_used_as_contemporaneous_predictor": true,
+    "future_target_only_as_label": true
+  },
+  "random_state": 42
+}

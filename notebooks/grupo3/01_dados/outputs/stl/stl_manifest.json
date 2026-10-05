@@ -1,0 +1,68 @@
+{
+  "source": "https://archive.ics.uci.edu/dataset/501/beijing+multi+site+air+quality+data",
+  "input_file": "analyses/grupo3/01_dados/outputs/prepared_base3.csv",
+  "output_directory": "analyses/grupo3/01_dados/outputs/stl",
+  "target": "target_pm25",
+  "primary_period": 24,
+  "primary_config": {
+    "period": 24,
+    "seasonal": 13,
+    "trend": 169,
+    "low_pass": 25,
+    "seasonal_deg": 1,
+    "trend_deg": 1,
+    "low_pass_deg": 1,
+    "robust": true,
+    "seasonal_jump": 1,
+    "trend_jump": 1,
+    "low_pass_jump": 1
+  },
+  "missing_values_original": 925,
+  "missing_values_after_stl_interpolation": 0,
+  "stl_interpolation_scope": "exclusive to STL copy; modeling base unchanged",
+  "random_state": 42,
+  "parameter_sensitivity": {
+    "seasonal_windows": [
+      7,
+      13,
+      25
+    ],
+    "robust": [
+      false,
+      true
+    ],
+    "degrees": [
+      0,
+      1
+    ],
+    "trend_windows": [
+      169,
+      337
+    ],
+    "low_pass_windows": [
+      25,
+      49
+    ],
+    "jumps": [
+      1,
+      3
+    ],
+    "diagnostic_periods": [
+      24,
+      168
+    ]
+  },
+  "primary_strength": {
+    "seasonal_strength": 0.013049869243193735,
+    "trend_strength": 0.28685557583345356
+  },
+  "outputs": [
+    "stl_primary_components.csv",
+    "stl_parameter_documentation.csv",
+    "stl_parameter_sensitivity.csv",
+    "stl_period_comparison.csv",
+    "stl_primary_decomposition.png",
+    "stl_primary_component_profiles.png",
+    "stl_periods_seasonal_components.png"
+  ]
+}

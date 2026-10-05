@@ -1,0 +1,26 @@
+{
+  "output_file": "analyses/grupo3/01_dados/outputs/features_modelagem_base3.csv",
+  "replaced_for_modeling": "features_base3.csv permanece como matriz exploratória de 671 colunas",
+  "why_not_671": "Random Forest e PLS compartilham estas 17 colunas, todas disponíveis na origem",
+  "guanyuan_meteo": "excluída porque DEWP, PRES, RAIN e WSPM repetem Aotizhongxin",
+  "rows": 30062,
+  "predictor_columns": [
+    "pm25_t",
+    "pm25_t_1",
+    "pm25_t_2",
+    "pm25_t_23",
+    "pm25_roll_mean_3",
+    "pm25_roll_mean_24",
+    "local_PM10",
+    "local_CO",
+    "local_TEMP",
+    "local_WSPM",
+    "local_DEWP",
+    "Changping_PM2.5",
+    "Wanliu_PM2.5",
+    "target_hour_sin",
+    "target_hour_cos",
+    "target_dow_sin",
+    "target_dow_cos"
+  ]
+}
