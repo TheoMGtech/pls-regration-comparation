@@ -1,0 +1,24 @@
+{
+  "modelo": "Random_Forest",
+  "base": "bitcoin",
+  "alvo": "target",
+  "protocolo": "walk-forward 1-step-ahead, janela expansiva",
+  "n_previsoes": 856,
+  "data_inicio_teste": "2024-05-08",
+  "data_fim_teste": "2026-09-10",
+  "MAE": 2108.001664698985,
+  "RMSE": 2901.947395887407,
+  "MAPE": 2.543061327746501,
+  "R2": 0.9764746745147209,
+  "Bias": 240.7708649311546,
+  "Std_residuo": 2891.941921805831,
+  "tempo_total_s": 3715.095542399911,
+  "random_state": 42,
+  "config_usada": {
+    "n_estimators": 300,
+    "max_depth": 8,
+    "min_samples_split": 2,
+    "min_samples_leaf": 4,
+    "max_features": 0.7
+  }
+}

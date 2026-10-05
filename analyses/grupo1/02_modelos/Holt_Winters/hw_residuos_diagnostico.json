@@ -1,0 +1,77 @@
+{
+  "modelo": "Holt-Winters",
+  "base": "bitcoin",
+  "n_observacoes_teste": 883,
+  "metricas_principais": {
+    "MAE": 1407.9794598554167,
+    "RMSE": 1960.6380473703289,
+    "MAPE": 1.7215219955068664,
+    "R2": 0.989431801345392,
+    "Slope_Calibracao": 0.989855797187895,
+    "Intercept_Calibracao": 838.5139923402166
+  },
+  "propriedades_residuos": {
+    "media": -11.895803915380187,
+    "desvio_padrao": 1961.7130967565593,
+    "assimetria_skewness": 0.017326744607978554,
+    "curtose_kurtosis": 2.7106151513640446,
+    "teste_t_bias": {
+      "t_stat": -0.18019330757755747,
+      "p_value": 0.857042203957159,
+      "tem_vies_significativo": false
+    },
+    "jarque_bera": {
+      "jb_stat": 270.368542734759,
+      "p_value": 1.950818677859076e-59,
+      "residuos_sao_normais": false
+    },
+    "shapiro_wilk": {
+      "sw_stat": 0.9667934727386077,
+      "p_value": 2.6929938717799574e-13,
+      "residuos_sao_normais": false
+    },
+    "arch_test": {
+      "lm_stat": 41.36382121792288,
+      "p_value": 9.727496001487268e-06,
+      "efeito_arch_presente": true
+    },
+    "ljung_box": {
+      "lag_1": {
+        "q_stat": 0.558097746835722,
+        "p_value": 0.455027706198357,
+        "ruido_branco": true
+      },
+      "lag_3": {
+        "q_stat": 2.3007559479225073,
+        "p_value": 0.5123761028921758,
+        "ruido_branco": true
+      },
+      "lag_5": {
+        "q_stat": 2.371761439980514,
+        "p_value": 0.7956718406328374,
+        "ruido_branco": true
+      },
+      "lag_7": {
+        "q_stat": 4.073006642320664,
+        "p_value": 0.7713311283110097,
+        "ruido_branco": true
+      },
+      "lag_14": {
+        "q_stat": 13.769207491152462,
+        "p_value": 0.46704315745706704,
+        "ruido_branco": true
+      },
+      "lag_21": {
+        "q_stat": 16.726357849308048,
+        "p_value": 0.727554590020387,
+        "ruido_branco": true
+      },
+      "lag_30": {
+        "q_stat": 24.088126061322964,
+        "p_value": 0.7680227663798125,
+        "ruido_branco": true
+      }
+    }
+  },
+  "cobertura_intervalo_95pct": 93.31823329558324
+}
