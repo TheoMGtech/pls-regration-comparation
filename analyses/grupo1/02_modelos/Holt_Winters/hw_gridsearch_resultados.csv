@@ -1,0 +1,22 @@
+mae_cv,aic,label,trend,seasonal,seasonal_periods,damped_trend
+8899.7234837149,28719.20993284958,trend=mul  seasonal=None  periods=None  damped=False,mul,,,False
+9022.52396196776,28707.38636006298,trend=add  seasonal=mul   periods=7     damped=False,add,mul,7.0,False
+9062.495496919897,28709.772858442295,trend=add  seasonal=add   periods=7     damped=False,add,add,7.0,False
+9302.4771217994,28744.821034641922,trend=mul  seasonal=add   periods=7     damped=False,mul,add,7.0,False
+9421.665239431028,28710.777515376358,trend=add  seasonal=mul   periods=7     damped=True ,add,mul,7.0,True
+9477.427689787257,28743.11203042258,trend=mul  seasonal=mul   periods=7     damped=False,mul,mul,7.0,False
+9504.70530355628,28736.39662236616,trend=mul  seasonal=mul   periods=7     damped=True ,mul,mul,7.0,True
+9540.414165945413,28690.215411642286,trend=None  seasonal=None  periods=None  damped=False,,,,False
+9541.347911871237,28765.699015861075,trend=add  seasonal=add   periods=30    damped=True ,add,add,30.0,True
+9543.068765336933,28696.353279446623,trend=mul  seasonal=None  periods=None  damped=True ,mul,,,True
+9544.578439456318,28696.40235944444,trend=add  seasonal=None  periods=None  damped=True ,add,,,True
+9544.820694784856,28881.525585375075,trend=mul  seasonal=mul   periods=30    damped=True ,mul,mul,30.0,True
+9546.002063793003,28881.558915949856,trend=add  seasonal=mul   periods=30    damped=True ,add,mul,30.0,True
+9553.8967998046,28713.220716189313,trend=add  seasonal=add   periods=7     damped=True ,add,add,7.0,True
+9592.201079439621,28764.57998251191,trend=add  seasonal=add   periods=30    damped=False,add,add,30.0,False
+9597.193152521233,28900.386260484385,trend=add  seasonal=mul   periods=30    damped=False,add,mul,30.0,False
+9604.63691746314,28730.50550194154,trend=mul  seasonal=add   periods=7     damped=True ,mul,add,7.0,True
+9614.56471999694,28781.246579318093,trend=mul  seasonal=add   periods=30    damped=True ,mul,add,30.0,True
+9794.817036228264,28695.28634985584,trend=add  seasonal=None  periods=None  damped=False,add,,,False
+9910.500019620506,28882.35772017752,trend=mul  seasonal=mul   periods=30    damped=False,mul,mul,30.0,False
+9914.201796159572,28767.01623079125,trend=mul  seasonal=add   periods=30    damped=False,mul,add,30.0,False

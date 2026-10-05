@@ -1,0 +1,17 @@
+{
+  "modelo": "PLS_Regression",
+  "base": "bitcoin",
+  "alvo": "target",
+  "n_features": 51,
+  "n_train": 1996,
+  "data_corte": "2024-05-08",
+  "random_state": 42,
+  "train_ratio": 0.7,
+  "n_components": 9,
+  "scale": true,
+  "mae_cv": 1982.2937062174285,
+  "mae_cv_std": 1412.9053191110484,
+  "rmse_cv": 2564.303205087558,
+  "r2_cv": 0.848098961181275,
+  "metodo_selecao": "TimeSeriesSplit (5 folds), criterio MAE_CV"
+}

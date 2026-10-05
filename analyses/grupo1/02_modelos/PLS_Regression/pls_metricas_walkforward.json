@@ -1,0 +1,21 @@
+{
+  "modelo": "PLS_Regression",
+  "base": "bitcoin",
+  "alvo": "target",
+  "protocolo": "walk-forward 1-step-ahead expanding window",
+  "n_previsoes": 856,
+  "data_inicio_teste": "2024-05-08",
+  "data_fim_teste": "2026-09-10",
+  "MAE": 2608.614507238569,
+  "RMSE": 3521.8436007206333,
+  "MAPE": 3.1576091404260307,
+  "R2": 0.965350521618224,
+  "Bias": -336.2471600058783,
+  "Std_residuo": 3507.804846172056,
+  "tempo_total_s": 24.51806640625,
+  "tempo_medio_ms": 28.64260094188084,
+  "config_usada": {
+    "n_components": 9,
+    "scale": true
+  }
+}

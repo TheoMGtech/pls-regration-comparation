@@ -1,0 +1,8 @@
+lag,Estatística Q (LB),p-valor,Conclusão (α=0.05)
+1,505.6583114863874,5.582768493482369e-112,❌ Autocorrelação Residual (p ≤ 0.05)
+3,928.3155955304161,6.383879194379517e-201,❌ Autocorrelação Residual (p ≤ 0.05)
+5,1167.3077134540354,3.5404884886694886e-250,❌ Autocorrelação Residual (p ≤ 0.05)
+7,1328.784863087295,9.866279987269224e-283,❌ Autocorrelação Residual (p ≤ 0.05)
+14,1609.0216759921236,0.0,❌ Autocorrelação Residual (p ≤ 0.05)
+21,1667.0596450318064,0.0,❌ Autocorrelação Residual (p ≤ 0.05)
+30,1688.151998258834,0.0,❌ Autocorrelação Residual (p ≤ 0.05)

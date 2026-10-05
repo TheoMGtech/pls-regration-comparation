@@ -1,0 +1,22 @@
+{
+  "modelo": "Holt-Winters",
+  "base": "bitcoin",
+  "alvo": "priceClose",
+  "protocolo": "walk-forward 1-step-ahead expanding window",
+  "n_previsoes": 883,
+  "data_inicio_teste": "2024-04-12 00:00:00",
+  "data_fim_teste": "2026-09-11 00:00:00",
+  "MAE": 1407.9794598554167,
+  "RMSE": 1960.6380473703289,
+  "MAPE": 1.7215219955068664,
+  "Bias": -11.895803915380187,
+  "Std_residuo": 1961.7130967565593,
+  "tempo_total_s": 123.25481510162354,
+  "tempo_medio_ms": 139.58642706865632,
+  "config_usada": {
+    "trend": "mul",
+    "seasonal": null,
+    "seasonal_periods": null,
+    "damped_trend": false
+  }
+}

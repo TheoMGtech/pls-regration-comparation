@@ -1,0 +1,29 @@
+{
+  "modelo": "SARIMAX",
+  "base": "bitcoin",
+  "alvo": "target",
+  "protocolo": "walk-forward 1-step-ahead, estado sequencial",
+  "n_previsoes": 856,
+  "data_inicio_teste": "2024-05-08",
+  "data_fim_teste": "2026-09-10",
+  "MAE": 1590.7703666220395,
+  "RMSE": 2130.911741996032,
+  "MAPE": 1.8996894814077347,
+  "R2": 0.9873150869530392,
+  "Bias": 693.8617567178526,
+  "Std_residuo": 2014.7805624288167,
+  "tempo_total_s": 38.40958089986816,
+  "random_state": 42,
+  "order": [
+    0,
+    0,
+    1
+  ],
+  "seasonal_order": [
+    0,
+    0,
+    0,
+    7
+  ],
+  "maxiter": 50
+}
