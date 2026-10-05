@@ -1,0 +1,12 @@
+parâmetro,valores avaliados/principal,interpretação
+period,24,número de observações por ciclo sazonal; principal diário
+seasonal,13,janela LOESS da sazonalidade; ímpar e >= 7
+trend,169,janela LOESS da tendência; ímpar e maior que period
+low_pass,25,janela do filtro passa-baixa; ímpar e maior que period
+seasonal_deg,0 ou 1,grau local do polinômio da sazonalidade
+trend_deg,0 ou 1,grau local do polinômio da tendência
+low_pass_deg,0 ou 1,grau local do polinômio do filtro
+robust,False ou True,ponderação robusta contra observações extremas
+seasonal_jump,1 ou 3,salto de avaliação do LOESS sazonal
+trend_jump,1 ou 3,salto de avaliação do LOESS de tendência
+low_pass_jump,1 ou 3,salto de avaliação do filtro passa-baixa

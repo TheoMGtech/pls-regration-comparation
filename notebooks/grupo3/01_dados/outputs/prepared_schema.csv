@@ -1,0 +1,104 @@
+coluna,dtype,papel
+timestamp,datetime64[ns],índice temporal
+target_pm25,float64,alvo não imputado
+local_PM10,float64,preditor imputado causalmente
+local_SO2,float64,preditor imputado causalmente
+local_NO2,float64,preditor imputado causalmente
+local_CO,float64,preditor imputado causalmente
+local_O3,float64,preditor imputado causalmente
+local_TEMP,float64,preditor imputado causalmente
+local_PRES,float64,preditor imputado causalmente
+local_DEWP,float64,preditor imputado causalmente
+local_RAIN,float64,preditor imputado causalmente
+local_WSPM,float64,preditor imputado causalmente
+local_wd,string,preditor imputado causalmente
+Changping_PM2.5,float64,preditor imputado causalmente
+Changping_PM10,float64,preditor imputado causalmente
+Changping_SO2,float64,preditor imputado causalmente
+Changping_NO2,float64,preditor imputado causalmente
+Changping_CO,float64,preditor imputado causalmente
+Changping_O3,float64,preditor imputado causalmente
+Changping_TEMP,float64,preditor imputado causalmente
+Changping_PRES,float64,preditor imputado causalmente
+Changping_DEWP,float64,preditor imputado causalmente
+Changping_RAIN,float64,preditor imputado causalmente
+Changping_WSPM,float64,preditor imputado causalmente
+Changping_wd,string,preditor imputado causalmente
+Guanyuan_PM2.5,float64,preditor imputado causalmente
+Guanyuan_PM10,float64,preditor imputado causalmente
+Guanyuan_SO2,float64,preditor imputado causalmente
+Guanyuan_NO2,float64,preditor imputado causalmente
+Guanyuan_CO,float64,preditor imputado causalmente
+Guanyuan_O3,float64,preditor imputado causalmente
+Guanyuan_TEMP,float64,preditor imputado causalmente
+Guanyuan_PRES,float64,preditor imputado causalmente
+Guanyuan_DEWP,float64,preditor imputado causalmente
+Guanyuan_RAIN,float64,preditor imputado causalmente
+Guanyuan_WSPM,float64,preditor imputado causalmente
+Guanyuan_wd,string,preditor imputado causalmente
+Wanliu_PM2.5,float64,preditor imputado causalmente
+Wanliu_PM10,float64,preditor imputado causalmente
+Wanliu_SO2,float64,preditor imputado causalmente
+Wanliu_NO2,float64,preditor imputado causalmente
+Wanliu_CO,float64,preditor imputado causalmente
+Wanliu_O3,float64,preditor imputado causalmente
+Wanliu_TEMP,float64,preditor imputado causalmente
+Wanliu_PRES,float64,preditor imputado causalmente
+Wanliu_DEWP,float64,preditor imputado causalmente
+Wanliu_RAIN,float64,preditor imputado causalmente
+Wanliu_WSPM,float64,preditor imputado causalmente
+Wanliu_wd,string,preditor imputado causalmente
+year,int16,calendário conhecido
+month,int8,calendário conhecido
+day,int8,calendário conhecido
+hour,int8,calendário conhecido
+dayofweek,int8,calendário conhecido
+is_weekend,int8,calendário conhecido
+target_pm25_missing_raw,bool,indicador de ausência bruta
+local_PM10_missing_raw,bool,indicador de ausência bruta
+local_SO2_missing_raw,bool,indicador de ausência bruta
+local_NO2_missing_raw,bool,indicador de ausência bruta
+local_CO_missing_raw,bool,indicador de ausência bruta
+local_O3_missing_raw,bool,indicador de ausência bruta
+local_TEMP_missing_raw,bool,indicador de ausência bruta
+local_PRES_missing_raw,bool,indicador de ausência bruta
+local_DEWP_missing_raw,bool,indicador de ausência bruta
+local_RAIN_missing_raw,bool,indicador de ausência bruta
+local_WSPM_missing_raw,bool,indicador de ausência bruta
+local_wd_missing_raw,bool,indicador de ausência bruta
+Changping_PM2.5_missing_raw,bool,indicador de ausência bruta
+Changping_PM10_missing_raw,bool,indicador de ausência bruta
+Changping_SO2_missing_raw,bool,indicador de ausência bruta
+Changping_NO2_missing_raw,bool,indicador de ausência bruta
+Changping_CO_missing_raw,bool,indicador de ausência bruta
+Changping_O3_missing_raw,bool,indicador de ausência bruta
+Changping_TEMP_missing_raw,bool,indicador de ausência bruta
+Changping_PRES_missing_raw,bool,indicador de ausência bruta
+Changping_DEWP_missing_raw,bool,indicador de ausência bruta
+Changping_RAIN_missing_raw,bool,indicador de ausência bruta
+Changping_WSPM_missing_raw,bool,indicador de ausência bruta
+Changping_wd_missing_raw,bool,indicador de ausência bruta
+Guanyuan_PM2.5_missing_raw,bool,indicador de ausência bruta
+Guanyuan_PM10_missing_raw,bool,indicador de ausência bruta
+Guanyuan_SO2_missing_raw,bool,indicador de ausência bruta
+Guanyuan_NO2_missing_raw,bool,indicador de ausência bruta
+Guanyuan_CO_missing_raw,bool,indicador de ausência bruta
+Guanyuan_O3_missing_raw,bool,indicador de ausência bruta
+Guanyuan_TEMP_missing_raw,bool,indicador de ausência bruta
+Guanyuan_PRES_missing_raw,bool,indicador de ausência bruta
+Guanyuan_DEWP_missing_raw,bool,indicador de ausência bruta
+Guanyuan_RAIN_missing_raw,bool,indicador de ausência bruta
+Guanyuan_WSPM_missing_raw,bool,indicador de ausência bruta
+Guanyuan_wd_missing_raw,bool,indicador de ausência bruta
+Wanliu_PM2.5_missing_raw,bool,indicador de ausência bruta
+Wanliu_PM10_missing_raw,bool,indicador de ausência bruta
+Wanliu_SO2_missing_raw,bool,indicador de ausência bruta
+Wanliu_NO2_missing_raw,bool,indicador de ausência bruta
+Wanliu_CO_missing_raw,bool,indicador de ausência bruta
+Wanliu_O3_missing_raw,bool,indicador de ausência bruta
+Wanliu_TEMP_missing_raw,bool,indicador de ausência bruta
+Wanliu_PRES_missing_raw,bool,indicador de ausência bruta
+Wanliu_DEWP_missing_raw,bool,indicador de ausência bruta
+Wanliu_RAIN_missing_raw,bool,indicador de ausência bruta
+Wanliu_WSPM_missing_raw,bool,indicador de ausência bruta
+Wanliu_wd_missing_raw,bool,indicador de ausência bruta

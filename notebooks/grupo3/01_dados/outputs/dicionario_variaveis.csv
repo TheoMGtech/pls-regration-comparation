@@ -1,0 +1,8 @@
+variável,descrição,unidade,papel previsto,regra de disponibilidade
+No,Identificador sequencial do registro,identificador,Não usar como preditor,Não aplicável
+"year, month, day, hour",Componentes do carimbo temporal,tempo,Calendário,Conhecidos antecipadamente
+PM2.5,Concentração de partículas finas; variável-alvo,µg/m³,Lag da própria série,Somente t ou anterior para prever t+1
+"PM10, SO2, NO2, CO, O3",Concentrações de poluentes,µg/m³,Exógenas locais candidatas,Somente t ou anterior para prever t+1
+"TEMP, PRES, DEWP, RAIN, WSPM",Medições meteorológicas,"°C, hPa, °C, mm, m/s",Exógenas locais candidatas,Somente t ou anterior para prever t+1
+wd,Direção do vento,categórica,Exógena local candidata,Somente t ou anterior para prever t+1
+PM2.5 das estações externas,"Medições em Changping, Guanyuan e Wanliu",µg/m³,Exógenas espaciais candidatas,Somente t ou anterior para prever t+1
